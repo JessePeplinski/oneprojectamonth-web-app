@@ -22,3 +22,8 @@
   .pagination {
     margin-bottom: 30px;
   }
+
+  .card-footer-image {
+    width: 48px;
+    height: 48px;
+  }

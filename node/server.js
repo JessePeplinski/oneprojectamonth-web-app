@@ -3,28 +3,25 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const errorhandler = require('errorhandler');
+const morgan = require('morgan');
+
+const app = express();
+
+app.use(cors());
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(errorhandler());
 
 // Get our API routes
 const home = require('./routes/default');
 const api = require('./routes/api');
 
-const app = express();
-
-// Parsers for POST data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Point static path to dist
-app.use(express.static(path.join(__dirname, '../dist')));
-
 // Set our api routes
 app.use('/', home);
 app.use('/api', api);
-
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
 
 /**
  * Get port from environment and store in Express.

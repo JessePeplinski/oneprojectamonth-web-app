@@ -3,6 +3,12 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs';
 import { OnInit } from '@angular/core';
 
+interface Announcement {
+  title: string;
+  date: Date;
+  content: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -11,8 +17,8 @@ import { OnInit } from '@angular/core';
 
 export class AppComponent implements OnInit {
 
-  announcementsCollection: AngularFirestoreCollection<any[]>;
-  announcements: Observable<any[]>;
+  announcementsCollection: AngularFirestoreCollection<Announcement>;
+  announcements: Observable<Announcement[]>;
 
   constructor(private afs: AngularFirestore) { }
 

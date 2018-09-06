@@ -1,5 +1,55 @@
 # OpamAngular
 
+# Getting Started
+1. On the root level, run `npm install`
+1. Install the angular cli with `npm install -g @angular/cli`
+1. Then run `ng serve` to start the front-end.
+
+# Firebase
+## Running Locally
+1. `firebase serve`
+
+## First Time Deployment Config 
+- https://alligator.io/angular/deploying-angular-app-to-firebase/
+
+1. `firebase init`
+1. Choose __Firestore__, __Functions__, __Hosting__, and __Storage__.
+1. Choose project.
+1. Firestore rules.
+1. Firestore indexes
+1. cloud functions - ts
+1. TS for cloud functions
+1. TSLint for bugs and style
+
+### Issues Solved
+## Build Folder
+Set the build folder to be `dist/opam-angular` in the angular path. We could also set this in firebase rules.
+
+## $RESOURCE_DIR
+- https://stackoverflow.com/questions/48345315/error-deploying-with-firebase-on-npm-prefix-resource-dir-run-lint
+
+
+Error messages appear on Windows:
+"npm --prefix \"$RESOURCE_DIR\" run lint",
+"npm --prefix \"$RESOURCE_DIR\" run build"
+
+Changed to
+
+{
+  "functions": {
+    "predeploy": [
+      "npm --prefix ./functions/ run lint",
+      "npm --prefix ./functions/ run build"
+    ]
+  }
+}
+## Deployment
+1. Install the firebase CLI with `npm install --global firebase-tools`
+1. Build the project for production with `ng build --prod`
+1. Run `firebase deploy`
+
+# Angular Setup
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
 
 ## Development server

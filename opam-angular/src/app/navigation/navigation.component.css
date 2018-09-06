@@ -1,0 +1,17 @@
+header{display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 90%; height: 80px; margin: 0 auto; border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;}
+header i{display: none;}
+header h1{color: #fff; font-family: 'pier_sansmedium'; font-size: 32px; position: relative;}
+header .main-logo{display: flex; justify-content: center; align-items: center; width: 75px; height: 75px; background: #fff; border-radius: 100%; border: 2px solid #ccc; border-style: inset; margin-top: 20px; position: relative;}
+header .main-logo:before{content: 'p'; color: #afafaf; font-size: 70px; font-weight: 700; margin: 0 0 26px -3px;}
+header .main-logo:after{content: ''; width: 24px; height: 24px; border-radius: 100%; background: #afafaf; position: absolute; top: 44%; left: 48%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 2;}
+header .main-logo span:first-of-type:before{content: 'a'; color: #7e7e7e; font-size: 38px; position: absolute; top: 39%; left: 51%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 3; font-weight: 700;}
+header .main-logo span:first-of-type:after{content: ''; width: 16px; height: 19px; border-radius: 100%; background: #7e7e7e; position: absolute; top: 46%; left: 48%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 3; font-weight: 700;}
+header .main-logo span:last-of-type:before{content: '1'; font-size: 66px; font-weight: 700; color: #979797; position: absolute; top: 53%; left: 66%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 4;}
+header h1:after{content: ''; width: 50%; height: 3px; background: #fff; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);}
+nav{display: flex; flex-direction: row;}
+nav ul{display: flex; flex-direction: row; justify-content: space-around; align-items: center;}
+nav ul li a{color: #fff; font-family: 'pier_sanslight'; font-size: 16px; padding: 10px 20px; background: transparent; border-radius: 3px; box-shadow: none; transition: .3s ease-in-out;}
+nav ul li a:hover{background: #fff; color: #000; box-shadow: 0px 1px 5px #555; cursor: pointer;}
+#slide-line{ position: absolute; bottom: 0; height: 2px; background-color:#fff; -webkit-transition: all .3s ease; transition: all .3s ease;}
+nav i{display: none;}

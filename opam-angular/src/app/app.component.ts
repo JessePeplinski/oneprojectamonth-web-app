@@ -1,7 +1,7 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit  } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
-import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Announcement {
   title: string;
@@ -17,15 +17,17 @@ interface Announcement {
 
 export class AppComponent implements OnInit {
 
-  announcementsCollection: AngularFirestoreCollection<Announcement>;
-  announcements: Observable<Announcement[]>;
+  // announcementsCollection: AngularFirestoreCollection<Announcement>;
+  // announcements: Observable<Announcement[]>;
+  announcementDoc: AngularFirestoreDocument<Announcement>;
+  announcement: Observable<Announcement>;
 
-  constructor(private afs: AngularFirestore) { }
+
+  newContent: string;
+
+  constructor(private afs: AngularFirestore, private router: Router) { }
 
   ngOnInit() {
-    this.announcementsCollection = this.afs.collection('announcements', ref => {
-      return ref;
-    });
-    this.announcements = this.announcementsCollection.valueChanges();
+
   }
 }

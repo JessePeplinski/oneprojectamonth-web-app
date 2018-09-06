@@ -1,0 +1,30 @@
+<header>
+  <!-- <h1>One Project A Month</h1> -->
+  <div class="main-logo">
+    <span></span>
+    <span></span>
+  </div>
+  <nav [ngClass]="display ? 'open' : 'closed'">
+  <i class="material-icons menu" (click)="openMenu()" [ngClass]="display ? 'open' : 'closed'">menu</i>
+  <i class="material-icons nav-icon" (click)="openMenu()">clear</i>
+  <!---<div class="user-info-panel">
+    <div class="user-profile-pic">
+
+    </div>
+    <div class="user-account-info">
+      <div class="user-fullname">Jeremy Conn</div>
+      <div class="user-email">Jconn27@gmail.com</div>
+    </div>
+  </div>-->
+    <ul>
+      <li><a style="display: none;" routerLink="/login">Login</a></li>
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/about">About</a></li>
+      <li><a routerLink="/past-events">Past Events</a></li>
+      <li><a routerLink="/sponsors">Sponsors</a></li>
+      <li><a routerLink="/faq">FAQ</a></li>
+      <li><a routerLink="/sign-up">Sign Up</a></li>
+      <hr />
+    </ul>
+  </nav>
+</header>

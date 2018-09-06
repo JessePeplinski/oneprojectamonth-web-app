@@ -7,6 +7,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { PastEventComponent } from './past-event/past-event.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
     {
@@ -36,6 +37,10 @@ const routes: Routes = [
     {
         path: 'sponsors',
         component: SponsorsComponent
+    },
+    {
+        path: 'projects',
+        component: ProjectsComponent
     },
     {
         path: '',

@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { PastEventComponent } from './past-event/past-event.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     PastEventComponent,
     SponsorsComponent,
-    FooterComponent
+    FooterComponent,
+    ProjectsComponent,
    ],
   bootstrap: [ AppComponent ]
 })

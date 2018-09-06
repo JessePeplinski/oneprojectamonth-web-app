@@ -12,6 +12,7 @@
 ## Deployment
 1. Install the firebase CLI with `npm install --global firebase-tools`
 1. Build the project for production with `ng build --prod`
+1. `cd` into `functions` and run `npm install`
 1. Run `firebase deploy`
 1. Done!
 

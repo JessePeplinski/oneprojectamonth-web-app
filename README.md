@@ -1,20 +1,55 @@
 # OpamAngular
 
-# Angular Quickstart
-1. On the root level, run `npm install`
-1. Install the angular cli with `npm install -g @angular/cli`
-1. Then run `ng serve` to start the front-end.
+# Prereqs
+- [Nodejs](https://nodejs.org/en/)
+
+# Cloning this repo
+`git clone https://github.com/JessePeplinski/oneprojectamonth-web-app.git`
+
+# Angular
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+
+## Quick Start
+### Prerequisites
+1. Install the Angular Cli with `npm install -g @angular/cli` (you dont need to be on the root level of the project for this)
+1. On the root level of this project folder, run `npm install`
+1. Run `ng serve` to start the front-end on `http://localhost:4200/`
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 # Firebase
-## Running Cloud Functions Locally
-1. `firebase serve`
-
 ## Deployment
-1. Install the firebase CLI with `npm install --global firebase-tools`
-1. Build the project for production with `ng build --prod`
-1. `cd` into `functions` and run `npm install`
+1. Install the Firebase CLI with `npm install --global firebase-tools`
+1. `cd` into the `functions/` folder and run `npm install` (yes, there are two package.jsons, one within `functions/` and on the root level `/`)
+1. On the root level of the folder (`/`) build the project for production with `ng build --prod`. Source maps will be generated within the `dist/` folder
 1. Run `firebase deploy`
 1. Done!
+
+## Running Cloud Functions Locally
+Run `firebase serve` from the root folder `/` to start cloud functions locally.
 
 ## First Time Deployment Config 
 - https://alligator.io/angular/deploying-angular-app-to-firebase/
@@ -50,31 +85,3 @@ Changed to
     ]
   }
 }
-
-# Angular Setup
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

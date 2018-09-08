@@ -1,5 +1,6 @@
 export interface Announcement {
+    id: string,
     title: string;
-    date: Date;
+    date: string;
     content: string;
 }

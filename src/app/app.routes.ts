@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { PastEventComponent } from './past-event/past-event.component';
 import { SponsorsComponent } from './sponsors/sponsors.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 const routes: Routes = [
     {
@@ -41,6 +42,10 @@ const routes: Routes = [
     {
         path: 'projects',
         component: ProjectsComponent
+    },
+    {
+        path: 'announcements',
+        component: AnnouncementsComponent
     },
     {
         path: '',

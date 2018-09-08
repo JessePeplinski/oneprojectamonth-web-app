@@ -20,7 +20,6 @@ import { AngularFireFunctionsModule } from 'angularfire2/functions';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { FaqComponent } from './faq/faq.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { PastEventComponent } from './past-event/past-event.component';
@@ -28,6 +27,10 @@ import { SponsorsComponent } from './sponsors/sponsors.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { DeliverablesComponent } from './deliverables/deliverables.component';
+import { ParticipantsComponent } from './participants/participants.component';
+import { PrizesComponent } from './prizes/prizes.component';
+import { JudgesComponent } from './judges/judges.component';
 
 @NgModule({
   imports: [
@@ -46,7 +49,6 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
     NavigationComponent,
     HomeComponent,
     AboutComponent,
-    FaqComponent,
     SignUpComponent,
     LoginComponent,
     PastEventComponent,
@@ -54,6 +56,10 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
     FooterComponent,
     ProjectsComponent,
     AnnouncementsComponent,
+    DeliverablesComponent,
+    ParticipantsComponent,
+    PrizesComponent,
+    JudgesComponent,
    ],
   bootstrap: [ AppComponent ]
 })

@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 // required firebase module
 import { AngularFireModule } from 'angularfire2';
 
+import { CoreModule } from './core/core.module';
+
 // optional firebase modules
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
@@ -41,7 +43,8 @@ import { JudgesComponent } from './judges/judges.component';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireFunctionsModule, // imports for cloud functions
     FormsModule,
-    routing
+    routing,
+    CoreModule
 
   ],
   declarations: [

@@ -19,20 +19,20 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireFunctionsModule } from 'angularfire2/functions';
 
 // custom components
-import { NavigationComponent } from './navigation/navigation.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { LoginComponent } from './login/login.component';
-import { PastEventComponent } from './past-event/past-event.component';
-import { SponsorsComponent } from './sponsors/sponsors.component';
-import { FooterComponent } from './footer/footer.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { AnnouncementsComponent } from './announcements/announcements.component';
-import { DeliverablesComponent } from './deliverables/deliverables.component';
-import { ParticipantsComponent } from './participants/participants.component';
-import { PrizesComponent } from './prizes/prizes.component';
-import { JudgesComponent } from './judges/judges.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/login/login.component';
+import { PastEventComponent } from './components/past-event/past-event.component';
+import { SponsorsComponent } from './components/sponsors/sponsors.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { AnnouncementsComponent } from './components/announcements/announcements.component';
+import { DeliverablesComponent } from './components/deliverables/deliverables.component';
+import { ParticipantsComponent } from './components/participants/participants.component';
+import { PrizesComponent } from './components/prizes/prizes.component';
+import { JudgesComponent } from './components/judges/judges.component';
 
 @NgModule({
   imports: [

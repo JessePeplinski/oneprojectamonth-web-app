@@ -26,6 +26,12 @@ export class AnnouncementsComponent implements OnInit {
     // this.announcements = this.announcementsCollection.valueChanges();
   }
 
+  // FIXME: Update these or figure out that weird error
+  public id: string;
+  public title: string;
+  public date: string;
+  public content: string;
+
   ngOnInit() {
     // querying single document
     // this.announcementDoc = this.afs.doc('announcements/GJi7UWEz5xykpFrROOcQ');

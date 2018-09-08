@@ -10,6 +10,7 @@
     ]
   },
   "hosting": {
+    "predeploy": "ng build --prod",
     "public": "dist/opam-angular",
     "ignore": [
       "firebase.json",

@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AnnouncementsService {
 
-  announcementsCollection: AngularFirestoreCollection<Announcement>; // firestore collection reference
+  announcementsCollection: AngularFirestoreCollection<Announcement>; // firestore collection reference of announcements
   announcements: Observable<Announcement[]>; // array of announcements
   announcementDoc : AngularFirestoreDocument<Announcement>; // single document to delete or update 
 
@@ -31,11 +31,21 @@ export class AnnouncementsService {
   }
 
   createAnnouncement(announcement: Announcement) {
-    this.announcementsCollection.add(announcement);
+    this.announcementsCollection.add(announcement)
+    .then(function() {
+      console.log("Document succesfully created!");
+    }).catch(function(error) {
+      console.error("Error creating document: " + error);
+    });;
   }
 
   deleteAnnouncment(announcement: Announcement) {
     this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
-    this.announcementDoc.delete();
+    this.announcementDoc.delete()
+    .then(function() {
+      console.log("Document succesfully deleted!")
+    }).catch(function(error) {
+      console.error("Error removing document: " + error);
+    });
   }
 }

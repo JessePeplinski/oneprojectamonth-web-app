@@ -34,13 +34,19 @@ export class AnnouncementsService {
 
   createAnnouncement(announcement: Announcement) {
 
-    // BUG: Document has an ID on the front-end but isn't added to firebase.
-    // TODO: Pass in ID here to the document. I want to pass in announcement and a random ID as a field. id: <don't have>, name: <do have>, etc...
+    // Generate a random 
     let id = this.afs.createId();
 
-    this.announcementsCollection.add(announcement)
-    .then(function(docRef) {
-      console.log("Document succesfully created with ID: " + docRef.id);
+    // Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
+    this.announcementsCollection.doc(id).set({
+      id: id,
+      dateCreated: new Date(),
+      title: announcement.title,
+      content: announcement.content,
+      date: announcement.date,
+    })
+    .then(function() {
+      console.log("Document succesfully created with ID: " + id);
     }).catch(function(error) {
       console.error("Error creating document: " + error);
     });

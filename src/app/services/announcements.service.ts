@@ -21,25 +21,44 @@ export class AnnouncementsService {
 
   readAnnouncements() {
     // this.announcements = this.announcementsCollection.valueChanges();
-    return this.announcements = this.afs.collection('announcements').snapshotChanges().pipe(map(changes => {
-      return changes.map(a => {
-        const data = a.payload.doc.data() as Announcement;
-        data.id = a.payload.doc.id;
+
+    // Map over the observable returned by snapshotChanges to extract the doucments id and data
+    return this.announcements = this.announcementsCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(action => {
+        const data = action.payload.doc.data() as Announcement;
+        data.id = action.payload.doc.id;
         return data;
       })
     }));
   }
 
   createAnnouncement(announcement: Announcement) {
+
+    // BUG: Document has an ID on the front-end but isn't added to firebase.
+    // TODO: Pass in ID here to the document. I want to pass in announcement and a random ID as a field. id: <don't have>, name: <do have>, etc...
+    let id = this.afs.createId();
+
     this.announcementsCollection.add(announcement)
-    .then(function() {
-      console.log("Document succesfully created!");
+    .then(function(docRef) {
+      console.log("Document succesfully created with ID: " + docRef.id);
     }).catch(function(error) {
       console.error("Error creating document: " + error);
-    });;
+    });
+  }
+
+  updateAnnouncement(announcement: Announcement) {
+    console.log(`ID TO UPDATE: ${announcement.id}`);
+    this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
+    this.announcementDoc.update(announcement)
+    .then(function() {
+      console.log("Document succesfully updated!")
+    }).catch(function(error) {
+      console.error("Error updating document: " + error);
+    });
   }
 
   deleteAnnouncment(announcement: Announcement) {
+    console.log(`ID TO DELETE: ${announcement.id}`);
     this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
     this.announcementDoc.delete()
     .then(function() {

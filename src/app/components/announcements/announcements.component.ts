@@ -21,6 +21,8 @@ export class AnnouncementsComponent implements OnInit {
   };
 
   announcements: Announcement[];
+  editState: boolean = false;
+  announcementToEdit: Announcement;
 
   constructor(private announcementsService: AnnouncementsService) { }
 
@@ -35,18 +37,31 @@ export class AnnouncementsComponent implements OnInit {
 
   createAnnouncementInCollection() {
     // Basic validation. Make sure we have a title and content filled in
-    if(this.announcement.title != '' && this.announcement.content != '') {
+    if(this.announcement.title != '' && this.announcement.content != '' && this.announcement.date != '') {
       this.announcementsService.createAnnouncement(this.announcement);
       this.announcement.title = '';
       this.announcement.content = '';
+      this.announcement.date = '';
     }
   }
 
-  updateAnnouncement() {
-
+  editAnnouncement(event, announcement: Announcement) {
+    this.editState = true;
+    this.announcementToEdit = announcement;
   }
 
-  deleteAnnouncement(event, announcement) {
+  clearState() {
+    this.editState = false;
+    this.announcementToEdit = null;
+  }
+
+  updateAnnouncement(announcement: Announcement) {
+    this.announcementsService.updateAnnouncement(announcement);
+    this.clearState();
+  }
+
+  deleteAnnouncement(event, announcement: Announcement) {
+    this.clearState();
     this.announcementsService.deleteAnnouncment(announcement);
   }
 }

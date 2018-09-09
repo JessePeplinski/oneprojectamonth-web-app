@@ -34,6 +34,9 @@ import { ParticipantsComponent } from './components/participants/participants.co
 import { PrizesComponent } from './components/prizes/prizes.component';
 import { JudgesComponent } from './components/judges/judges.component';
 
+// services
+import { AnnouncementsService } from './services/announcements.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ import { JudgesComponent } from './components/judges/judges.component';
     PrizesComponent,
     JudgesComponent,
    ],
+  providers: [ AnnouncementsService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

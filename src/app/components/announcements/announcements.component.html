@@ -1,28 +1,47 @@
 <h1>Announcements</h1>
 <section class="page-container">
-    <div class="wave">
-      <svg viewBox="0 0 1440 120" aria-hidden="true">
-        <path d="M1440,21.2101911 L1440,120 L0,120 L0,21.2101911 C120,35.0700637 240,42 360,42 C480,42 600,35.0700637 720,21.2101911 C808.32779,12.416393 874.573633,6.87702029 918.737528,4.59207306 C972.491685,1.8109458 1026.24584,0.420382166 1080,0.420382166 C1200,0.420382166 1320,7.35031847 1440,21.2101911 Z"></path>
-      </svg>
+  <div class="wave">
+    <svg viewBox="0 0 1440 120" aria-hidden="true">
+      <path d="M1440,21.2101911 L1440,120 L0,120 L0,21.2101911 C120,35.0700637 240,42 360,42 C480,42 600,35.0700637 720,21.2101911 C808.32779,12.416393 874.573633,6.87702029 918.737528,4.59207306 C972.491685,1.8109458 1026.24584,0.420382166 1080,0.420382166 C1200,0.420382166 1320,7.35031847 1440,21.2101911 Z"></path>
+    </svg>
+  </div>
+
+  <div class="test-read-write">
+
+    <!-- READ -->
+    <div *ngIf="announcements?.length > 0; else noAnnouncements">
+      <div (dblclick)="deleteAnnouncement($event, announcement)"  class="text" *ngFor="let announcement of announcements">
+        <h2>{{announcement.id}}</h2>
+        <h2>{{announcement.title}}</h2>
+        <h2>{{announcement.content}}</h2>
+        <h2>{{announcement.date}}</h2>
+      </div>
     </div>
-  
-    <div class="test-read-write">
-        <div class="text" *ngFor="let announcement of announcements | async">
-          <h2>{{announcement.id}}</h2>
-          <h2>{{announcement.title}}</h2>
-          <h2>{{announcement.content}}</h2>
-          <h2>{{announcement.date}}</h2>
-        </div>
 
-        <input [(ngModel)]="title" title="title" type="text" placeholder="Enter Title"/>
-        <input [(ngModel)]="content" content="content" type="text" placeholder="Enter Content"/>
-        <input [(ngModel)]="date" date="date" type="text" placeholder="Enter Date"/>
-        <button label="submit" (click)="createAnnouncementInCollection(title, content, date)">Create Announcement</button>
+    <!-- CREATE -->
+    <form (ngSubmit)="createAnnouncementInCollection()">
+      <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title"><label>Title</label>
+      <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="title"><label>content</label>
+      <input type="text" placeholder="Add date" [(ngModel)]="announcement.date" name="title"><label>date</label>
+      <input type="submit" value="Add Announcement">
+    </form>
 
-        <!-- <div class="update-content">
+
+    <!-- <input [(ngModel)]="title" title="title" type="text" placeholder="Enter Title" />
+    <input [(ngModel)]="content" content="content" type="text" placeholder="Enter Content" />
+    <input [(ngModel)]="date" date="date" type="text" placeholder="Enter Date" />
+    <button label="submit" (click)="createAnnouncementInCollection(title, content, date)">Create Announcement</button> -->
+
+    <!-- <div class="update-content">
           <input [(ngModel)]="newContent" placeholder="Enter New Content Here"/>
           <button label="submit" (click)="updateContent()">Submit Content</button>
         </div> -->
-      </div>
-  
-  </section>
+
+
+  </div>
+
+</section>
+
+<ng-template #noAnnouncements>
+  No announcements right now!
+</ng-template>

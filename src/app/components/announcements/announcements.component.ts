@@ -17,7 +17,7 @@ export class AnnouncementsComponent implements OnInit {
     id: '',
     title: '',
     content: '',
-    date: ''
+    dateCreated: null
   };
 
   announcements: Announcement[];
@@ -37,11 +37,10 @@ export class AnnouncementsComponent implements OnInit {
 
   createAnnouncementInCollection() {
     // Basic validation. Make sure we have a title and content filled in
-    if(this.announcement.title != '' && this.announcement.content != '' && this.announcement.date != '') {
+    if(this.announcement.title != '' && this.announcement.content != '') {
       this.announcementsService.createAnnouncement(this.announcement);
       this.announcement.title = '';
       this.announcement.content = '';
-      this.announcement.date = '';
     }
   }
 

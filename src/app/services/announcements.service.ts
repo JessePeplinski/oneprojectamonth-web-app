@@ -40,10 +40,9 @@ export class AnnouncementsService {
     // Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
     this.announcementsCollection.doc(id).set({
       id: id,
-      dateCreated: new Date(),
       title: announcement.title,
       content: announcement.content,
-      date: announcement.date,
+      dateCreated: new Date(),
     })
     .then(function() {
       console.log("Document succesfully created with ID: " + id);

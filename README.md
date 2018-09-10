@@ -6,6 +6,19 @@
 # Cloning this repo
 `git clone https://github.com/JessePeplinski/oneprojectamonth-web-app.git`
 
+# Documentation with Compodoc
+We are using [Compodoc](https://compodoc.app/guides/getting-started.html) for documentation.
+
+It's added a depdendency in package.json, or you can install compodoc globally with `npm install -g @compodoc/compodoc`
+
+## Render Documentation
+1. Run `npm run compodoc:gen`
+1. Documentation will be created within `/documentation`
+
+## Render Documentation, and serve it 
+1. Run `npm run compodoc:serve`
+1. Go to `localhost:8080`
+
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
@@ -45,7 +58,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1. Install the Firebase CLI with `npm install --global firebase-tools`
 1. `cd` into the `functions/` folder and run `npm install` (yes, there are two package.jsons, one within `functions/` and on the root level `/`)
 1. On the root level of the folder (`/`) build the project for production with `ng build --prod`. Source maps will be generated within the `dist/` folder
-1. Run `firebase deploy`
+1. Run `firebase deploy -m "Here is a message for the deploy"`
 1. Done!
 
 ## Running Cloud Functions Locally

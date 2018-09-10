@@ -1,0 +1,185 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>opam-angular documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">opam-angular documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="opamangular">OpamAngular</h1>
+<h1 id="prereqs">Prereqs</h1>
+<ul>
+<li><a href="https://nodejs.org/en/">Nodejs</a></li>
+</ul>
+<h1 id="cloning-this-repo">Cloning this repo</h1>
+<p><code>git clone https://github.com/JessePeplinski/oneprojectamonth-web-app.git</code></p>
+<h1 id="documentation-with-compodoc">Documentation with Compodoc</h1>
+<p>We are using <a href="https://compodoc.app/guides/getting-started.html">Compodoc</a> for documentation.</p>
+<p>It&#39;s added a depdendency in package.json, or you can install compodoc globally with <code>npm install -g @compodoc/compodoc</code></p>
+<h2 id="render-documentation">Render Documentation</h2>
+<ol>
+<li>Run <code>npm run compodoc:gen</code></li>
+<li>Documentation will be created within <code>/documentation</code></li>
+</ol>
+<h2 id="render-documentation-and-serve-it">Render Documentation, and serve it</h2>
+<ol>
+<li>Run <code>npm run compodoc:serve</code></li>
+<li>Go to <code>localhost:8080</code></li>
+</ol>
+<h1 id="angular">Angular</h1>
+<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 6.1.5.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ol>
+<li>Install the Angular Cli with <code>npm install -g @angular/cli</code> (you dont need to be on the root level of the project for this)</li>
+<li>On the root level of this project folder, run <code>npm install</code></li>
+<li>Run <code>ng serve</code> to start the front-end on <code>http://localhost:4200/</code></li>
+</ol>
+<h2 id="development-server">Development server</h2>
+<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
+<h2 id="code-scaffolding">Code scaffolding</h2>
+<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
+<h2 id="build">Build</h2>
+<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory. Use the <code>--prod</code> flag for a production build.</p>
+<h2 id="running-unit-tests">Running unit tests</h2>
+<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
+<h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
+<p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.</p>
+<h2 id="further-help">Further help</h2>
+<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://github.com/angular/angular-cli/blob/master/README.md">Angular CLI README</a>.</p>
+<h1 id="firebase">Firebase</h1>
+<h2 id="deployment">Deployment</h2>
+<ol>
+<li>Install the Firebase CLI with <code>npm install --global firebase-tools</code></li>
+<li><code>cd</code> into the <code>functions/</code> folder and run <code>npm install</code> (yes, there are two package.jsons, one within <code>functions/</code> and on the root level <code>/</code>)</li>
+<li>On the root level of the folder (<code>/</code>) build the project for production with <code>ng build --prod</code>. Source maps will be generated within the <code>dist/</code> folder</li>
+<li>Run <code>firebase deploy -m &quot;Here is a message for the deploy&quot;</code></li>
+<li>Done!</li>
+</ol>
+<h2 id="running-cloud-functions-locally">Running Cloud Functions Locally</h2>
+<p>Run <code>firebase serve</code> from the root folder <code>/</code> to start cloud functions locally.</p>
+<h2 id="first-time-deployment-config">First Time Deployment Config</h2>
+<ul>
+<li><p><a href="https://alligator.io/angular/deploying-angular-app-to-firebase/">https://alligator.io/angular/deploying-angular-app-to-firebase/</a></p>
+</li>
+<li><p><code>firebase init</code></p>
+</li>
+<li>Choose <strong>Firestore</strong>, <strong>Functions</strong>, <strong>Hosting</strong>, and <strong>Storage</strong>.</li>
+<li>Choose project.</li>
+<li>Firestore rules.</li>
+<li>Firestore indexes</li>
+<li>cloud functions - ts</li>
+<li>TS for cloud functions</li>
+<li>TSLint for bugs and style</li>
+</ul>
+<h3 id="issues-solved">Issues Solved</h3>
+<h2 id="build-folder">Build Folder</h2>
+<p>Set the build folder to be <code>dist/opam-angular</code> in the angular path. We could also set this in firebase rules.</p>
+<h2 id="-resource_dir-issue">$RESOURCE_DIR issue</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/48345315/error-deploying-with-firebase-on-npm-prefix-resource-dir-run-lint">https://stackoverflow.com/questions/48345315/error-deploying-with-firebase-on-npm-prefix-resource-dir-run-lint</a></li>
+</ul>
+<p>Error messages appear on Windows:
+&quot;npm --prefix "$RESOURCE_DIR" run lint&quot;,
+&quot;npm --prefix "$RESOURCE_DIR" run build&quot;</p>
+<p>Changed to</p>
+<p>{
+  &quot;functions&quot;: {
+    &quot;predeploy&quot;: [
+      &quot;npm --prefix ./functions/ run lint&quot;,
+      &quot;npm --prefix ./functions/ run build&quot;
+    ]
+  }
+}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <script src="./js/menu-wc.js"></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

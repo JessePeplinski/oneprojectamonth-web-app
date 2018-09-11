@@ -1,13 +1,4 @@
-import { Component, Injectable, OnInit  } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-
-interface Announcement {
-  title: string;
-  date: Date;
-  content: string;
-}
+import { Component, OnInit  } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -17,15 +8,7 @@ interface Announcement {
 
 export class AppComponent implements OnInit {
 
-  // announcementsCollection: AngularFirestoreCollection<Announcement>;
-  // announcements: Observable<Announcement[]>;
-  announcementDoc: AngularFirestoreDocument<Announcement>;
-  announcement: Observable<Announcement>;
-
-
-  newContent: string;
-
-  constructor(private afs: AngularFirestore, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
 

@@ -19,10 +19,10 @@ export class AnnouncementsService {
     });
   }
 
+  /**
+   * Map over the observable returned by snapshotChanges to extract the doucments id and data when updating and deleting documents.
+   */
   readAnnouncements() {
-    // this.announcements = this.announcementsCollection.valueChanges();
-
-    // Map over the observable returned by snapshotChanges to extract the doucments id and data
     return this.announcements = this.announcementsCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as Announcement;
@@ -32,12 +32,15 @@ export class AnnouncementsService {
     }));
   }
 
+  /**
+   * Create an announcement document in the 'announcements' collection in firestore
+   *
+   * @param {Announcement} announcement Announcement 
+   */
   createAnnouncement(announcement: Announcement) {
+    let id = this.afs.createId();     // Generate a random id from angular firestore
 
-    // Generate a random 
-    let id = this.afs.createId();
-
-    // Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
+    // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
     this.announcementsCollection.doc(id).set({
       id: id,
       title: announcement.title,
@@ -51,6 +54,11 @@ export class AnnouncementsService {
     });
   }
 
+  /**
+   * Update an announcement document in the 'announcements' collection in firestore
+   *
+   * @param {Announcement} announcement Announcement 
+   */
   updateAnnouncement(announcement: Announcement) {
     console.log(`ID TO UPDATE: ${announcement.id}`);
     this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
@@ -62,6 +70,11 @@ export class AnnouncementsService {
     });
   }
 
+  /**
+   * Delete an announcement document in the 'announcements' collection in firestore
+   *
+   * @param {Announcement} announcement Announcement 
+   */
   deleteAnnouncment(announcement: Announcement) {
     console.log(`ID TO DELETE: ${announcement.id}`);
     this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);

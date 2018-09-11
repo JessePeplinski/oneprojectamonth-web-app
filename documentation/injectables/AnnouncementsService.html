@@ -201,13 +201,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/services/announcements.service.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/services/announcements.service.ts:40</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Create an announcement document in the &#39;announcements&#39; collection in firestore</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -217,6 +219,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -231,6 +234,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Announcement </p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -270,13 +277,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/services/announcements.service.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/services/announcements.service.ts:78</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Delete an announcement document in the &#39;announcements&#39; collection in firestore</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -286,6 +295,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -300,6 +310,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Announcement </p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -339,13 +353,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/services/announcements.service.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/services/announcements.service.ts:25</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Map over the observable returned by snapshotChanges to extract the doucments id and data when updating and deleting documents.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -377,13 +393,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/services/announcements.service.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/services/announcements.service.ts:62</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Update an announcement document in the &#39;announcements&#39; collection in firestore</p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -393,6 +411,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -407,6 +426,10 @@
                                                     </td>
                                                     
 
+                                                        <td>
+                                                                <code><p>Announcement </p>
+</code>
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -595,10 +618,10 @@ export class AnnouncementsService {
     });
   }
 
+  /**
+   * Map over the observable returned by snapshotChanges to extract the doucments id and data when updating and deleting documents.
+   */
   readAnnouncements() {
-    // this.announcements &#x3D; this.announcementsCollection.valueChanges();
-
-    // Map over the observable returned by snapshotChanges to extract the doucments id and data
     return this.announcements &#x3D; this.announcementsCollection.snapshotChanges().pipe(map(changes &#x3D;&gt; {
       return changes.map(action &#x3D;&gt; {
         const data &#x3D; action.payload.doc.data() as Announcement;
@@ -608,12 +631,15 @@ export class AnnouncementsService {
     }));
   }
 
+  /**
+   * Create an announcement document in the &#x27;announcements&#x27; collection in firestore
+   *
+   * @param {Announcement} announcement Announcement 
+   */
   createAnnouncement(announcement: Announcement) {
+    let id &#x3D; this.afs.createId();     // Generate a random id from angular firestore
 
-    // Generate a random 
-    let id &#x3D; this.afs.createId();
-
-    // Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
+    // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
     this.announcementsCollection.doc(id).set({
       id: id,
       title: announcement.title,
@@ -627,6 +653,11 @@ export class AnnouncementsService {
     });
   }
 
+  /**
+   * Update an announcement document in the &#x27;announcements&#x27; collection in firestore
+   *
+   * @param {Announcement} announcement Announcement 
+   */
   updateAnnouncement(announcement: Announcement) {
     console.log(&#x60;ID TO UPDATE: ${announcement.id}&#x60;);
     this.announcementDoc &#x3D; this.afs.doc(&#x60;announcements/${announcement.id}&#x60;);
@@ -638,6 +669,11 @@ export class AnnouncementsService {
     });
   }
 
+  /**
+   * Delete an announcement document in the &#x27;announcements&#x27; collection in firestore
+   *
+   * @param {Announcement} announcement Announcement 
+   */
   deleteAnnouncment(announcement: Announcement) {
     console.log(&#x60;ID TO DELETE: ${announcement.id}&#x60;);
     this.announcementDoc &#x3D; this.afs.doc(&#x60;announcements/${announcement.id}&#x60;);

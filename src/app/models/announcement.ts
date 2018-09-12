@@ -3,4 +3,5 @@ export interface Announcement {
     title: string;
     content: string;
     dateCreated: Date;
+    isVisible: boolean;
 }

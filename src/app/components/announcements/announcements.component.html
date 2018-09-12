@@ -10,25 +10,29 @@
 
     <!-- READ -->
     <div *ngIf="announcements?.length > 0; else noAnnouncements">
-      <div  class="text" *ngFor="let announcement of announcements">
-        <h2>{{announcement.title}}</h2>
-        <h2>{{announcement.content}}</h2>
-        <h2>{{announcement.dateCreated.toDate() |  date: 'medium'}}</h2>
 
-        <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
-        <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>
+      <div class="text" *ngFor="let announcement of announcements">
+        <div *ngIf="announcement.isVisible">
+          <h2>{{announcement.title}}</h2>
+          <h2>{{announcement.content}}</h2>
+          <h2>{{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
 
-        <div *ngIf="editState && announcementToEdit.id == announcement.id">
-          <!-- UPDATE -->
-          <form (ngSubmit)="updateAnnouncement(announcement)">
+          <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
+          <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>
+
+          <div *ngIf="editState && announcementToEdit.id == announcement.id">
+            <!-- UPDATE -->
+            <form (ngSubmit)="updateAnnouncement(announcement)">
               <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
               <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="title">
               <input type="submit" value="Update Announcement">
               <!-- DELETE -->
               <button (click)="deleteAnnouncement($event, announcement)" value="Delete Announcement">Delete Announcement</button>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
+
     </div>
 
     <!-- CREATE -->
@@ -37,18 +41,6 @@
       <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="title">
       <input type="submit" value="Add Announcement">
     </form>
-
-
-    <!-- <input [(ngModel)]="title" title="title" type="text" placeholder="Enter Title" />
-    <input [(ngModel)]="content" content="content" type="text" placeholder="Enter Content" />
-    <input [(ngModel)]="date" date="date" type="text" placeholder="Enter Date" />
-    <button label="submit" (click)="createAnnouncementInCollection(title, content, date)">Create Announcement</button> -->
-
-    <!-- <div class="update-content">
-          <input [(ngModel)]="newContent" placeholder="Enter New Content Here"/>
-          <button label="submit" (click)="updateContent()">Submit Content</button>
-        </div> -->
-
 
   </div>
 

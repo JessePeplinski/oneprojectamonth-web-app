@@ -19,7 +19,8 @@ export class AnnouncementsComponent implements OnInit {
     id: '',
     title: '',
     content: '',
-    dateCreated: null
+    dateCreated: null,
+    isVisible: false,
   };
 
   /**

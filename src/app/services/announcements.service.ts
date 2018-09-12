@@ -46,6 +46,7 @@ export class AnnouncementsService {
       title: announcement.title,
       content: announcement.content,
       dateCreated: new Date(),
+      isVisible: true
     })
     .then(function() {
       console.log("Document succesfully created with ID: " + id);

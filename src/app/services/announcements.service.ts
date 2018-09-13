@@ -19,10 +19,20 @@ export class AnnouncementsService {
     });
   }
 
+
+  /**
+   * Return the announcements from firestore
+   * 
+   * @returns observable 
+   */
+  readAllAnnouncements() {
+    return this.afs.collection('announcements').valueChanges();
+  }
+
   /**
    * Map over the observable returned by snapshotChanges to extract the doucments id and data when updating and deleting documents.
    */
-  readAnnouncements() {
+  addIDToField() {
     return this.announcements = this.announcementsCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as Announcement;

@@ -25,11 +25,6 @@ export class AnnouncementsComponent implements OnInit {
   };
 
   /**
-   * Local array of announcements.
-   */
-  announcements: Announcement[];
-
-  /**
    * Boolean for displaying edit/delete onClick of an individual announcement.
    */
   editState: boolean = false;
@@ -39,14 +34,16 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcementToEdit: Announcement;
 
-  constructor(private announcementsService: AnnouncementsService, private router: Router) { }
+  /**
+   * Observable of all announcements
+   */
+  announcements$;
 
-  // TODO: Can we move the stuff in onInit into readAnnouncements()?
+  constructor(private announcementsService: AnnouncementsService) { }
+
   ngOnInit() {
-    this.announcementsService.readAnnouncements().subscribe(announcements => {
-      console.log(announcements);
-      this.announcements = announcements;
-    });
+    // Call the announcements service
+    this.announcements$ = this.announcementsService.readAllAnnouncements();
   }
 
   /**

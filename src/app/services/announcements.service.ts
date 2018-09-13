@@ -30,19 +30,6 @@ export class AnnouncementsService {
   }
 
   /**
-   * Map over the observable returned by snapshotChanges to extract the doucments id and data when updating and deleting documents.
-   */
-  addIDToField() {
-    return this.announcements = this.announcementsCollection.snapshotChanges().pipe(map(changes => {
-      return changes.map(action => {
-        const data = action.payload.doc.data() as Announcement;
-        data.id = action.payload.doc.id;
-        return data;
-      })
-    }));
-  }
-
-  /**
    * Create an announcement document in the 'announcements' collection in firestore
    *
    * @param {Announcement} announcement Announcement 

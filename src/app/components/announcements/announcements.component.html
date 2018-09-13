@@ -30,6 +30,13 @@
               <button (click)="deleteAnnouncement($event, announcement)" value="Delete Announcement">Delete Announcement</button>
             </form>
           </div>
+
+          <button [routerLink]="['/announcements', announcement.id]">
+            View full announcement
+          </button>
+          
+          <router-outlet></router-outlet>
+          
         </div>
       </div>
 

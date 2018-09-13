@@ -36,6 +36,7 @@ import { JudgesComponent } from './components/judges/judges.component';
 
 // services
 import { AnnouncementsService } from './services/announcements.service';
+import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
 
 @NgModule({
   imports: [
@@ -66,6 +67,7 @@ import { AnnouncementsService } from './services/announcements.service';
     ParticipantsComponent,
     PrizesComponent,
     JudgesComponent,
+    SingleAnnouncementComponent,
    ],
   providers: [ AnnouncementsService ],
   bootstrap: [ AppComponent ]

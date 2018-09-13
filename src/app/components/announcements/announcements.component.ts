@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Observable } from 'rxjs';
 import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-announcements',
@@ -38,7 +39,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcementToEdit: Announcement;
 
-  constructor(private announcementsService: AnnouncementsService) { }
+  constructor(private announcementsService: AnnouncementsService, private router: Router) { }
 
   // TODO: Can we move the stuff in onInit into readAnnouncements()?
   ngOnInit() {

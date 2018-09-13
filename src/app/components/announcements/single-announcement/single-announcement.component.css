@@ -1,0 +1,16 @@
+/deep/ app-single-announcement{margin-top: 40px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
+/deep/ app-single-announcement h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
+section.countdown-section{width: 100%; height: auto; padding: 40px; min-height: 300px; display: flex; justify-content: center; align-items: center; }
+section.countdown-section time{font-family: 'pier_sansbold'; font-size: 92px; color: rgba(255, 255, 255, .7);}
+section.countdown-section time span{font-family: 'pier_sansmedium'; font-size: 36px; color: #fff;}
+.wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
+.wave svg{fill: #fff; width: 102%; height: auto;}
+section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
+section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
+section.page-container p{font-size: 16px; line-height: 1.2;}
+.test-read-write{margin: 40px 0;}
+.test-read-write .update-content{width: 100%; display: flex; justify-content: space-around; align-items: center;}
+.test-read-write p{font-family: 'pier_sansmedium'; font-size: 36px; margin: 20px 0;}
+.test-read-write input{margin: 10px 0; height: 30px; padding: 15px 20px; display: flex; flex: 1;}
+.test-read-write button{background: #2848DE; color: #fff; outline: none; border: none; border-radius: 3px; margin-left: 10px; padding: 8px 15px; display: flex; justify-content: center; align-items: center;}
+.test-read-write button:hover{cursor: pointer;}

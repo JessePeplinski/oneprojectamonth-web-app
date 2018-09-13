@@ -12,6 +12,7 @@ import { DeliverablesComponent } from './components/deliverables/deliverables.co
 import { ParticipantsComponent } from './components/participants/participants.component';
 import { PrizesComponent } from './components/prizes/prizes.component';
 import { JudgesComponent } from './components/judges/judges.component';
+import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
 
 const routes: Routes = [
     {
@@ -50,6 +51,10 @@ const routes: Routes = [
         path: 'announcements',
         component: AnnouncementsComponent
     },
+    { 
+        path: 'announcements/:id', 
+        component: SingleAnnouncementComponent 
+    },
     {
         path: 'participants',
         component: ParticipantsComponent
@@ -61,16 +66,16 @@ const routes: Routes = [
     {
         path: 'judges',
         component: JudgesComponent
-    },
-    {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-    },
-    {
-        path: '**',
-        redirectTo: '/home'
     }
+    // {
+    //     path: '',
+    //     redirectTo: '/home',
+    //     pathMatch: 'full'
+    // },
+    // {
+    //     path: '**',
+    //     redirectTo: '/home'
+    // }
 
 ];
 

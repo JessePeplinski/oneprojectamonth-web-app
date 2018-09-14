@@ -3,21 +3,17 @@
 # Prereqs
 - [Nodejs](https://nodejs.org/en/)
 
-# Cloning this repo
-`git clone https://github.com/JessePeplinski/oneprojectamonth-web-app.git`
-
-# Documentation with Compodoc
-We are using [Compodoc](https://compodoc.app/guides/getting-started.html) for documentation.
-
-It's added a depdendency in package.json, or you can install compodoc globally with `npm install -g @compodoc/compodoc`
-
-## Render Documentation
-1. Run `npm run compodoc:gen`
-1. Documentation will be created within `/documentation`
-
-## Render Documentation, and serve it 
-1. Run `npm run compodoc:serve`
-1. Go to `localhost:8080`
+# Quick Start
+1. Clone the repo from Github `git clone https://github.com/JessePeplinski/oneprojectamonth-web-app.git`
+1. Change directories into the repo `cd oneprojectamonth-web-app`
+1. Run `npm install -g @angular/cli`
+1. Run `npm install -g firebase-tools`
+1. Run `firebase login` and follow the directions
+1. Run `npm install` on the root level of the directory `/`
+1. Change diretories into the `functions` folder `cd functions` and run `npm install`
+1. Change directories to the root level `cd ..`
+1. Run `ng serve --open` to start the server on `localhost:4200`
+1. Run `firebase deploy` to deploy code to firebase
 
 # Angular
 
@@ -64,37 +60,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Running Cloud Functions Locally
 Run `firebase serve` from the root folder `/` to start cloud functions locally.
 
-## First Time Deployment Config 
-- https://alligator.io/angular/deploying-angular-app-to-firebase/
+# Documentation with Compodoc
+We are using [Compodoc](https://compodoc.app/guides/getting-started.html) for documentation.
 
-1. `firebase init`
-1. Choose __Firestore__, __Functions__, __Hosting__, and __Storage__.
-1. Choose project.
-1. Firestore rules.
-1. Firestore indexes
-1. cloud functions - ts
-1. TS for cloud functions
-1. TSLint for bugs and style
+It's added a depdendency in package.json, or you can install compodoc globally with `npm install -g @compodoc/compodoc`
 
-### Issues Solved
-## Build Folder
-Set the build folder to be `dist/opam-angular` in the angular path. We could also set this in firebase rules.
+## Render Documentation
+1. Run `npm run compodoc:gen`
+1. Documentation will be created within `/documentation`
 
-## $RESOURCE_DIR issue
-- https://stackoverflow.com/questions/48345315/error-deploying-with-firebase-on-npm-prefix-resource-dir-run-lint
-
-
-Error messages appear on Windows:
-"npm --prefix \"$RESOURCE_DIR\" run lint",
-"npm --prefix \"$RESOURCE_DIR\" run build"
-
-Changed to
-
-{
-  "functions": {
-    "predeploy": [
-      "npm --prefix ./functions/ run lint",
-      "npm --prefix ./functions/ run build"
-    ]
-  }
-}
+## Render Documentation, and serve it 
+1. Run `npm run compodoc:serve`
+1. Go to `localhost:8080`

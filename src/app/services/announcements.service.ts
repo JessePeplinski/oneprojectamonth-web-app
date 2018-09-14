@@ -8,7 +8,7 @@ export class AnnouncementsService {
 
   announcementsCollection: AngularFirestoreCollection<Announcement>; // firestore collection reference of announcements
   announcements: Observable<Announcement[]>; // array of announcements
-  announcementDoc : AngularFirestoreDocument<Announcement>; // single document to delete or update 
+  announcementDoc : AngularFirestoreDocument<Announcement>; // single document to delete or update
 
   constructor(public afs: AngularFirestore) {
     // return collection as observable
@@ -20,8 +20,8 @@ export class AnnouncementsService {
 
   /**
    * Return the announcements from firestore
-   * 
-   * @returns observable 
+   *
+   * @returns observable
    */
   readAllAnnouncements() {
     return this.afs.collection('announcements').valueChanges();
@@ -29,8 +29,8 @@ export class AnnouncementsService {
 
   /**
    * Return a single document based on an ID from firestore
-   * 
-   * @returns observable 
+   *
+   * @returns observable
    */
   readSingleAnnouncementBasedOnId(id) {
     return this.afs.doc(`announcements/${id}`).valueChanges();
@@ -39,7 +39,7 @@ export class AnnouncementsService {
   /**
    * Create an announcement document in the 'announcements' collection in firestore
    *
-   * @param {Announcement} announcement Announcement 
+   * @param {Announcement} announcement Announcement
    */
   createAnnouncement(announcement: Announcement) {
     let id = this.afs.createId();     // Generate a random id from angular firestore
@@ -62,12 +62,16 @@ export class AnnouncementsService {
   /**
    * Update an announcement document in the 'announcements' collection in firestore
    *
-   * @param {Announcement} announcement Announcement 
+   * @param {Announcement} announcement Announcement
    */
   updateAnnouncement(announcement: Announcement) {
     console.log(`ID TO UPDATE: ${announcement.id}`);
     this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
-    this.announcementDoc.update(announcement)
+    this.announcementDoc.update({
+      title: announcement.title,
+      updatedOn: new Date(),
+      content: announcement.content
+    })
     .then(function() {
       console.log("Document succesfully updated!")
     }).catch(function(error) {
@@ -78,7 +82,7 @@ export class AnnouncementsService {
   /**
    * Delete an announcement document in the 'announcements' collection in firestore
    *
-   * @param {Announcement} announcement Announcement 
+   * @param {Announcement} announcement Announcement
    */
   deleteAnnouncment(announcement: Announcement) {
     console.log(`ID TO DELETE: ${announcement.id}`);

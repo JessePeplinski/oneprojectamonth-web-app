@@ -1,9 +1,6 @@
-import { Component, Injectable, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-announcements',
@@ -39,7 +36,8 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcements$;
 
-  constructor(protected announcementsService: AnnouncementsService) { }
+  constructor(protected announcementsService: AnnouncementsService) {
+  }
 
   ngOnInit() {
     // Call the announcements service
@@ -51,7 +49,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   createAnnouncementInCollection() {
     // Basic validation. Make sure we have a title and content filled in
-    if(this.announcement.title != '' && this.announcement.content != '') {
+    if (this.announcement.title != '' && this.announcement.content != '') {
       this.announcementsService.createAnnouncement(this.announcement);
       this.clearForms();
     }
@@ -86,18 +84,17 @@ export class AnnouncementsComponent implements OnInit {
 
   /**
    * Call the update announcements service and clear the state.
-   *    
+   *
    * @param {Announcement} announcement Announcement
    */
   updateAnnouncement(announcement: Announcement) {
-    console.log(JSON.stringify(announcement));
     this.announcementsService.updateAnnouncement(announcement);
     this.clearState();
   }
 
   /**
    * Call the delete announcements service and clear the state.
-   *    
+   *
    * @param {Announcement} announcement Announcement
    */
   deleteAnnouncement(event, announcement: Announcement) {

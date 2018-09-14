@@ -12,7 +12,7 @@
     <div *ngIf="announcement$ | async as announcement">
       <h2>{{announcement.title}}</h2>
       <h2>{{announcement.content}}</h2>
-      <h2>{{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
+      <h2>{{announcement.dateCreated?.toDate() | date: 'medium'}}</h2>
     </div>
 
     <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>

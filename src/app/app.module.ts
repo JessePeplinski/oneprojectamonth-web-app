@@ -37,6 +37,7 @@ import { JudgesComponent } from './components/judges/judges.component';
 // services
 import { AnnouncementsService } from './services/announcements.service';
 import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import { SingleAnnouncementComponent } from './components/announcements/single-a
     PrizesComponent,
     JudgesComponent,
     SingleAnnouncementComponent,
+    ErrorComponent,
    ],
   providers: [ AnnouncementsService ],
   bootstrap: [ AppComponent ]

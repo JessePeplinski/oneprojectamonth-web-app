@@ -13,6 +13,7 @@ import { ParticipantsComponent } from './components/participants/participants.co
 import { PrizesComponent } from './components/prizes/prizes.component';
 import { JudgesComponent } from './components/judges/judges.component';
 import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
     {
@@ -66,17 +67,16 @@ const routes: Routes = [
     {
         path: 'judges',
         component: JudgesComponent
+    },
+    {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
+    },
+    {
+        path: '**',
+        component: ErrorComponent
     }
-    // {
-    //     path: '',
-    //     redirectTo: '/home',
-    //     pathMatch: 'full'
-    // },
-    // {
-    //     path: '**',
-    //     redirectTo: '/home'
-    // }
-
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

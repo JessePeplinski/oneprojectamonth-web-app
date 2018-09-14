@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { Announcement } from '../models/announcement';
-import { map } from 'rxjs/operators';
-
 
 @Injectable()
 export class AnnouncementsService {
@@ -27,6 +25,15 @@ export class AnnouncementsService {
    */
   readAllAnnouncements() {
     return this.afs.collection('announcements').valueChanges();
+  }
+
+  /**
+   * Return a single document based on an ID from firestore
+   * 
+   * @returns observable 
+   */
+  readSingleAnnouncementBasedOnId(id) {
+    return this.afs.doc(`announcements/${id}`).valueChanges();
   }
 
   /**

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Announcement } from '../../../models/announcement';
 import { AnnouncementsService } from '../../../services/announcements.service';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -12,10 +11,9 @@ import { switchMap } from 'rxjs/operators';
 })
 export class SingleAnnouncementComponent implements OnInit {
 
-
   announcement$;
 
-  constructor(private route: ActivatedRoute, private announcementsService: AnnouncementsService, private afs: AngularFirestore) { }
+  constructor(private route: ActivatedRoute, private announcementsService: AnnouncementsService) { }
 
   ngOnInit() {
 
@@ -25,7 +23,7 @@ export class SingleAnnouncementComponent implements OnInit {
     this.announcement$ = this.route.paramMap.pipe(
       switchMap(params => {
         const id = params.get('id');
-        return this.afs.doc('announcements/' + id).valueChanges();
+        return this.announcementsService.readSingleAnnouncementBasedOnId(id);
       })
     )
   }

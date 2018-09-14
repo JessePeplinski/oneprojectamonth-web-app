@@ -39,7 +39,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcements$;
 
-  constructor(private announcementsService: AnnouncementsService) { }
+  constructor(protected announcementsService: AnnouncementsService) { }
 
   ngOnInit() {
     // Call the announcements service
@@ -90,6 +90,7 @@ export class AnnouncementsComponent implements OnInit {
    * @param {Announcement} announcement Announcement
    */
   updateAnnouncement(announcement: Announcement) {
+    console.log(JSON.stringify(announcement));
     this.announcementsService.updateAnnouncement(announcement);
     this.clearState();
   }

@@ -15,6 +15,20 @@
       <h2>{{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
     </div>
 
+    <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
+    <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>
+
+    <div *ngIf="editState && announcementToEdit.id == announcement.id">
+      <!-- UPDATE -->
+      <form (ngSubmit)="updateAnnouncement(announcement)">
+        <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
+        <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="content">
+        <input type="submit" value="Update Announcement">
+        <!-- DELETE -->
+        <button (click)="deleteAnnouncement($event, announcement)" value="Delete Announcement">Delete Announcement</button>
+      </form>
+    </div>
+
   </div>
 
 </section>

@@ -16,6 +16,7 @@
         <a [routerLink]="['/announcements', announcement.id]"><h2>{{announcement.title}}</h2></a>
         <h2>{{announcement.content}}</h2>
         <h2>{{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
+        <h2>Last updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
 
         <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
         <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>

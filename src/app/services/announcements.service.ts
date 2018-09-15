@@ -17,7 +17,6 @@ export class AnnouncementsService {
     });
   }
 
-
   /**
    * Return the announcements from firestore
    *
@@ -65,7 +64,6 @@ export class AnnouncementsService {
    * @param {Announcement} announcement Announcement
    */
   updateAnnouncement(announcement: Announcement) {
-    console.log(`ID TO UPDATE: ${announcement.id}`);
     this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
     this.announcementDoc.update({
       title: announcement.title,
@@ -73,7 +71,7 @@ export class AnnouncementsService {
       content: announcement.content
     })
     .then(function() {
-      console.log("Document succesfully updated!")
+      console.log("Document succesfully updated with id: " + announcement.id);
     }).catch(function(error) {
       console.error("Error updating document: " + error);
     });

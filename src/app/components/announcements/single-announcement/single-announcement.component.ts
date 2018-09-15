@@ -10,7 +10,6 @@ import { AnnouncementsComponent } from '../announcements.component';
   styleUrls: ['./single-announcement.component.css']
 })
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
-  id: string;
   announcement$;
 
   constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService) {
@@ -30,5 +29,13 @@ export class SingleAnnouncementComponent extends AnnouncementsComponent implemen
     );
   }
 
-
+  subscribeToStuff() {
+    // We need to subscribe to the announcement to get the values from the ngModel to display
+    // TODO: Is there a better way to do this? Like put them above somewhere? Or get them from the view?
+    // FIXME: Moved this outside of ngOnInit // it fixed an undefined error in teh title. Do we need to unsubscribe from this upon deletion?
+    this.announcement$.subscribe(announcement => {
+      this.announcement.title = announcement.title;
+      this.announcement.content = announcement.content;
+    });
+  }
 }

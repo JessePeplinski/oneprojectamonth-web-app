@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-announcements',
@@ -36,8 +37,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcements$;
 
-  constructor(protected announcementsService: AnnouncementsService) {
-  }
+  constructor(protected announcementsService: AnnouncementsService, protected router: Router) { }
 
   ngOnInit() {
     // Call the announcements service
@@ -100,5 +100,17 @@ export class AnnouncementsComponent implements OnInit {
   deleteAnnouncement(event, announcement: Announcement) {
     this.announcementsService.deleteAnnouncment(announcement);
     this.clearState();
+    this.goToAnnouncementsRoute();
+  }
+
+  /**
+   * Return to the announcements when a document is deleted
+   */
+  goToAnnouncementsRoute() {
+    this.router.navigate(['/announcements']).then(nav => {
+      console.log(`Routed back to announcements ${nav}`); // true if navigation is successful
+    }, err => {
+      console.error(err) // when there's an error
+    });
   }
 }

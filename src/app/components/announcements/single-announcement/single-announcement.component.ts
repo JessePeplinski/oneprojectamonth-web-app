@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AnnouncementsService } from '../../../services/announcements.service';
 import { switchMap } from 'rxjs/operators';
 import { AnnouncementsComponent } from '../announcements.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-single-announcement',
@@ -12,8 +13,8 @@ import { AnnouncementsComponent } from '../announcements.component';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService) {
-    super(announcementsService);
+  constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router) {
+    super(announcementsService, router);
   }
 
   ngOnInit() {

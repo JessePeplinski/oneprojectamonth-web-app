@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { routing } from './app.routes';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
@@ -48,6 +49,7 @@ import { ErrorComponent } from './components/error/error.component';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireFunctionsModule, // imports for cloud functions
     FormsModule,
+    ReactiveFormsModule,
     routing,
     CoreModule
 

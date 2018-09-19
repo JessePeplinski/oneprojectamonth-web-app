@@ -14,59 +14,105 @@ import { PrizesComponent } from './components/prizes/prizes.component';
 import { JudgesComponent } from './components/judges/judges.component';
 import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
 import { ErrorComponent } from './components/error/error.component';
-
+import { FaqComponent } from './components/faq/faq.component';
 const routes: Routes = [
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        data: {
+            state: 'home'
+        }
     },
     {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
+        data: {
+            state: 'about'
+        }
     },
     {
         path: 'deliverables',
-        component: DeliverablesComponent
+        component: DeliverablesComponent,
+        data: {
+            state: 'deliverables'
+        }
     },
     {
         path: 'sign-up',
-        component: SignUpComponent
+        component: SignUpComponent,
+        data: {
+            state: 'sing-up'
+        }
     },
     {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
+        data: {
+            state: 'login'
+        }
     },
     {
         path: 'past-events',
-        component: PastEventComponent
+        component: PastEventComponent,
+        data: {
+            state: 'past-events'
+        }
     },
     {
         path: 'sponsors',
-        component: SponsorsComponent
+        component: SponsorsComponent,
+        data: {
+            state: 'sponsors'
+        }
     },
     {
         path: 'projects',
-        component: ProjectsComponent
+        component: ProjectsComponent,
+        data: {
+            state: 'projects'
+        }
     },
     {
         path: 'announcements',
-        component: AnnouncementsComponent
+        component: AnnouncementsComponent,
+        data: {
+            state: 'announcements'
+        }
     },
     { 
         path: 'announcements/:id', 
-        component: SingleAnnouncementComponent 
+        component: SingleAnnouncementComponent,
+        data: {
+            state: 'announcements/:id'
+        }
     },
     {
         path: 'participants',
-        component: ParticipantsComponent
+        component: ParticipantsComponent,
+        data: {
+            state: 'participants'
+        }
     },
     {
         path: 'prizes',
-        component: PrizesComponent
+        component: PrizesComponent,
+        data: {
+            state: 'prizes'
+        }
+    },
+    {
+        path: 'faq',
+        component: FaqComponent,
+        data: {
+            state: 'faq'
+        }
     },
     {
         path: 'judges',
-        component: JudgesComponent
+        component: JudgesComponent,
+        data: {
+            state: 'judges'
+        }
     },
     {
         path: '',

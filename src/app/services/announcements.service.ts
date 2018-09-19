@@ -1,21 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { Announcement } from '../models/announcement';
+import { announcementsCollectionName } from '../constants/constants';
 
 @Injectable()
 export class AnnouncementsService {
 
-  announcementsCollection: AngularFirestoreCollection<Announcement>; // firestore collection reference of announcements
-  announcements: Observable<Announcement[]>; // array of announcements
   announcementDoc : AngularFirestoreDocument<Announcement>; // single document to delete or update
 
-  constructor(public afs: AngularFirestore) {
-    // return collection as observable
-    this.announcementsCollection = this.afs.collection<Announcement>('announcements', ref => {
-      return ref;
-    });
-  }
+  constructor(public afs: AngularFirestore) {}
 
   /**
    * Return the announcements from firestore
@@ -23,7 +17,7 @@ export class AnnouncementsService {
    * @returns observable
    */
   readAllAnnouncements() {
-    return this.afs.collection('announcements').valueChanges();
+    return this.afs.collection(announcementsCollectionName).valueChanges();
   }
 
   /**
@@ -32,7 +26,7 @@ export class AnnouncementsService {
    * @returns observable
    */
   readSingleAnnouncementBasedOnId(id) {
-    return this.afs.doc(`announcements/${id}`).valueChanges();
+    return this.afs.doc(`${announcementsCollectionName}/${id}`).valueChanges();
   }
 
   /**
@@ -44,7 +38,7 @@ export class AnnouncementsService {
     let id = this.afs.createId();     // Generate a random id from angular firestore
 
     // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
-    this.announcementsCollection.doc(id).set({
+    this.afs.collection(announcementsCollectionName).doc(id).set({
       id: id,
       title: announcement.title,
       content: announcement.content,
@@ -64,7 +58,7 @@ export class AnnouncementsService {
    * @param {Announcement} announcement Announcement
    */
   updateAnnouncement(announcement: Announcement) {
-    this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
+    this.announcementDoc = this.afs.doc(`${announcementsCollectionName}/${announcement.id}`);
     this.announcementDoc.update({
       title: announcement.title,
       updatedOn: new Date(),
@@ -84,7 +78,7 @@ export class AnnouncementsService {
    */
   deleteAnnouncment(announcement: Announcement) {
     console.log(`ID TO DELETE: ${announcement.id}`);
-    this.announcementDoc = this.afs.doc(`announcements/${announcement.id}`);
+    this.announcementDoc = this.afs.doc(`${announcementsCollectionName}/${announcement.id}`);
     this.announcementDoc.delete()
     .then(function() {
       console.log("Document succesfully deleted!")

@@ -1,17 +1,33 @@
 header{display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 90%; height: 80px; margin: 0 auto; border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;}
-header i{display: none;}
+header i.menu{display: none; width: 45px; height: 45px; border-radius: 100%; background: rgba(0,0,0, .2); color: #fff; font-size: 32px; position: absolute; top: -70px; right: 20px; transition: .25s ease-in-out;}
 header h1{color: #fff; font-family: 'pier_sansmedium'; font-size: 32px; position: relative;}
-header .main-logo{display: flex; justify-content: center; align-items: center; width: 75px; height: 75px; background: #fff; border-radius: 100%; border: 2px solid #ccc; border-style: inset; margin-top: 20px; position: relative;}
-header .main-logo:before{content: 'p'; color: #afafaf; font-size: 70px; font-weight: 700; margin: 0 0 26px -3px;}
-header .main-logo:after{content: ''; width: 24px; height: 24px; border-radius: 100%; background: #afafaf; position: absolute; top: 44%; left: 48%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 2;}
-header .main-logo span:first-of-type:before{content: 'a'; color: #7e7e7e; font-size: 38px; position: absolute; top: 39%; left: 51%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 3; font-weight: 700;}
-header .main-logo span:first-of-type:after{content: ''; width: 16px; height: 19px; border-radius: 100%; background: #7e7e7e; position: absolute; top: 46%; left: 48%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 3; font-weight: 700;}
-header .main-logo span:last-of-type:before{content: '1'; font-size: 66px; font-weight: 700; color: #979797; position: absolute; top: 53%; left: 66%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); z-index: 4;}
+header .main-logo{display: flex; justify-content: center; align-items: center; width: 75px; height: 75px; background: #fff; border-radius: 100%; border: 2px solid #fff; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); margin-top: 20px; position: relative;}
+header .main-logo span{width: 60px; height: 60px; border-radius: 100%;}
+header .main-logo span svg{fill: #58538D; transform: translateY(-4px); }
 header h1:after{content: ''; width: 50%; height: 3px; background: #fff; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);}
 nav{display: flex; flex-direction: row;}
 nav ul{display: flex; flex-direction: row; justify-content: space-around; align-items: center;}
-nav ul li a{color: #fff; font-family: 'pier_sanslight'; font-size: 16px; padding: 10px 20px; background: transparent; border-radius: 3px; box-shadow: none; transition: .3s ease-in-out;}
-nav ul li a:hover{background: #fff; color: #000; box-shadow: 0px 1px 5px #555; cursor: pointer;}
-#slide-line{ position: absolute; bottom: 0; height: 2px; background-color:#fff; -webkit-transition: all .3s ease; transition: all .3s ease;}
-nav i{display: none;}
+nav ul li a{color: #fff; font-family: 'pier_sanslight'; font-size: 16px; padding: 10px 20px; position: relative; background: transparent; border-radius: 3px; box-shadow: none; white-space: nowrap; transition: .3s ease-in-out;}
+nav ul li a:after{content: ''; display: block; opacity: 0; width: 0%; height: 2px; background: rgba(255, 255, 255, .5); border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; position: absolute; bottom: 0px; left: 50%; transform: translate(-50%, 0px); -webkit-transform: translate(-50%, 0px); transition: .25s ease-in-out;}
+nav ul li a.active-link:after{width: 80%; opacity: 1;}
+nav ul li a:hover{ cursor: pointer;}
+nav i.nav-icon{position: absolute; top: 10px; right: 10px; color: #000; font-size: 32px; display: none; transition: .25s ease-in-out;}
+.nav-overlay{content: ''; width: 100vw; height: 100vh; background: rgba(255,255,255, .3);  opacity: 0; pointer-events: none; position: fixed; top: 0; left: 0; z-index: 1000; transition: .25s ease-in-out;}
+
+
+@media screen and (max-width: 945px){
+  nav{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; height: 65vh; min-height: 200px; background: #fff; box-shadow: 0 -4px 7px 2px rgba(0,0,0,0.2); position: fixed; bottom: 0; right: 0; z-index: 10000; transform: translateY(-100%); will-change: transform; border-top-left-radius: 20px; border-top-right-radius: 20px; transition: .25s ease-in-out;}
+  header .main-logo{width: 65px; height: 65px;}
+  header .main-logo span{width: 50px; height: 50px;}
+  nav.closed{transform: translateY(calc(100% + 8px));}
+  nav.open{transform: translateY(0);}
+  .nav-overlay.open{opacity: 1; }
+  nav i.menu{display: flex; justify-content: center; align-items: center; opacity: 1; pointer-events: auto; transition: .25s ease-in-out;}
+  nav.open i.menu{opacity: 0; pointer-events: none;}
+  nav i.nav-icon{display: block; opacity: 1; pointer-events: auto;}
+  nav.closed i.nav-icon{opacity: 0; pointer-events: none}
+  nav ul{display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 100%; height: 95%; padding: 0px 20px;}
+  nav ul li a{color: #000; padding: 0; border-radius: 0px; font-size: 24px;}
+  nav ul li a.active-link:after{transform: translate(-50%, 5px); background: #C33764;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */}
+}

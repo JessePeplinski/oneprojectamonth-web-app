@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-
 export class NavigationComponent implements OnInit {
   display = false;
 
@@ -17,5 +16,6 @@ export class NavigationComponent implements OnInit {
 
   openMenu() {
     this.display = !this.display;
+    document.getElementsByClassName('blur-wrapper')[0].classList.toggle('open');
   }
 }

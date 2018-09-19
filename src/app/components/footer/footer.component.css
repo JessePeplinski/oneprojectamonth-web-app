@@ -1,1 +1,18 @@
-footer{display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; width: 100%; min-height: 300px; height: auto; padding: 40px; color: #000; background: #FAFAFA;}
+footer{display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; width: 100%; min-height: 300px; height: auto; padding: 40px 80px; color: #000; background: #FAFAFA; position: relative;}
+footer .scroll-to-top{display: flex; justify-content: center; align-items: center; width: 56px; height: 56px; border-radius: 100%; background: #fff; color: #878A8C; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); position: absolute; top: -25px; right: 80px; transition: .25s ease-in-out;}
+footer .scroll-to-top i{font-size: 26px; font-weight: thin;}
+footer .scroll-to-top:hover{box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); cursor: pointer;}
+footer .copyright-social-icons{display: flex; flex-direction: row; justify-content: space-between; align-items: flex-end; width: 100%;}
+footer .social-icons i{margin: 0 15px; color: #8F8F8F; font-size: 21px; transition: .25s ease-in-out;}
+footer .social-icons i:hover{color: rgb(65, 65, 65); cursor: pointer;}
+
+@media screen and (max-width: 945px) {
+    footer{padding: 40px 20px;}
+    footer .copyright-social-icons{flex-direction: column; align-items: center;}
+    footer .copyright-social-icons .social-icons{margin-top: 20px;}
+    footer .scroll-to-top{right: 20px;}
+}
+
+@media screen and (max-width: 640px){
+    footer .copyright-social-icons .social-icons i{font-size: 18px;}
+}

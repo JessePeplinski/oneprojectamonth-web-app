@@ -2,6 +2,28 @@
 /deep/ app-about h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
 .wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
 .wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
+section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px 80px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
-section.page-container p{font-size: 16px; line-height: 1.2;}
+section.page-container p{font-family: 'pier_sansregular'; font-size: 18px; line-height: 1.4; padding: 40px 0 80px 0;}
+.team-members-container{display: flex; flex-direction: row; justify-content: space-around; align-items: flex-start; width: 90%; flex: 1; flex-grow: 0; flex-wrap: wrap; margin: 20px auto 60px auto;}
+.team-member{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; flex: 1; margin: 0 15px;}
+.team-member-pic{display: flex; justify-content: center; align-items: center; width: 125px; height: 125px; border-radius: 100%; background: #614385;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ margin-bottom: 10px;}
+.team-member-pic img{width: 115px; height: 115px; border-radius: 100%; background: #f8f8f8; background-size: cover;}
+.team-member h3{font-family: 'pier_sansbold'; font-size: 21px; color: #000; text-align: center;}
+
+@media screen and (max-width: 945px) {
+  section.page-container{padding: 40px 20px;}
+  section.page-container p{font-size: 16px;}
+}
+
+@media screen and (max-width: 640px){
+    .team-members-container{margin: 20px 0;}
+    .team-member{margin: 0 8px;}
+    .team-member:first-of-type{margin-left: 0px;}
+    .team-member:last-of-type{margin-right: 0px;}
+    .team-member-pic{width: 50px; height: 50px;}
+    .team-member-pic img{width: 45px; height: 45px;}
+    .team-member h3{font-size: 12px;}
+}

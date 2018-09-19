@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { routing } from './app.routes';
@@ -39,15 +40,22 @@ import { AnnouncementsService } from './services/announcements.service';
 import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
 import { ErrorComponent } from './components/error/error.component';
 
+// PrimeNG Modules 
+import { AccordionModule } from 'primeng/accordion';
+import { TabViewModule } from 'primeng/tabview';
+import { FaqComponent } from './components/faq/faq.component';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
     AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireFunctionsModule, // imports for cloud functions
     FormsModule,
+    AccordionModule,
+    TabViewModule,
     routing,
     CoreModule
 
@@ -70,6 +78,7 @@ import { ErrorComponent } from './components/error/error.component';
     JudgesComponent,
     SingleAnnouncementComponent,
     ErrorComponent,
+    FaqComponent,
    ],
   providers: [ AnnouncementsService ],
   bootstrap: [ AppComponent ]

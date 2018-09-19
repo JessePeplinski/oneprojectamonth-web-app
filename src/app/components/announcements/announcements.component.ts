@@ -2,11 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
 import { Router } from '@angular/router';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-announcements',
   templateUrl: './announcements.component.html',
-  styleUrls: ['./announcements.component.css']
+  styleUrls: ['./announcements.component.css'],
+  animations: [
+    trigger('show', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('.35s ease-in-out', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('.35s ease-in-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 
 export class AnnouncementsComponent implements OnInit {

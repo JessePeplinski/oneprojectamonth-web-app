@@ -5,3 +5,29 @@
 section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-size: 16px; line-height: 1.2;}
+.no-events-message{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); display: flex; flex-direction: column; justify-content: flex-start; align-items: center;}
+.no-events-message i{font-size: 125px; background: #C33764;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.no-events-message h4{font-size: 32px; text-align: center; background: #C33764;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ -webkit-background-clip: text; -webkit-text-fill-color: transparent;  font-family: 'pier_sansbold'; margin-top: 20px;}
+.past-events-container{width: 100%; margin-bottom: 40px;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li{background: #fff; color: #000; border: none; border-radius: 3px; padding: 0; margin: 0px;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li a{padding: 10px 15px;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li:hover{background: #ccc; border: none !important; border-radius: 3px; padding: 0;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li:after{content: ''; display: block; opacity: 0; width: 0%; height: 2px; background: #614385;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; position: absolute; bottom: 2px; left: 50%; transform: translate(-50%, 0px); -webkit-transform: translate(-50%, 0px); transition: .25s ease-in-out;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li.ui-state-active:after{width: 80%; opacity: 1;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li.ui-state-active:hover{background: #fff; border: none; border-radius: 3px; padding: 0;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li.ui-state-active a{color: #000; font-weight: 700; padding: 10px 15px;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-panels{margin-top: 20px; border: 1px solid #e6e6e6; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); border-radius: 3px; background: #fff; padding: 0;}
+.past-events-container /deep/ p-tabview .ui-tabview{padding: 0;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-panels .ui-tabview-panel .winning-team-pic{width: 100%; max-width: 100%; height: auto;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-panels .ui-tabview-panel .winning-team-pic img{max-width: 100%; height: auto; border-radius: 3px;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-panels .ui-tabview-panel h3.winning-team-name{font-family: 'pier_sansbold'; font-size: 26px; color: #000; padding: 20px 0 5px 20px; }
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-panels .ui-tabview-panel h4.winning-team-members{font-family: 'pier_sansregular'; font-size: 14px; color: #000; padding: 0 0 10px 20px; }
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-panels .ui-tabview-panel span.article-date{display: block; font-family: 'pier_sanslight_italic'; font-size: 12px; color: #666; padding: 0 0 40px 20px;}
+.past-events-container /deep/ p-tabview .ui-tabview .ui-tabview-panels .ui-tabview-panel p.winning-team-recap{font-family: 'pier_sansregular'; font-size: 14px; color: #000; padding: 0 20px 40px 20px;}
+
+
+@media screen and (max-width: 945px) {
+  section.page-container{padding: 40px 20px;}
+}

@@ -3,6 +3,12 @@ import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { MessageService } from 'primeng/api';
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+
 @Component({
   selector: 'app-announcements',
   templateUrl: './announcements.component.html',
@@ -49,7 +55,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcements$;
 
-  constructor(protected announcementsService: AnnouncementsService, protected router: Router) { }
+  constructor(protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     // Call the announcements service
@@ -110,9 +116,35 @@ export class AnnouncementsComponent implements OnInit {
    * @param {Announcement} announcement Announcement
    */
   deleteAnnouncement(event, announcement: Announcement) {
-    this.announcementsService.deleteAnnouncment(announcement);
-    this.clearState();
-    this.goToAnnouncementsRoute();
+
+    this.confirmationService.confirm({
+      message: `Do you want to delete this announcement: ${announcement.title}`,
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.announcementsService.deleteAnnouncment(announcement);
+        this.clearState();
+        this.goToAnnouncementsRoute();
+        this.displayAnnouncementToastAlert(announcement);
+      },
+      reject: () => {
+
+      }
+    });
+  }
+
+  /**
+   * Display a toast alert in the top center of the page confirming the deletion
+   */
+  displayAnnouncementToastAlert(announcement: Announcement) {
+    this.messageService.add({
+      key: 'displayAnnouncementToastAlert', 
+      severity: 'success', 
+      summary: 'Announcement Deleted', 
+      detail: `${announcement.title} has been deleted successfully`, 
+      sticky: false, 
+      life: 3000
+    });
   }
 
   /**

@@ -4,6 +4,12 @@ import { AnnouncementsService } from '../../../services/announcements.service';
 import { switchMap } from 'rxjs/operators';
 import { AnnouncementsComponent } from '../announcements.component';
 import { Router } from '@angular/router';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-single-announcement',
@@ -13,8 +19,8 @@ import { Router } from '@angular/router';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router) {
-    super(announcementsService, router);
+  constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router, messageService: MessageService,  confirmationService: ConfirmationService) {
+    super(announcementsService, router, messageService, confirmationService);
   }
 
   ngOnInit() {

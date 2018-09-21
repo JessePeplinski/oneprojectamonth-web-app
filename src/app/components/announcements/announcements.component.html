@@ -10,13 +10,15 @@
 
     <!-- READ -->
 
+    <p-toast position="top-center" key="displayAnnouncementToastAlert"></p-toast>
+
     <div class="text" *ngFor="let announcement of announcements$ | async">
       <div *ngIf="announcement.isVisible">
 
-        <a [routerLink]="['/announcements', announcement.id]"><h2>Announcement Title: {{announcement.title}}</h2></a>
-        <h2>Announcement Content: {{announcement.content}}</h2>
-        <h2>Announcement Created Date: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
-        <h2>Announcement Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
+        <a [routerLink]="['/announcements', announcement.id]"><h2>{{announcement.title}}</h2></a>
+        <h2>{{announcement.content}}</h2>
+        <h2>Created: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
+        <h2>Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
 
         <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
         <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>
@@ -27,9 +29,16 @@
             <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
             <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="content">
             <button type="submit" value="Update Announcement">Update Announcement</button>
-            <!-- DELETE -->
-            <button (click)="deleteAnnouncement($event, announcement)" value="Delete Announcement">Delete Announcement</button>
           </form>
+
+          <!-- DELETE -->
+
+          <p-confirmDialog></p-confirmDialog>
+
+          <!-- ADd pButton icon="pi pi-times" back to this class-->
+          <button type="button" (click)="deleteAnnouncement($event, announcement);" value="Delete Announcement">Delete
+            Announcement</button>
+
         </div>
 
         <button [routerLink]="['/announcements', announcement.id]">

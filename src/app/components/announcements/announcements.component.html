@@ -17,8 +17,8 @@
 
         <a [routerLink]="['/announcements', announcement.id]"><h2>{{announcement.title}}</h2></a>
         <h2>{{announcement.content}}</h2>
-        <h2>Created: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
-        <h2>Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
+        <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
+        <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
 
         <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
         <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>
@@ -41,11 +41,7 @@
 
         </div>
 
-        <button [routerLink]="['/announcements', announcement.id]">
-          Read more...
-        </button>
-
-        <router-outlet></router-outlet>
+        <!-- <router-outlet></router-outlet> -->
 
       </div>
     </div>

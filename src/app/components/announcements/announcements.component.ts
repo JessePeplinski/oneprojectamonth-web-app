@@ -40,6 +40,8 @@ export class AnnouncementsComponent implements OnInit {
     isVisible: false,
   };
 
+  appendedURL;
+
   /**
    * Boolean for displaying edit/delete onClick of an individual announcement.
    */
@@ -98,6 +100,11 @@ export class AnnouncementsComponent implements OnInit {
   clearState() {
     this.editState = false;
     this.announcementToEdit = null;
+  }
+
+  appendAnnouncementURL(announcement: Announcement) {
+    this.appendedURL = announcement.title + '-' + announcement.id;
+    return this.appendedURL;
   }
 
   /**

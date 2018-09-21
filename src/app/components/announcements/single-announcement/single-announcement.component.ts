@@ -29,8 +29,15 @@ export class SingleAnnouncementComponent extends AnnouncementsComponent implemen
      */
     this.announcement$ = this.route.paramMap.pipe(
       switchMap(params => {
+
+        console.log(params.get('title'));
+        console.log(params.get('id'));
+
+        const title = params.get('title');
         const id = params.get('id');
+        
         this.announcement.id = id;
+        this.announcement.title = title;
         return this.announcementsService.readSingleAnnouncementBasedOnId(id);
       })
     );

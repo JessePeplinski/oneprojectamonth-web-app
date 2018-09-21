@@ -102,11 +102,6 @@ export class AnnouncementsComponent implements OnInit {
     this.announcementToEdit = null;
   }
 
-  appendAnnouncementURL(announcement: Announcement) {
-    this.appendedURL = announcement.title + '-' + announcement.id;
-    return this.appendedURL;
-  }
-
   /**
    * Call the update announcements service and clear the state.
    *
@@ -123,7 +118,6 @@ export class AnnouncementsComponent implements OnInit {
    * @param {Announcement} announcement Announcement
    */
   deleteAnnouncement(event, announcement: Announcement) {
-
     this.confirmationService.confirm({
       message: `Do you want to delete this announcement: ${announcement.title}`,
       header: 'Delete Confirmation',

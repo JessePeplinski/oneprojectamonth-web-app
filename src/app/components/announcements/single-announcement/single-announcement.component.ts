@@ -25,17 +25,15 @@ export class SingleAnnouncementComponent extends AnnouncementsComponent implemen
 
   ngOnInit() {
     /**
-     * Retreive a single announcement from firestore
+     * Get the params in the url (announcements/:id/:title) and retreive the single announcement from firestore
+     * CONSIDER: We could also call a function to append the title and ID together and split it if we need to.
      */
     this.announcement$ = this.route.paramMap.pipe(
       switchMap(params => {
 
-        console.log(params.get('title'));
-        console.log(params.get('id'));
-
         const title = params.get('title');
         const id = params.get('id');
-        
+
         this.announcement.id = id;
         this.announcement.title = title;
         return this.announcementsService.readSingleAnnouncementBasedOnId(id);

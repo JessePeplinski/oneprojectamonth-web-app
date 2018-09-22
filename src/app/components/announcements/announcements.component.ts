@@ -71,6 +71,7 @@ export class AnnouncementsComponent implements OnInit {
     // Basic validation. Make sure we have a title and content filled in
     if (this.announcement.title != '' && this.announcement.content != '') {
       this.announcementsService.createAnnouncement(this.announcement);
+      this.createAnnouncementToastAlert(this.announcement);
       this.clearForms();
     }
   }
@@ -119,14 +120,14 @@ export class AnnouncementsComponent implements OnInit {
    */
   deleteAnnouncement(event, announcement: Announcement) {
     this.confirmationService.confirm({
-      message: `Do you want to delete this announcement: ${announcement.title}`,
+      message: `Do you want to delete this announcement: ${announcement.title}? This action cannot be undone.`,
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       accept: () => {
         this.announcementsService.deleteAnnouncment(announcement);
         this.clearState();
         this.goToAnnouncementsRoute();
-        this.displayAnnouncementToastAlert(announcement);
+        this.deleteAnnouncementToastAlert(announcement);
       },
       reject: () => {
 
@@ -137,9 +138,23 @@ export class AnnouncementsComponent implements OnInit {
   /**
    * Display a toast alert in the top center of the page confirming the deletion
    */
-  displayAnnouncementToastAlert(announcement: Announcement) {
+  createAnnouncementToastAlert(announcement: Announcement) {
     this.messageService.add({
-      key: 'displayAnnouncementToastAlert', 
+      key: 'createAnnouncementToastAlert', 
+      severity: 'success', 
+      summary: 'Announcement Created', 
+      detail: `${announcement.title} has been created successfully`, 
+      sticky: false, 
+      life: 3000
+    });
+  }
+
+  /**
+   * Display a toast alert in the top center of the page confirming the deletion
+   */
+  deleteAnnouncementToastAlert(announcement: Announcement) {
+    this.messageService.add({
+      key: 'deleteAnnouncementToastAlert', 
       severity: 'success', 
       summary: 'Announcement Deleted', 
       detail: `${announcement.title} has been deleted successfully`, 

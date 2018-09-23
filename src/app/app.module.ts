@@ -44,6 +44,12 @@ import { ErrorComponent } from './components/error/error.component';
 import { AccordionModule } from 'primeng/accordion';
 import { TabViewModule } from 'primeng/tabview';
 import { FaqComponent } from './components/faq/faq.component';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -58,7 +64,9 @@ import { FaqComponent } from './components/faq/faq.component';
     AccordionModule,
     TabViewModule,
     routing,
-    CoreModule
+    CoreModule,
+    ToastModule,
+    ConfirmDialogModule
   ],
   declarations: [
     AppComponent,
@@ -80,7 +88,7 @@ import { FaqComponent } from './components/faq/faq.component';
     ErrorComponent,
     FaqComponent,
    ],
-  providers: [ AnnouncementsService ],
+  providers: [ AnnouncementsService, MessageService, ConfirmationService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

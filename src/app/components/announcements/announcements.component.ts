@@ -3,6 +3,12 @@ import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { MessageService } from 'primeng/api';
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+
 @Component({
   selector: 'app-announcements',
   templateUrl: './announcements.component.html',
@@ -34,6 +40,8 @@ export class AnnouncementsComponent implements OnInit {
     isVisible: false,
   };
 
+  appendedURL;
+
   /**
    * Boolean for displaying edit/delete onClick of an individual announcement.
    */
@@ -49,7 +57,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcements$;
 
-  constructor(protected announcementsService: AnnouncementsService, protected router: Router) { }
+  constructor(protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     // Call the announcements service
@@ -63,6 +71,7 @@ export class AnnouncementsComponent implements OnInit {
     // Basic validation. Make sure we have a title and content filled in
     if (this.announcement.title != '' && this.announcement.content != '') {
       this.announcementsService.createAnnouncement(this.announcement);
+      this.createAnnouncementToastAlert(this.announcement);
       this.clearForms();
     }
   }
@@ -110,9 +119,48 @@ export class AnnouncementsComponent implements OnInit {
    * @param {Announcement} announcement Announcement
    */
   deleteAnnouncement(event, announcement: Announcement) {
-    this.announcementsService.deleteAnnouncment(announcement);
-    this.clearState();
-    this.goToAnnouncementsRoute();
+    this.confirmationService.confirm({
+      message: `Do you want to delete this announcement: ${announcement.title}? This action cannot be undone.`,
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.announcementsService.deleteAnnouncment(announcement);
+        this.clearState();
+        this.goToAnnouncementsRoute();
+        this.deleteAnnouncementToastAlert(announcement);
+      },
+      reject: () => {
+
+      }
+    });
+  }
+
+  /**
+   * Display a toast alert in the top center of the page confirming the deletion
+   */
+  createAnnouncementToastAlert(announcement: Announcement) {
+    this.messageService.add({
+      key: 'createAnnouncementToastAlert', 
+      severity: 'success', 
+      summary: 'Announcement Created', 
+      detail: `${announcement.title} has been created successfully`, 
+      sticky: false, 
+      life: 3000
+    });
+  }
+
+  /**
+   * Display a toast alert in the top center of the page confirming the deletion
+   */
+  deleteAnnouncementToastAlert(announcement: Announcement) {
+    this.messageService.add({
+      key: 'deleteAnnouncementToastAlert', 
+      severity: 'success', 
+      summary: 'Announcement Deleted', 
+      detail: `${announcement.title} has been deleted successfully`, 
+      sticky: false, 
+      life: 3000
+    });
   }
 
   /**

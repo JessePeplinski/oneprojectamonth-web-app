@@ -79,11 +79,10 @@ const routes: Routes = [
             state: 'announcements'
         }
     },
-    { 
-        path: 'announcements/:id', 
+    {path: 'announcements/:id/:title',
         component: SingleAnnouncementComponent,
         data: {
-            state: 'announcements/:id'
+            state: 'announcements/:id/:title'
         }
     },
     {

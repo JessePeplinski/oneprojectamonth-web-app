@@ -10,13 +10,16 @@
 
     <!-- READ -->
 
+    <p-toast position="top-center" key="deleteAnnouncementToastAlert"></p-toast>
+    <p-toast position="top-center" key="createAnnouncementToastAlert"></p-toast>
+
     <div class="text" *ngFor="let announcement of announcements$ | async">
       <div *ngIf="announcement.isVisible">
 
-        <a [routerLink]="['/announcements', announcement.id]"><h2>Announcement Title: {{announcement.title}}</h2></a>
-        <h2>Announcement Content: {{announcement.content}}</h2>
-        <h2>Announcement Created Date: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
-        <h2>Announcement Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
+        <a [routerLink]="['/announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
+        <h2>{{announcement.content}}</h2>
+        <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
+        <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
 
         <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
         <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>
@@ -27,16 +30,19 @@
             <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
             <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="content">
             <button type="submit" value="Update Announcement">Update Announcement</button>
-            <!-- DELETE -->
-            <button (click)="deleteAnnouncement($event, announcement)" value="Delete Announcement">Delete Announcement</button>
           </form>
+
+          <!-- DELETE -->
+
+          <p-confirmDialog></p-confirmDialog>
+
+          <!-- ADd pButton icon="pi pi-times" back to this class-->
+          <button type="button" (click)="deleteAnnouncement($event, announcement);" value="Delete Announcement">Delete
+            Announcement</button>
+
         </div>
 
-        <button [routerLink]="['/announcements', announcement.id]">
-          Read more...
-        </button>
-
-        <router-outlet></router-outlet>
+        <!-- <router-outlet></router-outlet> -->
 
       </div>
     </div>

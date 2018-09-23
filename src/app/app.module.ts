@@ -40,8 +40,7 @@ import { JudgesComponent } from './components/judges/judges.component';
 import { AnnouncementsService } from './services/announcements.service';
 import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
 import { ErrorComponent } from './components/error/error.component';
-
-// PrimeNG Modules 
+// PrimeNG Modules
 import { AccordionModule } from 'primeng/accordion';
 import { TabViewModule } from 'primeng/tabview';
 import { FaqComponent } from './components/faq/faq.component';
@@ -55,15 +54,11 @@ import { FaqComponent } from './components/faq/faq.component';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireFunctionsModule, // imports for cloud functions
     FormsModule,
-<<<<<<< HEAD
     ReactiveFormsModule,
-=======
     AccordionModule,
     TabViewModule,
->>>>>>> c3a764856ffd54a6b6685ed8d000604984c76bee
     routing,
     CoreModule
-
   ],
   declarations: [
     AppComponent,

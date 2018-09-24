@@ -8,6 +8,9 @@
 
   <div class="test-read-write">
 
+    <p-toast position="top-center" key="updateAnnouncementToastAlert"></p-toast>
+    <p-toast position="top-center" key="rejectDeleteAnnouncementToastAlert"></p-toast>
+
     <div *ngIf="announcement$ | async as announcement">
       <div *ngIf="announcement">
         <h2>{{announcement.title}}</h2>

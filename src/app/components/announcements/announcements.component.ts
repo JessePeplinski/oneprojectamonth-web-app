@@ -40,8 +40,6 @@ export class AnnouncementsComponent implements OnInit {
     isVisible: false,
   };
 
-  appendedURL;
-
   /**
    * Boolean for displaying edit/delete onClick of an individual announcement.
    */
@@ -110,6 +108,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   updateAnnouncement(announcement: Announcement) {
     this.announcementsService.updateAnnouncement(announcement);
+    this.updateAnnouncementToastAlert(announcement);
     this.clearState();
   }
 
@@ -130,7 +129,7 @@ export class AnnouncementsComponent implements OnInit {
         this.deleteAnnouncementToastAlert(announcement);
       },
       reject: () => {
-
+        this.rejectDeleteAnnouncementToastAlert(announcement);
       }
     });
   }
@@ -144,6 +143,31 @@ export class AnnouncementsComponent implements OnInit {
       severity: 'success', 
       summary: 'Announcement Created', 
       detail: `${announcement.title} has been created successfully`, 
+      sticky: false, 
+      life: 3000
+    });
+  }
+
+  /**
+   * Display a toast alert in the top center of the page confirming the deletion
+   */
+  updateAnnouncementToastAlert(announcement: Announcement) {
+    this.messageService.add({
+      key: 'updateAnnouncementToastAlert', 
+      severity: 'success', 
+      summary: 'Announcement Updated', 
+      detail: `${announcement.title} has been updated successfully`, 
+      sticky: false, 
+      life: 3000
+    });
+  }
+
+  rejectDeleteAnnouncementToastAlert(announcement: Announcement) {
+    this.messageService.add({
+      key: 'rejectDeleteAnnouncementToastAlert', 
+      severity: 'warn', 
+      summary: 'Announcement Not Deleted', 
+      detail: `${announcement.title} has not been deleted`, 
       sticky: false, 
       life: 3000
     });

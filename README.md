@@ -72,3 +72,17 @@ It's added a depdendency in package.json, or you can install compodoc globally w
 ## Render Documentation, and serve it 
 1. Run `npm run compodoc:serve`
 1. Go to `localhost:8080`
+
+# Git Workflow
+1. `git pull`
+1. `git add <filenames>`
+1. `git commit -m "your message here"`
+1. `git push`
+
+## Automatically run npm install after pulling codechanges
+You can add a script to your `.git/hooks` folder to automatically run `npm install` after pulling. 
+
+1. Add the script to `.git/hooks` [found here](https://davidwalsh.name/git-hook-npm-install-package-json-modified).
+    1. Also add `check_run package-lock.json "npm install"` to the script above.
+1. Run `chmod +x post-merge`
+1. Done!

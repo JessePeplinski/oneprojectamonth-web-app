@@ -40,8 +40,6 @@ export class AnnouncementsComponent implements OnInit {
     isVisible: false,
   };
 
-  appendedURL;
-
   /**
    * Boolean for displaying edit/delete onClick of an individual announcement.
    */
@@ -110,6 +108,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   updateAnnouncement(announcement: Announcement) {
     this.announcementsService.updateAnnouncement(announcement);
+    this.updateAnnouncementToastAlert(announcement);
     this.clearState();
   }
 
@@ -126,11 +125,11 @@ export class AnnouncementsComponent implements OnInit {
       accept: () => {
         this.announcementsService.deleteAnnouncment(announcement);
         this.clearState();
-        this.goToAnnouncementsRoute();
+        this.goToAnnouncementsRoute(); // FIXME: Add logic to reroute only if the child route is active.
         this.deleteAnnouncementToastAlert(announcement);
       },
       reject: () => {
-
+        this.rejectDeleteAnnouncementToastAlert(announcement);
       }
     });
   }
@@ -140,11 +139,11 @@ export class AnnouncementsComponent implements OnInit {
    */
   createAnnouncementToastAlert(announcement: Announcement) {
     this.messageService.add({
-      key: 'createAnnouncementToastAlert', 
-      severity: 'success', 
-      summary: 'Announcement Created', 
-      detail: `${announcement.title} has been created successfully`, 
-      sticky: false, 
+      key: 'createAnnouncementToastAlert',
+      severity: 'success',
+      summary: 'Announcement Created',
+      detail: `${announcement.title} has been created successfully`,
+      sticky: false,
       life: 3000
     });
   }
@@ -152,22 +151,53 @@ export class AnnouncementsComponent implements OnInit {
   /**
    * Display a toast alert in the top center of the page confirming the deletion
    */
+  updateAnnouncementToastAlert(announcement: Announcement) {
+    setTimeout(() => {
+      this.messageService.add({
+        key: 'updateAnnouncementToastAlert',
+        severity: 'success',
+        summary: 'Announcement Updated',
+        detail: `${announcement.title} has been updated successfully`,
+        sticky: false,
+        life: 3000
+      });
+    }, 100);
+  }
+
+  rejectDeleteAnnouncementToastAlert(announcement: Announcement) {
+    setTimeout(() => {
+      this.messageService.add({
+        key: 'rejectDeleteAnnouncementToastAlert',
+        severity: 'warn',
+        summary: 'Announcement Not Deleted',
+        detail: `${announcement.title} has not been deleted`,
+        sticky: false,
+        life: 3000
+      });
+    }, 100);
+  }
+
+  /**
+   * Display a toast alert in the top center of the page confirming the deletion
+   */
   deleteAnnouncementToastAlert(announcement: Announcement) {
-    this.messageService.add({
-      key: 'deleteAnnouncementToastAlert', 
-      severity: 'success', 
-      summary: 'Announcement Deleted', 
-      detail: `${announcement.title} has been deleted successfully`, 
-      sticky: false, 
-      life: 3000
-    });
+    setTimeout(() => {
+      this.messageService.add({
+        key: 'deleteAnnouncementToastAlert',
+        severity: 'success',
+        summary: 'Announcement Deleted',
+        detail: `${announcement.title} has been deleted successfully`,
+        sticky: false,
+        life: 3000
+      });
+    }, 100);
   }
 
   /**
    * Return to the announcements when a document is deleted
    */
   goToAnnouncementsRoute() {
-    this.router.navigate(['/announcements']).then(nav => {
+    this.router.navigate(['/', 'announcements']).then(nav => {
       console.log(`Routed back to announcements ${nav}`); // true if navigation is successful
     }, err => {
       console.error(err) // when there's an error

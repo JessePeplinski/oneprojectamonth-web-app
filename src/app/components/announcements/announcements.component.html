@@ -10,8 +10,10 @@
 
     <!-- READ -->
 
-    <p-toast position="top-center" key="deleteAnnouncementToastAlert"></p-toast>
     <p-toast position="top-center" key="createAnnouncementToastAlert"></p-toast>
+    <p-toast position="top-center" key="updateAnnouncementToastAlert"></p-toast>
+    <p-toast position="top-center" key="deleteAnnouncementToastAlert"></p-toast>
+    <p-toast position="top-center" key="rejectDeleteAnnouncementToastAlert"></p-toast>
 
     <div class="text" *ngFor="let announcement of announcements$ | async">
       <div *ngIf="announcement.isVisible">

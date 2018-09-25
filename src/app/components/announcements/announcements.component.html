@@ -18,7 +18,7 @@
     <div class="text" *ngFor="let announcement of announcements$ | async">
       <div *ngIf="announcement.isVisible">
 
-        <a [routerLink]="['/announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
+        <a [routerLink]="['/hackathons/october/2018/announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
         <h2>{{announcement.content}}</h2>
         <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
         <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>

@@ -15,7 +15,73 @@ import { JudgesComponent } from './components/judges/judges.component';
 import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
 import { ErrorComponent } from './components/error/error.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { HackathonsComponent } from './components/hackathons/hackathons.component';
+
 const routes: Routes = [
+    {
+        path: 'hackathons',
+        component: HackathonsComponent
+    },
+    {
+        path: 'hackathons/:month/:year',
+        component: HomeComponent
+    },
+    {
+        path: 'hackathons/:month/:year/deliverables',
+        component: DeliverablesComponent,
+        data: {
+            state: 'deliverables'
+        }
+    },
+    {
+        path: 'hackathons/:month/:year/sponsors',
+        component: SponsorsComponent,
+        data: {
+            state: 'sponsors'
+        }
+    },
+    {
+        path: 'hackathons/:month/:year/projects',
+        component: ProjectsComponent,
+        data: {
+            state: 'projects'
+        }
+    },
+    {
+        path: 'hackathons/:month/:year/announcements',
+        component: AnnouncementsComponent,
+        data: {
+            state: 'announcements'
+        }
+    },
+    {
+        path: 'hackathons/:month/:year/announcements/:id/:title',
+        component: SingleAnnouncementComponent,
+        data: {
+            state: 'announcements/:id/:title'
+        }
+    },
+    {
+        path: 'hackathons/:month/:year/participants',
+        component: ParticipantsComponent,
+        data: {
+            state: 'participants'
+        }
+    },
+    {
+        path: 'hackathons/:month/:year/prizes',
+        component: PrizesComponent,
+        data: {
+            state: 'prizes'
+        }
+    },
+    {
+        path: 'hackathons/:month/:year/judges',
+        component: JudgesComponent,
+        data: {
+            state: 'judges'
+        }
+    },
     {
         path: 'home',
         component: HomeComponent,
@@ -28,13 +94,6 @@ const routes: Routes = [
         component: AboutComponent,
         data: {
             state: 'about'
-        }
-    },
-    {
-        path: 'deliverables',
-        component: DeliverablesComponent,
-        data: {
-            state: 'deliverables'
         }
     },
     {
@@ -59,58 +118,10 @@ const routes: Routes = [
         }
     },
     {
-        path: 'sponsors',
-        component: SponsorsComponent,
-        data: {
-            state: 'sponsors'
-        }
-    },
-    {
-        path: 'projects',
-        component: ProjectsComponent,
-        data: {
-            state: 'projects'
-        }
-    },
-    {
-        path: 'announcements',
-        component: AnnouncementsComponent,
-        data: {
-            state: 'announcements'
-        }
-    },
-    {path: 'announcements/:id/:title',
-        component: SingleAnnouncementComponent,
-        data: {
-            state: 'announcements/:id/:title'
-        }
-    },
-    {
-        path: 'participants',
-        component: ParticipantsComponent,
-        data: {
-            state: 'participants'
-        }
-    },
-    {
-        path: 'prizes',
-        component: PrizesComponent,
-        data: {
-            state: 'prizes'
-        }
-    },
-    {
         path: 'faq',
         component: FaqComponent,
         data: {
             state: 'faq'
-        }
-    },
-    {
-        path: 'judges',
-        component: JudgesComponent,
-        data: {
-            state: 'judges'
         }
     },
     {

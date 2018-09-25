@@ -197,7 +197,7 @@ export class AnnouncementsComponent implements OnInit {
    * Return to the announcements when a document is deleted
    */
   goToAnnouncementsRoute() {
-    this.router.navigate(['/', 'announcements']).then(nav => {
+    this.router.navigate(['/hackathons/october/2018/announcements']).then(nav => {
       console.log(`Routed back to announcements ${nav}`); // true if navigation is successful
     }, err => {
       console.error(err) // when there's an error

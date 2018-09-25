@@ -50,6 +50,7 @@ import {ToastModule} from 'primeng/toast';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import { HackathonsComponent } from './components/hackathons/hackathons.component';
 
 @NgModule({
   imports: [
@@ -89,6 +90,7 @@ import {ConfirmationService} from 'primeng/api';
     SingleAnnouncementComponent,
     ErrorComponent,
     FaqComponent,
+    HackathonsComponent,
    ],
   providers: [ AnnouncementsService, MessageService, ConfirmationService ],
   bootstrap: [ AppComponent ]

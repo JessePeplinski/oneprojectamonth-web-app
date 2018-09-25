@@ -5,3 +5,22 @@
 section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px 80px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-family: 'pier_sansregular'; font-size: 18px; line-height: 1.4; padding: 40px 0 80px 0;}
+
+@media screen and (max-width: 945px) {
+  section.page-container{padding: 40px 20px;}
+}
+
+@media screen and (max-width: 800px) {
+  .wave{transform: translateY(-125%);}
+}
+
+@media screen and (max-width: 650px) {
+  .wave{transform: translateY(-150%);}
+}
+
+@media screen and (max-width: 550px) {
+  .wave{transform: translateY(-175%);}
+}
+@media screen and (max-width: 450px) {
+  .wave{transform: translateY(-190%);}
+}

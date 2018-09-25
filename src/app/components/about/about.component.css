@@ -27,3 +27,22 @@ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, F
     .team-member-pic img{width: 45px; height: 45px;}
     .team-member h3{font-size: 12px;}
 }
+
+@media screen and (max-width: 945px) {
+  section.page-container{padding: 40px 20px;}
+}
+
+@media screen and (max-width: 800px) {
+  .wave{transform: translateY(-125%);}
+}
+
+@media screen and (max-width: 650px) {
+  .wave{transform: translateY(-150%);}
+}
+
+@media screen and (max-width: 550px) {
+  .wave{transform: translateY(-175%);}
+}
+@media screen and (max-width: 450px) {
+  .wave{transform: translateY(-190%);}
+}

@@ -7,6 +7,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 
 import { Observable, of } from 'rxjs';
 import { switchMap} from 'rxjs/operators';
+import {errorObject} from 'rxjs/internal-compatibility';
 
 interface User {
   uid: string;
@@ -21,37 +22,92 @@ interface User {
 export class AuthService {
 
   user: Observable<User>;
+  isEmailVerified: boolean;
+  errorLoggingIn: boolean;
 
-  constructor(
-    private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
-    private router: Router
-  ) {
-
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
       //// Get auth data, then get firestore user document || null
-      this.user = this.afAuth.authState.pipe(
-        switchMap(user => {
-          if (user) {
-            return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
-          } else {
-            return of(null)
-          }
-        })
-      )
+
+    this.user = afAuth.authState;
+      // this.user = this.afAuth.authState.pipe(
+      //   switchMap(user => {
+      //     if (user) {
+      //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+      //     } else {
+      //       return of(null);
+      //     }
+      //   })
+      // );
+    this.user.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          return of(null);
+        }
+      })
+    );
     }
 
-
+    signUpWithEmailAndPassword(value) {
+      console.log('initiating sigup with email and pass');
+      // return this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.psw);
+      return new Promise<any>((resolve, reject) => {
+        this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
+          .then(res => {
+            resolve(res);
+            this.sendVerificationEmail();
+            this.signInWithEmailAndPassword(value);
+          }, err => reject(err));
+      });
+    }
+    signInWithEmailAndPassword(value) {
+      // this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password).catch(function(error) {
+      //   // Handle Errors here.
+      //   const errorCode = error.code;
+      //   const errorMessage = error.message;
+      // });
+      return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password);
+      }
+    sendVerificationEmail() {
+      this.afAuth.auth.onAuthStateChanged(function(user) {
+        user.sendEmailVerification();
+      });
+    }
+  checkEmailVerification() {
+    if (this.afAuth.auth.currentUser != null) {
+      console.log('checking verification');
+      console.log(this.afAuth.auth.currentUser.emailVerified);
+      this.isEmailVerified = this.afAuth.auth.currentUser.emailVerified;
+      return this.isEmailVerified;
+    }
+  }
+  updateEmail(value) {
+    this.afAuth.auth.currentUser.updateEmail(value.newEmail).then(function() {
+      // Update successful.
+      console.log('email updated');
+    }).catch(function(error) {
+      // An error happened.
+      console.log(error);
+    });
+    this.sendVerificationEmail();
+  }
 
   googleLogin() {
-    const provider = new auth.GoogleAuthProvider()
+    const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
-        this.updateUserData(credential.user)
-      })
+        // this.updateUserData(credential.user)
+      });
+  }
+
+  gitHubLogin() {
+    const provider = new auth.GithubAuthProvider();
+    return this.oAuthLogin(provider);
   }
 
 
@@ -67,7 +123,7 @@ export class AuthService {
       photoURL: user.photoURL
     }
 
-    return userRef.set(data, { merge: true })
+    return userRef.set(data, { merge: true });
 
   }
 

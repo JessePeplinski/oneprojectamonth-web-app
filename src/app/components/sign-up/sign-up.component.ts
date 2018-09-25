@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
+
+import {FormControl, FormGroup} from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-sign-up',
@@ -18,11 +20,30 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ])
   ]
 })
+
 export class SignUpComponent implements OnInit {
+  signUpForm: any = new FormGroup(
+    {
+      email: new FormControl(),
+      password: new FormControl()
+    });
+  changeEmailForm: any = new FormGroup(
+    {
+      newEmail: new FormControl(),
+    }
+  );
+  updateEmail: boolean;
 
-  constructor(public auth: AuthService) { }
-
+  constructor(public authService: AuthService) {
+  }
   ngOnInit() {
+  }
+  signUpWithEmail(value) {
+    this.authService.signUpWithEmailAndPassword(value);
+  }
+  changeEmail(value) {
+    console.log(value.newEmail);
+    this.authService.updateEmail(value);
   }
 
 }

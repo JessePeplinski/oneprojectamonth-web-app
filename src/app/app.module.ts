@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { routing } from './app.routes';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
@@ -39,12 +40,16 @@ import { JudgesComponent } from './components/judges/judges.component';
 import { AnnouncementsService } from './services/announcements.service';
 import { SingleAnnouncementComponent } from './components/announcements/single-announcement/single-announcement.component';
 import { ErrorComponent } from './components/error/error.component';
-
-// PrimeNG Modules 
+// PrimeNG Modules
 import { AccordionModule } from 'primeng/accordion';
 import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
 import { FaqComponent } from './components/faq/faq.component';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -56,12 +61,14 @@ import { FaqComponent } from './components/faq/faq.component';
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     AngularFireFunctionsModule, // imports for cloud functions
     FormsModule,
+    ReactiveFormsModule,
     AccordionModule,
     TabViewModule,
     routing,
-    CoreModule, 
-    PanelModule
-
+    CoreModule,
+    PanelModule,
+    ToastModule,
+    ConfirmDialogModule
   ],
   declarations: [
     AppComponent,
@@ -83,7 +90,7 @@ import { FaqComponent } from './components/faq/faq.component';
     ErrorComponent,
     FaqComponent,
    ],
-  providers: [ AnnouncementsService ],
+  providers: [ AnnouncementsService, MessageService, ConfirmationService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

@@ -4,6 +4,12 @@ import { AnnouncementsService } from '../../../services/announcements.service';
 import { switchMap } from 'rxjs/operators';
 import { AnnouncementsComponent } from '../announcements.component';
 import { Router } from '@angular/router';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-single-announcement',
@@ -13,18 +19,23 @@ import { Router } from '@angular/router';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router) {
-    super(announcementsService, router);
+  constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router, messageService: MessageService,  confirmationService: ConfirmationService) {
+    super(announcementsService, router, messageService, confirmationService);
   }
 
   ngOnInit() {
     /**
-     * Retreive a single announcement from firestore
+     * Get the params in the url (announcements/:id/:title) and retreive the single announcement from firestore
+     * CONSIDER: We could also call a function to append the title and ID together and split it if we need to.
      */
     this.announcement$ = this.route.paramMap.pipe(
       switchMap(params => {
+
+        const title = params.get('title');
         const id = params.get('id');
+
         this.announcement.id = id;
+        this.announcement.title = title;
         return this.announcementsService.readSingleAnnouncementBasedOnId(id);
       })
     );

@@ -41,3 +41,8 @@ Thumbs.db
 
 # Firebase cache
 .firebase/
+
+# Documentation
+documentation/
+
+.vscode/

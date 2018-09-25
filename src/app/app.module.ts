@@ -43,7 +43,9 @@ import { ErrorComponent } from './components/error/error.component';
 // PrimeNG Modules 
 import { AccordionModule } from 'primeng/accordion';
 import { TabViewModule } from 'primeng/tabview';
+import { PanelModule } from 'primeng/panel';
 import { FaqComponent } from './components/faq/faq.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { FaqComponent } from './components/faq/faq.component';
     AccordionModule,
     TabViewModule,
     routing,
-    CoreModule
+    CoreModule, 
+    PanelModule
 
   ],
   declarations: [

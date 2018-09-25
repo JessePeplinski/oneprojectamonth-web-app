@@ -3,6 +3,7 @@ import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+
 @Component({
   selector: 'app-announcements',
   templateUrl: './announcements.component.html',

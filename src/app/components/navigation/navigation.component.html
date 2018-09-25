@@ -29,17 +29,28 @@
     <ul>
       <li><a style="display: none;" routerLink="/login" routerLinkActive="active-link" (click)="openMenu()">Login</a></li>
       <li><a routerLink="/home" routerLinkActive="active-link" (click)="openMenu()">Home</a></li>
-      <li><a routerLink="/about" routerLinkActive="active-link" (click)="openMenu()">About</a></li>
+      <li><a routerLink="/about" routerLinkActive="active-link" (click)="openMenu()">About</a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/past-events" routerLinkActive="active-link" (click)="openMenu()">Past Events</a></li>
+          <li><a routerLink="/sponsors" routerLinkActive="active-link" (click)="openMenu()">Sponsors</a></li>
+          <li><a routerLink="/prizes" routerLinkActive="active-link" (click)="openMenu()">Prizes</a></li>
+          <li><a routerLink="/judges" routerLinkActive="active-link" (click)="openMenu()">Judges</a></li>
+          <li><a routerLink="/faq" routerLinkActive="active-link" (click)="openMenu()">FAQ</a></li>
+        </ul>
+        <p-panel header="" [toggleable]="true" [collapsed]="true" [showHeader]="true">
+          <ul>
+            <li><a routerLink="/past-events" routerLinkActive="active-link" (click)="openMenu()">Past Events</a></li>
+            <li><a routerLink="/sponsors" routerLinkActive="active-link" (click)="openMenu()">Sponsors</a></li>
+            <li><a routerLink="/prizes" routerLinkActive="active-link" (click)="openMenu()">Prizes</a></li>
+            <li><a routerLink="/judges" routerLinkActive="active-link" (click)="openMenu()">Judges</a></li>
+            <li><a routerLink="/faq" routerLinkActive="active-link" (click)="openMenu()">FAQ</a></li>
+          </ul>
+        </p-panel>
+      </li>
       <li><a routerLink="/announcements" routerLinkActive="active-link" (click)="openMenu()">Announcements</a></li>
       <li><a routerLink="/deliverables" routerLinkActive="active-link" (click)="openMenu()">Deliverables</a></li>
       <li><a routerLink="/projects" routerLinkActive="active-link" (click)="openMenu()">Projects</a></li>
       <li><a routerLink="/participants" routerLinkActive="active-link" (click)="openMenu()">Participants</a></li>
-      <li><a routerLink="/prizes" routerLinkActive="active-link" (click)="openMenu()">Prizes</a></li>
-      <li><a routerLink="/judges" routerLinkActive="active-link" (click)="openMenu()">Judges</a></li>
-      <li><a routerLink="/sponsors" routerLinkActive="active-link" (click)="openMenu()">Sponsors</a></li>
-      <li><a routerLink="/faq" routerLinkActive="active-link" (click)="openMenu()">FAQ</a></li>
-      <li><a href="https://join.slack.com/t/oneprojectamonth/shared_invite/enQtNDM0NjQ1NjcwMzkxLTM5ZjBkNGFmOWU2YTYwNzMxYjRmN2M1MGY3Y2IwODUzZjAyNjJkMDdkYTMyNjQ4M2ExYTdlMzQwZjJkYmEzYjU" routerLinkActive="active-link" (click)="openMenu()">Slack</a></li>
-      <li><a routerLink="/past-events" routerLinkActive="active-link" (click)="openMenu()">Past Events</a></li>
       <li><a routerLink="/sign-up" routerLinkActive="active-link" (click)="openMenu()">Sign Up</a></li>
     </ul>
   </nav>

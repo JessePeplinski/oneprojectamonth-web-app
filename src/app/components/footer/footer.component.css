@@ -7,7 +7,7 @@ footer .social-icons i{margin: 0 15px; color: #8F8F8F; font-size: 21px; transiti
 footer .social-icons i:hover{color: rgb(65, 65, 65); cursor: pointer;}
 
 @media screen and (max-width: 945px) {
-    footer{padding: 40px 20px;}
+    footer{padding: 40px 20px 80px 20px;}
     footer .copyright-social-icons{flex-direction: column; align-items: center;}
     footer .copyright-social-icons .social-icons{margin-top: 20px;}
     footer .scroll-to-top{right: 20px;}

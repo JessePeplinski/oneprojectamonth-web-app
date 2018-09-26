@@ -1,6 +1,6 @@
 header{display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 90%; height: 80px; margin: 0 auto; border-bottom-left-radius: 50% 20%;
   border-bottom-right-radius: 50% 20%;}
-header i.menu{display: none; justify-content: flex-end; align-items: center; width: 100%; height: 45px; padding: 0 20px; border-top-left-radius: 20px; border-top-right-radius: 20px; background: #fff; color: #000; box-shadow: 0 0 7px 2px rgba(0,0,0,0.2); font-size: 32px; position: absolute; top: -53px; right: 0px; transition: .25s ease-in-out;}
+header i.menu{display: none; justify-content: flex-end; align-items: center; width: 100%; height: 45px; padding: 0 20px; border-top-left-radius: 20px; border-top-right-radius: 20px; background: #fff; color: #35274a; box-shadow: 0 0 7px 2px rgba(0,0,0,0.2); font-size: 32px; position: absolute; top: -53px; right: 0px; transition: .25s ease-in-out;}
 header h1{color: #fff; font-family: 'pier_sansmedium'; font-size: 32px; position: relative;}
 header .main-logo{display: flex; justify-content: center; align-items: center; width: 75px; height: 75px; background: #fff; border-radius: 100%; border: 2px solid #fff; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); margin-top: 20px; position: relative;}
 header .main-logo span{width: 60px; height: 60px; border-radius: 100%;}
@@ -13,20 +13,20 @@ nav ul li a{color: #fff; font-family: 'pier_sanslight'; font-size: 16px; padding
 nav ul li a:after{content: ''; display: block; opacity: 0; width: 0%; height: 2px; background: rgba(255, 255, 255, .5); border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; position: absolute; bottom: 0px; left: 50%; transform: translate(-50%, 0px); -webkit-transform: translate(-50%, 0px); transition: .25s ease-in-out;}
 nav ul li a.active-link:after{width: 80%; opacity: 1;}
 nav ul li a:hover{ cursor: pointer;}
-nav ul li ul.dropdown-menu{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 125px; height: auto; padding: 15px 20px; opacity: 0; background:rgba(255, 255, 255, .9); color: #000; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); position: absolute; top: 40px; left: 0; transform: translateY(-20px); will-change: transform; pointer-events: none; z-index: 1000000; transition: .25s ease-in-out;}
+nav ul li ul.dropdown-menu{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-width: 125px; height: auto; padding: 15px 20px; opacity: 0; background:rgba(255, 255, 255, .9); color: #000; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); position: absolute; top: 40px; left: 0; transform: translateY(-20px); will-change: transform; pointer-events: none; z-index: 1000000; transition: .25s ease-in-out;}
 nav ul li:hover ul.dropdown-menu{opacity: 1; transform: translateY(-11px); pointer-events: auto;}
 nav ul li ul.dropdown-menu li a{color: #000;}
 nav ul li ul.dropdown-menu li{display: flex; flex-direction: row; justify-content: flex-start; align-items: center; width: 100%;}
 nav ul li ul.dropdown-menu li a{padding: 12px 0;}
 nav ul li ul.dropdown-menu li a.active-link:after{width: 100%; background: #333; opacity: 1; bottom: 3px;}
-nav i.nav-icon{position: absolute; top: 10px; right: 10px; color: #000; font-size: 32px; display: none; transition: .25s ease-in-out;}
+nav i.nav-icon{position: absolute; top: 10px; right: 10px; color: #35274a; font-size: 28px; display: none; transition: .25s ease-in-out;}
 nav /deep/ p-panel{display: none; width: 100%; flex-direction: column; justify-content: flex-start; align-items: center;}
 nav /deep/ p-panel ul {display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 100%; height: auto; padding: 0px 20px;}
 nav /deep/ p-panel .ui-panel .ui-panel-content{border: none;}
 nav /deep/ p-panel .ui-panel .ui-panel-titlebar{background: transparent; border: none; height: 0px; padding: 0; border-radius: 0;}
 nav ul li /deep/ p-panel ul li a{color: #000; padding: 8px 0; border-radius: 0px; font-size: 18px;}
 nav /deep/ p-panel ul li{display: flex; flex-direction: row; justify-content: center; align-items: center;}
-nav /deep/ p-panel .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon{transform: translate(20px, -22px); font-size: 18px; color: #000; border: none;}
+nav /deep/ p-panel .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon{transform: translate(20px, -22px); font-size: 18px; color: #35274a; border: none;}
 .nav-overlay{content: ''; width: 100vw; height: 100vh; background: rgba(255,255,255, .3);  opacity: 0; pointer-events: none; position: fixed; top: 0; left: 0; z-index: 1000; transition: .25s ease-in-out;}
 
 

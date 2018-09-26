@@ -56,16 +56,32 @@
           </ul>
         </p-panel>
       </li>
-      <li><a routerLink="/hackathons" routerLinkActive="active-link" (click)="openMenu()">Hackathons</a></li>
-      <li><a routerLink="/hackathons/october/2018/announcements" routerLinkActive="active-link" (click)="openMenu()">Announcements</a></li>
-      <li><a routerLink="/hackathons/october/2018/deliverables" routerLinkActive="active-link" (click)="openMenu()">Deliverables</a></li>
-      <li><a routerLink="/hackathons/october/2018/projects" routerLinkActive="active-link" (click)="openMenu()">Projects</a></li>
-      <li><a routerLink="/hackathons/october/2018/participants" routerLinkActive="active-link" (click)="openMenu()">Participants</a></li>
-      <li><a routerLink="/hackathons/october/2018/sponsors" routerLinkActive="active-link" (click)="openMenu()">Sponsors</a></li>
-      <li><a routerLink="/hackathons/october/2018/prizes" routerLinkActive="active-link" (click)="openMenu()">Prizes</a></li>
-      <li><a routerLink="/hackathons/october/2018/judges" routerLinkActive="active-link" (click)="openMenu()">Judges</a></li>
+
+      <li><a routerLink="/hackathons" routerLinkActive="active-link" (click)="openMenu()">October 2018</a>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/hackathons/october/2018/announcements" routerLinkActive="active-link" (click)="openMenu()">Announcements</a></li>
+          <li><a routerLink="/hackathons/october/2018/deliverables" routerLinkActive="active-link" (click)="openMenu()">Deliverables</a></li>
+          <li><a routerLink="/hackathons/october/2018/projects" routerLinkActive="active-link" (click)="openMenu()">Projects</a></li>
+          <li><a routerLink="/hackathons/october/2018/participants" routerLinkActive="active-link" (click)="openMenu()">Participants</a></li>
+          <li><a routerLink="/hackathons/october/2018/sponsors" routerLinkActive="active-link" (click)="openMenu()">Sponsors</a></li>
+          <li><a routerLink="/hackathons/october/2018/prizes" routerLinkActive="active-link" (click)="openMenu()">Prizes</a></li>
+          <li><a routerLink="/hackathons/october/2018/judges" routerLinkActive="active-link" (click)="openMenu()">Judges</a></li>
+        </ul>
+        <p-panel header="" [toggleable]="true" [collapsed]="true" [showHeader]="true">
+          <ul>
+            <li><a routerLink="/hackathons/october/2018/announcements" routerLinkActive="active-link" (click)="openMenu()">Announcements</a></li>
+            <li><a routerLink="/hackathons/october/2018/deliverables" routerLinkActive="active-link" (click)="openMenu()">Deliverables</a></li>
+            <li><a routerLink="/hackathons/october/2018/projects" routerLinkActive="active-link" (click)="openMenu()">Projects</a></li>
+            <li><a routerLink="/hackathons/october/2018/participants" routerLinkActive="active-link" (click)="openMenu()">Participants</a></li>
+            <li><a routerLink="/hackathons/october/2018/sponsors" routerLinkActive="active-link" (click)="openMenu()">Sponsors</a></li>
+            <li><a routerLink="/hackathons/october/2018/prizes" routerLinkActive="active-link" (click)="openMenu()">Prizes</a></li>
+            <li><a routerLink="/hackathons/october/2018/judges" routerLinkActive="active-link" (click)="openMenu()">Judges</a></li>
+          </ul>
+        </p-panel>
+      </li>
       <li><a style="display: block;" routerLink="/login" routerLinkActive="active-link" (click)="openMenu()">Login</a></li>
       <li><a routerLink="/sign-up" routerLinkActive="active-link" (click)="openMenu()">Sign Up</a></li>
+
     </ul>
   </nav>
 </header>

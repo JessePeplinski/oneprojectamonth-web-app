@@ -215,6 +215,8 @@ export class AnnouncementsComponent implements OnInit {
    * Return to the announcements when a document is deleted
    */
   goToAnnouncementsRoute() {
+    // FIXME: Make the router actually go the right place based on the month you are on.
+    // this.router.navigate(['/hackathons', this.paramDate.month, this.paramDate.year, 'announcements']).then(nav => {
     this.router.navigate(['/hackathons/October/2018/announcements']).then(nav => {
       console.log(`Routed back to announcements ${nav}`); // true if navigation is successful
     }, err => {

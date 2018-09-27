@@ -1,4 +1,5 @@
 <h1>Announcements</h1>
+<h1>{{paramDate.month}}, {{paramDate.year}}</h1>
 <section class="page-container">
   <div class="wave">
     <svg viewBox="0 0 1440 120" aria-hidden="true">
@@ -10,15 +11,35 @@
 
     <!-- READ -->
 
+    <p>You should display my user account level here! If I'm an ADMIN, i should be able to create, update, and delete.</p>
+    <p>If I'm a USER, I should be able to READ.</p>
+
     <p-toast position="top-center" key="createAnnouncementToastAlert"></p-toast>
     <p-toast position="top-center" key="updateAnnouncementToastAlert"></p-toast>
     <p-toast position="top-center" key="deleteAnnouncementToastAlert"></p-toast>
     <p-toast position="top-center" key="rejectDeleteAnnouncementToastAlert"></p-toast>
 
     <div class="text" *ngFor="let announcement of announcements$ | async">
-      <div *ngIf="announcement.isVisible">
+      <div *ngIf="(announcement.isVisible)">
 
-        <a [routerLink]="['/hackathons/october/2018/announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
+        <!-- <div *ngIf="(announcement.dateCreated.toDate() | date : 'MMMM' == paramDate.month | titlecase)">
+          true!
+        </div>
+
+        <div *ngIf="(announcement.dateCreated.toDate() | date : 'y' == paramDate.year)">
+          true!
+        </div>
+
+      
+        announcement month: {{announcementDate.month}}
+        announcement year: {{announcementDate.year}}
+
+        <p>Playing with date: {{announcement.dateCreated.toDate() | date : 'MMMM'}}</p>
+        <p>Playing with date: {{announcement.dateCreated.toDate() | date : 'y'}}</p>
+        <p>Date parmams month: {{paramDate.month | titlecase }}</p>
+        <p>Date parmams year: {{paramDate.year}}</p> -->
+
+        <a [routerLink]="['/hackathons', paramDate.month, paramDate.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
         <h2>{{announcement.content}}</h2>
         <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
         <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>

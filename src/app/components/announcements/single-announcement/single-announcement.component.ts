@@ -19,8 +19,8 @@ import { ConfirmationService } from 'primeng/api';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(private route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router, messageService: MessageService,  confirmationService: ConfirmationService) {
-    super(announcementsService, router, messageService, confirmationService);
+  constructor(route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router, messageService: MessageService,  confirmationService: ConfirmationService) {
+    super(route, announcementsService, router, messageService, confirmationService);
   }
 
   ngOnInit() {

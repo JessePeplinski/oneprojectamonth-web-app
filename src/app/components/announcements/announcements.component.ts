@@ -4,10 +4,15 @@ import { AnnouncementsService } from '../../services/announcements.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
+
+// pipes
+import { DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-announcements',
@@ -55,11 +60,27 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcements$;
 
-  constructor(protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) { }
+  // TODO: Abstract the date handling into a service to be reused accross all components
+  paramDate = {
+    month: '',
+    year: ''
+  }
+
+  constructor(protected route: ActivatedRoute, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     // Call the announcements service
     this.announcements$ = this.announcementsService.readAllAnnouncements();
+
+    // Get the params from the URL
+    this.route.paramMap.subscribe(params => {
+
+      const month = params.get('month');
+      const year = params.get('year');
+
+      this.paramDate.month = month;
+      this.paramDate.year = year;
+    });
   }
 
   /**

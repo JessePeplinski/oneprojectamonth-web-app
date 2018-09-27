@@ -10,6 +10,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 
+// models
+import { paramDate } from '../../models/paramDate';
+
 // pipes
 import { DatePipe } from '@angular/common';
 import { formatDate } from '@angular/common';
@@ -60,33 +63,21 @@ export class AnnouncementsComponent implements OnInit {
    */
   announcements$;
 
-  // TODO: Abstract the date handling into a service to be reused accross all components
-  paramDate = {
-    month: '',
-    year: ''
-  }
+  /**
+   * Object to hold the query params from the URL for /:month/:year
+   */
+  public paramDate: paramDate;
 
-  constructor(protected route: ActivatedRoute, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) { }
+  constructor(protected route: ActivatedRoute, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) {
+    this.paramDate = new paramDate();
+  }
 
   ngOnInit() {
     // Get the params from the URL
-    this.getMonthAndYearParamsFromURL(this.paramDate);
+    this.paramDate.getMonthAndYearParamsFromURL(this.route);
 
     // Call the announcements service
     this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDate);
-  }
-
-  getMonthAndYearParamsFromURL(paramDate) {
-    this.route.paramMap.subscribe(params => {
-
-      // get the parms from the url
-      const month = params.get('month');
-      const year = params.get('year');
-
-      // set the params to an object
-      paramDate.month = month;
-      paramDate.year = year;
-    });
   }
 
   /**
@@ -224,7 +215,7 @@ export class AnnouncementsComponent implements OnInit {
    * Return to the announcements when a document is deleted
    */
   goToAnnouncementsRoute() {
-    this.router.navigate(['/hackathons/october/2018/announcements']).then(nav => {
+    this.router.navigate(['/hackathons/October/2018/announcements']).then(nav => {
       console.log(`Routed back to announcements ${nav}`); // true if navigation is successful
     }, err => {
       console.error(err) // when there's an error

@@ -30,6 +30,7 @@ nav /deep/ p-panel .ui-panel .ui-panel-titlebar .ui-panel-titlebar-icon{transfor
 .nav-overlay{content: ''; width: 100vw; height: 100vh; background: rgba(255,255,255, .3);  opacity: 0; pointer-events: none; position: fixed; top: 0; left: 0; z-index: 1000; transition: .25s ease-in-out;}
 header .user-account-container{display: flex; justify-content: center; align-items: center; width: 35px; height: 35px; margin-left: 40px; border-radius: 100%; border: 2px solid rgba(255, 255, 255, .65); transition: .25s ease-in-out;}
 header .user-account-container:hover{cursor: pointer; border: 2px solid rgba(255, 255, 255, 1); }
+header .user-account-container.active-link{border: 2px solid rgba(255, 255, 255, 1); }
 header .user-account-container .user-profile-picture{display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; }
 header .user-account-container .user-profile-picture img{width: 100%; height: 100%; max-width: 100%; border-radius: 100%; overflow: hidden;}
 

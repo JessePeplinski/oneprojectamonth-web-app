@@ -16,6 +16,7 @@ import { SingleAnnouncementComponent } from './components/announcements/single-a
 import { ErrorComponent } from './components/error/error.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
     {
@@ -80,6 +81,13 @@ const routes: Routes = [
         component: JudgesComponent,
         data: {
             state: 'judges'
+        }
+    },
+    {
+        path: 'profile',
+        component: ProfileComponent,
+        data: {
+            state: 'profile'
         }
     },
     {

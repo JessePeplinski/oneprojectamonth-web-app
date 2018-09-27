@@ -69,9 +69,6 @@ export class AnnouncementsComponent implements OnInit {
   constructor(protected route: ActivatedRoute, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) { }
 
   ngOnInit() {
-    // Call the announcements service
-    this.announcements$ = this.announcementsService.readAllAnnouncements();
-
     // Get the params from the URL
     this.route.paramMap.subscribe(params => {
 
@@ -81,6 +78,9 @@ export class AnnouncementsComponent implements OnInit {
       this.paramDate.month = month;
       this.paramDate.year = year;
     });
+
+    // Call the announcements service
+    this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDate);
   }
 
   /**

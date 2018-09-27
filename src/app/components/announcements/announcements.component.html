@@ -28,16 +28,21 @@
 
         <div *ngIf="(announcement.dateCreated.toDate() | date : 'y' == paramDate.year)">
           true!
-        </div>
+        </div> -->
 
       
-        announcement month: {{announcementDate.month}}
-        announcement year: {{announcementDate.year}}
+        <!-- announcement month: {{announcementDate.month}}
+        announcement year: {{announcementDate.year}} -->
 
-        <p>Playing with date: {{announcement.dateCreated.toDate() | date : 'MMMM'}}</p>
-        <p>Playing with date: {{announcement.dateCreated.toDate() | date : 'y'}}</p>
+        <!-- <p>observable and pipe {{announcement.dateCreated.toDate() | date : 'MMMM'}}</p>
+        <p>observable and pipe {{announcement.dateCreated.toDate() | date : 'y'}}</p>
+
         <p>Date parmams month: {{paramDate.month | titlecase }}</p>
-        <p>Date parmams year: {{paramDate.year}}</p> -->
+        <p>Date parmams year: {{paramDate.year}}</p>
+
+        <p>announcement month: {{announcementDate.month}}</p>
+        <p>announcement year: {{announcementDate.year}}</p> -->
+
 
         <a [routerLink]="['/hackathons', paramDate.month, paramDate.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
         <h2>{{announcement.content}}</h2>

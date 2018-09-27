@@ -70,17 +70,23 @@ export class AnnouncementsComponent implements OnInit {
 
   ngOnInit() {
     // Get the params from the URL
-    this.route.paramMap.subscribe(params => {
-
-      const month = params.get('month');
-      const year = params.get('year');
-
-      this.paramDate.month = month;
-      this.paramDate.year = year;
-    });
+    this.getMonthAndYearParamsFromURL(this.paramDate);
 
     // Call the announcements service
     this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDate);
+  }
+
+  getMonthAndYearParamsFromURL(paramDate) {
+    this.route.paramMap.subscribe(params => {
+
+      // get the parms from the url
+      const month = params.get('month');
+      const year = params.get('year');
+
+      // set the params to an object
+      paramDate.month = month;
+      paramDate.year = year;
+    });
   }
 
   /**

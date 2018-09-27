@@ -7,7 +7,8 @@
   </div>
 
   <div class="text" *ngFor="let date of dateParams$ | async">
-    <a [routerLink]="[date.month, date.year, 'announcements']"><h2>Go to announcements with RouterLink {{date.month}}, {{date.year}}</h2></a>
+    <h2>{{date.month}}, {{date.year}}</h2>
+    <a [routerLink]="[date.month, date.year, 'announcements']"><p>Go to announcements</p></a>
   </div>
 
   You should merge me into PAST EVENTS at some point.

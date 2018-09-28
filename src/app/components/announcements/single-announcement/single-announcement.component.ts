@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AnnouncementsService } from '../../../services/announcements.service';
 import { switchMap } from 'rxjs/operators';
 import { AnnouncementsComponent } from '../announcements.component';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
+import {ToastModule} from 'primeng/toast';
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 import { ParamDateService } from '../../../services/param-date.service';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-single-announcement',
@@ -15,8 +20,8 @@ import { ParamDateService } from '../../../services/param-date.service';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(route: ActivatedRoute, paramDateService: ParamDateService, announcementsService: AnnouncementsService, router: Router, messageService: MessageService, confirmationService: ConfirmationService) {
-    super(route, paramDateService, announcementsService, router, messageService, confirmationService);
+  constructor(route: ActivatedRoute, paramDateService : ParamDateService, announcementsService: AnnouncementsService, router: Router, confirmationService: ConfirmationService, toastService: ToastService) {
+    super(route, paramDateService, announcementsService, router, confirmationService, toastService);
   }
 
   ngOnInit() {

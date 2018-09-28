@@ -1,20 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
-import { Router } from '@angular/router';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { ActivatedRoute } from '@angular/router';
-
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { ConfirmationService } from 'primeng/api';
-import { ButtonModule } from 'primeng/button';
-
 import { ParamDateService } from '../../services/param-date.service';
-
-// pipes
-import { DatePipe } from '@angular/common';
-import { formatDate } from '@angular/common';
-
 import { ToastService } from '../../services/toast.service';
 
 @Component({
@@ -24,12 +14,12 @@ import { ToastService } from '../../services/toast.service';
   animations: [
     trigger('show', [
       transition(':enter', [
-        style({ opacity: 0 }),
-        animate('.35s ease-in-out', style({ opacity: 1 }))
+        style({opacity: 0}),
+        animate('.35s ease-in-out', style({opacity: 1}))
       ]),
       transition(':leave', [
-        style({ opacity: 1 }),
-        animate('.35s ease-in-out', style({ opacity: 0 }))
+        style({opacity: 1}),
+        animate('.35s ease-in-out', style({opacity: 0}))
       ])
     ])
   ]
@@ -43,7 +33,12 @@ export class AnnouncementsComponent implements OnInit {
 
   public announcement: Announcement; // Object to hold fields on the announcement
 
-  constructor(protected route: ActivatedRoute, public paramDateService : ParamDateService, protected announcementsService: AnnouncementsService, protected router: Router, protected confirmationService: ConfirmationService, protected toastService: ToastService) {
+  constructor(protected route: ActivatedRoute,
+              public paramDateService: ParamDateService,
+              protected announcementsService: AnnouncementsService,
+              protected router: Router,
+              protected confirmationService: ConfirmationService,
+              protected toastService: ToastService) {
     this.announcement = new Announcement();
   }
 

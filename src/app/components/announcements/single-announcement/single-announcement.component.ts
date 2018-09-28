@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnnouncementsService } from '../../../services/announcements.service';
 import { switchMap } from 'rxjs/operators';
 import { AnnouncementsComponent } from '../announcements.component';
-import { Router } from '@angular/router';
-import {ToastModule} from 'primeng/toast';
-
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
-
 import { ParamDateService } from '../../../services/param-date.service';
 import { ToastService } from '../../../services/toast.service';
 
@@ -20,7 +15,7 @@ import { ToastService } from '../../../services/toast.service';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(route: ActivatedRoute, paramDateService : ParamDateService, announcementsService: AnnouncementsService, router: Router, confirmationService: ConfirmationService, toastService: ToastService) {
+  constructor(route: ActivatedRoute, paramDateService: ParamDateService, announcementsService: AnnouncementsService, router: Router, confirmationService: ConfirmationService, toastService: ToastService) {
     super(route, paramDateService, announcementsService, router, confirmationService, toastService);
   }
 

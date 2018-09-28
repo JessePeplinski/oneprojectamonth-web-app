@@ -10,8 +10,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 
-// models
-import { paramDate } from '../../models/paramDate';
+import { ParamDateService } from '../../services/param-date.service';
 
 // pipes
 import { DatePipe } from '@angular/common';
@@ -41,20 +40,18 @@ export class AnnouncementsComponent implements OnInit {
   announcementToEdit: Announcement; // Current announcement that is being modified.
   announcements$; // Observable of all announcements
 
-  public paramDate: paramDate; // Object to hold the query params from the URL for /:month/:year
   public announcement: Announcement; // Object to hold fields on the announcement
 
-  constructor(protected route: ActivatedRoute, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) {
-    this.paramDate = new paramDate();
+  constructor(protected route: ActivatedRoute, public paramDateService : ParamDateService, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) {
     this.announcement = new Announcement();
   }
 
   ngOnInit() {
     // Get the params from the URL
-    this.paramDate.getMonthAndYearParamsFromURL(this.route);
+    this.paramDateService.getMonthAndYearParamsFromURL(this.route);
 
     // Call the announcements service
-    this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDate);
+    this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDateService);
   }
 
   /**

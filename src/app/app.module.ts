@@ -53,6 +53,7 @@ import {ConfirmationService} from 'primeng/api';
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+import { ParamDateService } from './services/param-date.service';
 
 @NgModule({
   imports: [
@@ -95,7 +96,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     HackathonsComponent,
     ProfileComponent
    ],
-  providers: [ AnnouncementsService, MessageService, ConfirmationService ],
+  providers: [ AnnouncementsService, MessageService, ConfirmationService, ParamDateService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

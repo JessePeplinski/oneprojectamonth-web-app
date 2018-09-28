@@ -10,6 +10,7 @@ import {ToastModule} from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 
+import { ParamDateService } from '../../../services/param-date.service';
 
 @Component({
   selector: 'app-single-announcement',
@@ -19,8 +20,8 @@ import { ConfirmationService } from 'primeng/api';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router, messageService: MessageService,  confirmationService: ConfirmationService) {
-    super(route, announcementsService, router, messageService, confirmationService);
+  constructor(route: ActivatedRoute, paramDateService : ParamDateService, announcementsService: AnnouncementsService, router: Router, messageService: MessageService,  confirmationService: ConfirmationService) {
+    super(route, paramDateService, announcementsService, router, messageService, confirmationService);
   }
 
   ngOnInit() {

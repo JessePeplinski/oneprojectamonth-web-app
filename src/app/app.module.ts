@@ -54,6 +54,7 @@ import { HackathonsComponent } from './components/hackathons/hackathons.componen
 import { ProfileComponent } from './components/profile/profile.component';
 
 import { ParamDateService } from './services/param-date.service';
+import { ToastService } from './services/toast.service';
 
 @NgModule({
   imports: [
@@ -96,7 +97,7 @@ import { ParamDateService } from './services/param-date.service';
     HackathonsComponent,
     ProfileComponent
    ],
-  providers: [ AnnouncementsService, MessageService, ConfirmationService, ParamDateService],
+  providers: [ AnnouncementsService, MessageService, ConfirmationService, ParamDateService, ToastService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

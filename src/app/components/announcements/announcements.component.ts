@@ -3,7 +3,6 @@ import { Announcement } from '../../models/announcement';
 import { AnnouncementsService } from '../../services/announcements.service';
 import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -15,6 +14,8 @@ import { ParamDateService } from '../../services/param-date.service';
 // pipes
 import { DatePipe } from '@angular/common';
 import { formatDate } from '@angular/common';
+
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-announcements',
@@ -42,7 +43,7 @@ export class AnnouncementsComponent implements OnInit {
 
   public announcement: Announcement; // Object to hold fields on the announcement
 
-  constructor(protected route: ActivatedRoute, public paramDateService : ParamDateService, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) {
+  constructor(protected route: ActivatedRoute, public paramDateService : ParamDateService, protected announcementsService: AnnouncementsService, protected router: Router, protected confirmationService: ConfirmationService, protected toastService: ToastService) {
     this.announcement = new Announcement();
   }
 
@@ -61,7 +62,7 @@ export class AnnouncementsComponent implements OnInit {
     // Basic validation. Make sure we have a title and content filled in
     if (this.announcement.title != '' && this.announcement.content != '') {
       this.announcementsService.createAnnouncement(this.announcement);
-      this.createAnnouncementToastAlert(this.announcement);
+      this.toastService.createToastAlert('createAnnouncementToastAlert', 'Announcement', this.announcement.title);
       this.clearForms();
     }
   }
@@ -100,7 +101,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   updateAnnouncement(announcement: Announcement) {
     this.announcementsService.updateAnnouncement(announcement);
-    this.updateAnnouncementToastAlert(announcement);
+    this.toastService.updateToastAlert('updateAnnouncementToastAlert', 'Announcement', announcement.title);
     this.clearState();
   }
 
@@ -118,71 +119,12 @@ export class AnnouncementsComponent implements OnInit {
         this.announcementsService.deleteAnnouncment(announcement);
         this.clearState();
         this.goToAnnouncementsRoute(); // FIXME: Add logic to reroute only if the child route is active.
-        this.deleteAnnouncementToastAlert(announcement);
+        this.toastService.deleteToastAlert('deleteAnnouncementToastAlert', 'Announcement', announcement.title);
       },
       reject: () => {
-        this.rejectDeleteAnnouncementToastAlert(announcement);
+        this.toastService.rejectDeleteToastAlert('rejectDeleteAnnouncementToastAlert', 'Announcement', announcement.title);
       }
     });
-  }
-
-  /**
-   * Display a toast alert in the top center of the page confirming the deletion
-   */
-  createAnnouncementToastAlert(announcement: Announcement) {
-    this.messageService.add({
-      key: 'createAnnouncementToastAlert',
-      severity: 'success',
-      summary: 'Announcement Created',
-      detail: `${announcement.title} has been created successfully`,
-      sticky: false,
-      life: 3000
-    });
-  }
-
-  /**
-   * Display a toast alert in the top center of the page confirming the deletion
-   */
-  updateAnnouncementToastAlert(announcement: Announcement) {
-    setTimeout(() => {
-      this.messageService.add({
-        key: 'updateAnnouncementToastAlert',
-        severity: 'success',
-        summary: 'Announcement Updated',
-        detail: `${announcement.title} has been updated successfully`,
-        sticky: false,
-        life: 3000
-      });
-    }, 100);
-  }
-
-  rejectDeleteAnnouncementToastAlert(announcement: Announcement) {
-    setTimeout(() => {
-      this.messageService.add({
-        key: 'rejectDeleteAnnouncementToastAlert',
-        severity: 'warn',
-        summary: 'Announcement Not Deleted',
-        detail: `${announcement.title} has not been deleted`,
-        sticky: false,
-        life: 3000
-      });
-    }, 100);
-  }
-
-  /**
-   * Display a toast alert in the top center of the page confirming the deletion
-   */
-  deleteAnnouncementToastAlert(announcement: Announcement) {
-    setTimeout(() => {
-      this.messageService.add({
-        key: 'deleteAnnouncementToastAlert',
-        severity: 'success',
-        summary: 'Announcement Deleted',
-        detail: `${announcement.title} has been deleted successfully`,
-        sticky: false,
-        life: 3000
-      });
-    }, 100);
   }
 
   /**

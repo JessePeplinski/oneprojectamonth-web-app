@@ -191,8 +191,7 @@ export class AnnouncementsComponent implements OnInit {
   goToAnnouncementsRoute() {
     // FIXME: Make the router actually go the right place based on the month you are on.
     // TODO
-    // this.router.navigate(['/hackathons', this.paramDate.month, this.paramDate.year, 'announcements']).then(nav => {
-    this.router.navigate(['/hackathons/October/2018/announcements']).then(nav => {
+    this.router.navigate(['/hackathons', this.paramDateService.month, this.paramDateService.year, 'announcements']).then(nav => {
       console.log(`Routed back to announcements ${nav}`); // true if navigation is successful
     }, err => {
       console.error(err) // when there's an error

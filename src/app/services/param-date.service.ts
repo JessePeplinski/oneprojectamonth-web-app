@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * This service reads the query parameters (hackathons/:month/:year) from the URL and saves them to an object
+ */
 export class ParamDateService {
 
   month: string;

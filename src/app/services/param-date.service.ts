@@ -25,4 +25,18 @@ export class ParamDateService {
           this.year = year;
       });
   }
+
+  /**
+   * Return to a specified page 
+   */
+  goToSpecifiedRoute(router, pageToNavigate) {
+    // FIXME: Make the router actually go the right place based on the month you are on.
+    // TODO
+    router.navigate(['/hackathons', this.month, this.year, pageToNavigate]).then(nav => {
+      console.log(`Routed to ${this.month}/${this.year}/${pageToNavigate}: ${nav}`); // true if navigation is successful
+    }, err => {
+      console.error(err) // when there's an error
+    });
+  }
+
 }

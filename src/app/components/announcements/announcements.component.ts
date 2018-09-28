@@ -101,7 +101,7 @@ export class AnnouncementsComponent implements OnInit {
   }
 
   /**
-   * Call the delete announcements service and clear the state.
+   * Open a modal for confirmation of delete, call the delete service, and display a toast message.
    *
    * @param {Announcement} announcement Announcement
    */
@@ -113,25 +113,12 @@ export class AnnouncementsComponent implements OnInit {
       accept: () => {
         this.announcementsService.deleteAnnouncment(announcement);
         this.clearState();
-        this.goToAnnouncementsRoute(); // FIXME: Add logic to reroute only if the child route is active.
+        this.paramDateService.goToSpecifiedRoute(this.router, 'announcements'); // FIXME: Add logic to reroute only if the child route is active.
         this.toastService.deleteToastAlert('deleteAnnouncementToastAlert', 'Announcement', announcement.title);
       },
       reject: () => {
         this.toastService.rejectDeleteToastAlert('rejectDeleteAnnouncementToastAlert', 'Announcement', announcement.title);
       }
-    });
-  }
-
-  /**
-   * Return to the announcements when a document is deleted
-   */
-  goToAnnouncementsRoute() {
-    // FIXME: Make the router actually go the right place based on the month you are on.
-    // TODO
-    this.router.navigate(['/hackathons', this.paramDateService.month, this.paramDateService.year, 'announcements']).then(nav => {
-      console.log(`Routed back to announcements ${nav}`); // true if navigation is successful
-    }, err => {
-      console.error(err) // when there's an error
     });
   }
 }

@@ -23,7 +23,6 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { LoginComponent } from './components/login/login.component';
 import { PastEventComponent } from './components/past-event/past-event.component';
 import { SponsorsComponent } from './components/sponsors/sponsors.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -84,7 +83,6 @@ import { ToastService } from './services/toast.service';
     HomeComponent,
     AboutComponent,
     SignUpComponent,
-    LoginComponent,
     PastEventComponent,
     SponsorsComponent,
     FooterComponent,

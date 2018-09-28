@@ -37,39 +37,16 @@ import { formatDate } from '@angular/common';
 
 export class AnnouncementsComponent implements OnInit {
 
-  /**
-   * Create empty Announcement object. We need to initialize this otherwise we'll throw undefined errors.
-   */
-  announcement: Announcement = {
-    id: '',
-    title: '',
-    content: '',
-    dateCreated: null,
-    isVisible: false,
-  };
+  editState: boolean = false; // Boolean for displaying edit/delete onClick of an individual announcement.
+  announcementToEdit: Announcement; // Current announcement that is being modified.
+  announcements$; // Observable of all announcements
 
-  /**
-   * Boolean for displaying edit/delete onClick of an individual announcement.
-   */
-  editState: boolean = false;
-
-  /**
-   * Current announcement that is being modified.
-   */
-  announcementToEdit: Announcement;
-
-  /**
-   * Observable of all announcements
-   */
-  announcements$;
-
-  /**
-   * Object to hold the query params from the URL for /:month/:year
-   */
-  public paramDate: paramDate;
+  public paramDate: paramDate; // Object to hold the query params from the URL for /:month/:year
+  public announcement: Announcement; // Object to hold fields on the announcement
 
   constructor(protected route: ActivatedRoute, protected announcementsService: AnnouncementsService, protected router: Router, protected messageService: MessageService, protected confirmationService: ConfirmationService) {
     this.paramDate = new paramDate();
+    this.announcement = new Announcement();
   }
 
   ngOnInit() {
@@ -216,6 +193,7 @@ export class AnnouncementsComponent implements OnInit {
    */
   goToAnnouncementsRoute() {
     // FIXME: Make the router actually go the right place based on the month you are on.
+    // TODO
     // this.router.navigate(['/hackathons', this.paramDate.month, this.paramDate.year, 'announcements']).then(nav => {
     this.router.navigate(['/hackathons/October/2018/announcements']).then(nav => {
       console.log(`Routed back to announcements ${nav}`); // true if navigation is successful

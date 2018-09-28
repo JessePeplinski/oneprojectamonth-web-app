@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnnouncementsService } from '../../../services/announcements.service';
 import { switchMap } from 'rxjs/operators';
 import { AnnouncementsComponent } from '../announcements.component';
-import { Router } from '@angular/router';
-import {MessageService} from 'primeng/api';
-import {ToastModule} from 'primeng/toast';
-
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
-
+import { ParamDateService } from '../../../services/param-date.service';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-single-announcement',
@@ -19,11 +15,15 @@ import { ConfirmationService } from 'primeng/api';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(route: ActivatedRoute, announcementsService: AnnouncementsService, router: Router, messageService: MessageService,  confirmationService: ConfirmationService) {
-    super(route, announcementsService, router, messageService, confirmationService);
+  constructor(route: ActivatedRoute, paramDateService: ParamDateService, announcementsService: AnnouncementsService, router: Router, confirmationService: ConfirmationService, toastService: ToastService) {
+    super(route, paramDateService, announcementsService, router, confirmationService, toastService);
   }
 
   ngOnInit() {
+    this.getTitleAndIDParamsFromURL();
+  }
+
+  getTitleAndIDParamsFromURL() {
     /**
      * Get the params in the url (announcements/:id/:title) and retreive the single announcement from firestore
      * CONSIDER: We could also call a function to append the title and ID together and split it if we need to.

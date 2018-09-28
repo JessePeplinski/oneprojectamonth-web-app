@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { routing } from './app.routes';
-import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -55,6 +53,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+import { ParamDateService } from './services/param-date.service';
+import { ToastService } from './services/toast.service';
 
 @NgModule({
   imports: [
@@ -100,7 +100,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     HackathonsComponent,
     ProfileComponent
    ],
-  providers: [ AnnouncementsService, MessageService, ConfirmationService ],
+  providers: [ AnnouncementsService, MessageService, ConfirmationService, ParamDateService, ToastService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

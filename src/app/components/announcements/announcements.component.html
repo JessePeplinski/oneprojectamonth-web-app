@@ -1,5 +1,5 @@
 <h1>Announcements</h1>
-<h1>{{paramDate.month}}, {{paramDate.year}}</h1>
+<h1>{{paramDateService.month}}, {{paramDateService.year}}</h1>
 <section class="page-container">
   <div class="wave">
     <svg viewBox="0 0 1440 120" aria-hidden="true">
@@ -22,6 +22,8 @@
     <div class="text" *ngFor="let announcement of announcements$ | async">
       <div *ngIf="(announcement.isVisible)">
 
+
+        <!-- TODO: Delete these fields -->
         <!-- <div *ngIf="(announcement.dateCreated.toDate() | date : 'MMMM' == paramDate.month | titlecase)">
           true!
         </div>
@@ -44,7 +46,7 @@
         <p>announcement year: {{announcementDate.year}}</p> -->
 
 
-        <a [routerLink]="['/hackathons', paramDate.month, paramDate.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
+        <a [routerLink]="['/hackathons', paramDateService.month, paramDateService.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
         <h2>{{announcement.content}}</h2>
         <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
         <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>

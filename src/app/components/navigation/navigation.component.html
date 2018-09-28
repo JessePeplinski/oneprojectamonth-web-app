@@ -80,16 +80,26 @@
           </ul>
         </p-panel>
       </li>
-      <li><a style="display: block;" routerLink="/login" routerLinkActive="active-link" (click)="openMenu()">Login</a></li>
-      <li><a routerLink="/sign-up" routerLinkActive="active-link" (click)="openMenu()">Sign Up</a></li>
-
+      <div *ngIf="authService.user | async; then authenticated else guest">
+        <!-- template will replace this div -->
+      </div>
+      
+      <ng-template #guest>
+          <li><a style="display: block;" routerLink="/login" routerLinkActive="active-link" (click)="openMenu()">Login</a></li>
+          <li><a routerLink="/sign-up" routerLinkActive="active-link" (click)="openMenu()">Sign Up</a></li>
+      </ng-template>
+  
     </ul>
   </nav>
-  <a routerLink="/profile" routerLinkActive="active-link" class="user-account-container">
-    <div class="user-profile-picture">
-      <img src="/assets/img/profile-pic.jpeg" />
-    </div>
-  </a>
+  <ng-template #authenticated>
+      <ng-container *ngIf="authService.user | async as user">
+        <a routerLink="/profile" routerLinkActive="active-link" class="user-account-container">
+          <div class="user-profile-picture">
+              <img [src]="user.photoURL">
+          </div>
+        </a>
+      </ng-container>
+    </ng-template>
 </header>
 
 <div class="nav-overlay" [ngClass]="display ? 'open' : 'closed'"></div>

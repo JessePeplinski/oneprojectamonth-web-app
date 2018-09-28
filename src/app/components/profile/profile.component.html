@@ -50,6 +50,8 @@
         </div>
       </section>
 
+      <button (click)="authService.signOut()">TEMP LOGOUT BUTTON REMOVE MEEEE</button>
+
       <section class="skills-section profile-section">
         <h2 class="section-description">Skills</h2>
         <p-multiSelect class="skill-selection-dropdown" [options]="skills2" [(ngModel)]="selectedSkill2" optionLabel="name" defaultLabel="Choose Skills" [showHeader]="false"></p-multiSelect>

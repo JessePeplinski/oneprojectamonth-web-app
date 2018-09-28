@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { AuthService } from '../../core/auth.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -9,7 +10,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class NavigationComponent implements OnInit {
   display = false;
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

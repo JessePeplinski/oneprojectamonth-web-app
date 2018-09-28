@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Observable } from 'rxjs';
 import { Announcement } from '../models/announcement';
 import { announcementsCollectionName } from '../constants/constants';
-import { formatDate } from '@angular/common';
 
 @Injectable()
 export class AnnouncementsService {
 
-  announcementDoc : AngularFirestoreDocument<Announcement>; // single document to delete or update
+  announcementDoc: AngularFirestoreDocument<Announcement>; // single document to delete or update
 
-  constructor(public afs: AngularFirestore) {}
+  constructor(public afs: AngularFirestore) {
+  }
 
   /**
    * Return the announcements from firestore filtered on the month and year in the query params
@@ -27,7 +26,7 @@ export class AnnouncementsService {
       .where('monthCreated', '==', paramDate.month)
       .where('yearCreated', '==', paramDate.year) // FIXME: don't actually make this a string
     )
-    .valueChanges();
+      .valueChanges();
   }
 
   /**
@@ -46,9 +45,9 @@ export class AnnouncementsService {
    */
   createAnnouncement(announcement: Announcement) {
     let id = this.afs.createId();     // Generate a random id from angular firestore
-    var newDate = new Date();
-    var month = newDate.toLocaleString('en-us', {month: "long"}); // get month as a string, ie January
-    var year = newDate.getFullYear().toString(); // get month as a 4 digit year, ie YYYY // FIXME: don't actually make this a string
+    let newDate = new Date();
+    let month = newDate.toLocaleString('en-us', {month: "long"}); // get month as a string, ie January
+    let year = newDate.getFullYear().toString(); // get month as a 4 digit year, ie YYYY // FIXME: don't actually make this a string
 
     // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
     this.afs.collection(announcementsCollectionName).doc(id).set({
@@ -60,9 +59,9 @@ export class AnnouncementsService {
       yearCreated: year,
       isVisible: true
     })
-    .then(function() {
-      console.log("Document succesfully created with ID: " + id);
-    }).catch(function(error) {
+      .then(function () {
+        console.log("Document succesfully created with ID: " + id);
+      }).catch(function (error) {
       console.error("Error creating document: " + error);
     });
   }
@@ -79,9 +78,9 @@ export class AnnouncementsService {
       updatedOn: new Date(),
       content: announcement.content
     })
-    .then(function() {
-      console.log("Document succesfully updated with id: " + announcement.id);
-    }).catch(function(error) {
+      .then(function () {
+        console.log("Document succesfully updated with id: " + announcement.id);
+      }).catch(function (error) {
       console.error("Error updating document: " + error);
     });
   }
@@ -95,9 +94,9 @@ export class AnnouncementsService {
     console.log(`ID TO DELETE: ${announcement.id}`);
     this.announcementDoc = this.afs.doc(`${announcementsCollectionName}/${announcement.id}`);
     this.announcementDoc.delete()
-    .then(function() {
-      console.log("Document succesfully deleted!")
-    }).catch(function(error) {
+      .then(function () {
+        console.log("Document succesfully deleted!")
+      }).catch(function (error) {
       console.error("Error removing document: " + error);
     });
   }

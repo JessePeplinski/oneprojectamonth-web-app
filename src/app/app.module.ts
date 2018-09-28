@@ -47,9 +47,11 @@ import { PanelModule } from 'primeng/panel';
 import { FaqComponent } from './components/faq/faq.component';
 import {MessageService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
-
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
@@ -71,7 +73,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     CoreModule,
     PanelModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    InputTextareaModule,
+    DropdownModule,
+    MultiSelectModule
   ],
   declarations: [
     AppComponent,

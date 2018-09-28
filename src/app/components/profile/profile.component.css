@@ -1,10 +1,70 @@
 /deep/ app-profile{margin-top: 40px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
 /deep/ app-profile h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
-.wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
-.wave svg{fill: #fff; width: 102%; height: auto;}
+.wave{transform: translateY(-100%); position: absolute; width: 100%;}
+.wave svg{fill: #fff; width: 100%; height: auto;}
 section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px 80px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-family: 'pier_sansregular'; font-size: 18px; line-height: 1.4; padding: 40px 0 80px 0;}
+.user-profile-picture-large{display: flex; justify-content: center; align-items: center; width: 125px; height: 125px; border-radius: 100%; border: 4px solid #fff; overflow: hidden; position: absolute; top: -45px; left: 50%; transform: translateX(-50%);}
+.user-profile-picture-large img{width: auto; height: 100%; border-radius: 100%;}
+.user-info-container{margin: -20px 0 40px 0; position: relative; z-index: 100000;}
+.user-info-container h2.user-fullname{font-size: 28px; color: #000; font-family: 'pier_sansbold'; text-align: center;}
+.user-info-container h3.user-email{font-size: 14px; color: #000; font-family: 'pier_sansregular'; text-align: center; margin-top: 5px;}
+.user-info-container .social-links{text-align: center; margin-top: 12px;}
+.user-info-container .social-links i{margin: 0 5px; color: #8F8F8F; font-size: 14px; transition: .25s ease-in-out;}
+.user-info-container .social-links i:hover{cursor: pointer; color: #000;}
+
+button.edit-button{display: flex; justify-content: center; align-items: center; width: 95px; height: 40px; outline: none; border: none; font-size: 16px; font-family: 'pier_sansregular'; letter-spacing: .25px; background: #59538D; color: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); border-radius: 3px; margin-left: auto; transition: .25s ease-in-out;}
+button.edit-button:hover{cursor: pointer; background: #3e3961;}
+button.edit-button i{margin-left: 10px; font-size: 18px;}
+
+.profile-section{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; min-height: 100px; padding: 20px; margin: 25px 0; background: #FAFAFA; border-radius: 5px; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2);}
+.profile-section h2.section-description{font-size: 24px; font-family: 'pier_sansbold'; color: #000; margin-bottom: 20px;}
+.social-profile-container{font-size: 14px; margin: 15px 0;}
+.social-profile-container i{margin-right: 5px; color: #8f8f8f;}
+.social-profile-container label{font-family: 'pier_sansblack'; color: #333; font-size: 14px;} 
+.social-profile-container .ui-inputgroup{margin-top: 12px;}
+.social-profile-container .ui-inputgroup .ui-inputgroup-addon{display: flex; justify-content: center; align-items: center; border: none; padding: 0 10px; font-family: 'pier_sanslight'; }
+.social-profile-container .ui-inputgroup input{display: flex; justify-content: flex-start; align-items: center; min-width: 300px; padding: 8px; border: none; border-radius: 3px; font-family: 'pier_sansmedium'; color: #000; }
+
+.skills-section{position: relative;}
+.skills-section .skill-selection-dropdown{position: absolute; top: 20px; right: 20px;}
+.skills-section /deep/ .skill-selection-dropdown .ui-multiselect{border: none; border-radius: 3px; font-family: 'pier_sansregular';}
+.skills-section /deep/ .skill-selection-dropdown .ui-multiselect .ui-multiselect-label-container{width: 175px; font-family: 'pier_sansregular'; border: none; padding: 0 5px;}
+.skills-section /deep/ .ui-multiselect-panel .ui-multiselect-list{font-family: 'pier_sansregular';}
+.skills-section /deep/ .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item.ui-state-highlight{background: #59538D;}
+.skills-section /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active{background: #3E3961; border: #3E3961;}
+.skills-section /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active:not(.ui-state-disabled):hover{background: #3E3961; border: #3E3961;}
+.skills-section /deep/ .skill-selection-dropdown  .ui-multiselect-panel .ui-multiselect-items-wrapper{width: 175px; max-height: 180px;}
+.skills-section .skill-tags-container{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap;}
+.skills-section .skill-tags-container .skill-tag{display: flex; justify-content: center; align-items: center; background: #EAEAEA; color: #333; border-radius: 3px; font-size: 12px; font-family: 'pier_sansregular'; min-width: 65px; height: 25px; padding: 8px 10px; margin: 10px 12px; position: relative;}
+.skills-section .skill-tags-container .skill-tag i{font-size: 12px; font-weight: 700; margin-right: 5px; transition: .25s ease-in-out;}
+.skills-section .skill-tags-container .skill-tag i:hover{cursor: pointer; color: #000;}
+.skills-section .skill-tags-container .skill-tag:first-of-type{margin-left: 0;}
+.skills-section .skills-description-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; margin-top: 20px;}
+.skills-section .skills-description{width: 65%; max-width: 100%; min-height: 80px; border: 1px solid transparent; transition: .25s ease-in-out;}
+.skills-section .skills-description:focus{border: 1px solid #ccc;}
+.skills-section .skills-description-container label{font-family: 'pier_sansbold'; font-size: 14px; color: #333; margin-bottom: 10px;}
+
+.projects-section .past-projects-container{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap;}
+.projects-section .past-projects-container .past-project-container{display: flex; justify-content: flex-start; align-items: center; width: 198px; height: 138px; border-radius: 5px; background: #EAEAEA; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); margin: 10px 12px; position: relative;}
+.projects-section .past-projects-container .past-project-container:first-of-type{margin-left: 0;}
+.projects-section .past-projects-container .past-project-container a.past-project-overlay{display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 101%; border-radius: 5px; color: #fff; background: #614385;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ opacity: 0; pointer-events: none; position: absolute; top: 0; left: 0; z-index: 10001; transition: .25s ease-in-out;}
+.projects-section .past-projects-container .past-project-container:hover a.past-project-overlay{opacity: .98; pointer-events: auto; cursor: pointer;}
+.projects-section .past-projects-container .past-project-container a.past-project-overlay i{font-size: 32px; margin-bottom: 10px;}
+.projects-section .past-projects-container .past-project-container a.past-project-overlay span{font-family: 'pier_sansregular'; font-size: 18px;}
+.past-projects-container .past-project-container .past-project-thumbnail{width: 100%; max-width: 100%; height: 108px; border-top-left-radius: 5px; border-top-right-radius: 5px; position: absolute; top: 0; left: 0; overflow: hidden;}
+.past-projects-container .past-project-container .past-project-thumbnail img{width: auto; height: 101%; border-top-left-radius: 5px; border-top-right-radius: 5px; position: absolute; top: 0; left: 50%; transform: translateX(-50%);}
+.past-projects-container .past-project-container label.project-title{position: absolute; bottom: 0; left: 0; display: flex; justify-content: center; align-items: center; width: 100%; height: 30px; text-align: center; font-family: 'pier_sansbold'; font-size: 12px; color: #333;}
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 945px) {
   section.page-container{padding: 40px 20px;}

@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Announcement } from '../models/announcement';
 import { CollectionName } from '../constants/collection-name';
+import { CrudService } from '../services/crud.service';
 
 @Injectable()
-export class AnnouncementsService {
+export class AnnouncementsService extends CrudService<Announcement> {
 
-  announcementDoc: AngularFirestoreDocument<Announcement>; // single document to delete or update
+  // announcementDoc: AngularFirestoreDocument<Announcement>; // single document to delete or update
 
-  constructor(public afs: AngularFirestore) {
+  constructor(afs: AngularFirestore) {
+    super(afs);
   }
 
   /**
@@ -19,6 +21,7 @@ export class AnnouncementsService {
   readAllAnnouncements(paramDate) {
 
     // TODO: Figure out if we can leverage the timestamp instead of the monthCreated and yearCreated
+    // TODO: Can we call this function from the Crud Service somehow? Not sure how we would pass the .where() clauses
 
     // return this.afs.collection(announcementsCollectionName).valueChanges();
 
@@ -26,7 +29,7 @@ export class AnnouncementsService {
       .where('monthCreated', '==', paramDate.month)
       .where('yearCreated', '==', paramDate.year) // FIXME: don't actually make this a string
     )
-      .valueChanges();
+    .valueChanges();
   }
 
   /**
@@ -35,7 +38,7 @@ export class AnnouncementsService {
    * @returns observable
    */
   readSingleAnnouncementBasedOnId(id) {
-    return this.afs.doc(`${CollectionName.announcements}/${id}`).valueChanges();
+    return super.readDocument(CollectionName.announcements, id);
   }
 
   /**
@@ -44,13 +47,12 @@ export class AnnouncementsService {
    * @param {Announcement} announcement Announcement
    */
   createAnnouncement(announcement: Announcement) {
-    let id = this.afs.createId();     // Generate a random id from angular firestore
+    let id = this.afs.createId();     // Generate a random id from angular firestore // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
     let newDate = new Date();
     let month = newDate.toLocaleString('en-us', {month: "long"}); // get month as a string, ie January
     let year = newDate.getFullYear().toString(); // get month as a 4 digit year, ie YYYY // FIXME: don't actually make this a string
 
-    // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
-    this.afs.collection(CollectionName.announcements).doc(id).set({
+    let fieldsToCreate = {
       id: id,
       title: announcement.title,
       content: announcement.content,
@@ -58,46 +60,32 @@ export class AnnouncementsService {
       monthCreated: month,
       yearCreated: year,
       isVisible: true
-    })
-      .then(function () {
-        console.log("Document succesfully created with ID: " + id);
-      }).catch(function (error) {
-      console.error("Error creating document: " + error);
-    });
+    };
+
+    super.createDocument(CollectionName.announcements, id, fieldsToCreate);
   }
 
   /**
-   * Update an announcement document in the 'announcements' collection in firestore
+   * Update an announcement document in the 'announcements' collection in firestore by calling the parent service
    *
    * @param {Announcement} announcement Announcement
    */
   updateAnnouncement(announcement: Announcement) {
-    this.announcementDoc = this.afs.doc(`${CollectionName.announcements}/${announcement.id}`);
-    this.announcementDoc.update({
+    let fieldsToUpdate = { 
       title: announcement.title,
       updatedOn: new Date(),
       content: announcement.content
-    })
-      .then(function () {
-        console.log("Document succesfully updated with id: " + announcement.id);
-      }).catch(function (error) {
-      console.error("Error updating document: " + error);
-    });
+    }
+    
+    super.updateDocument(CollectionName.announcements, announcement.id, fieldsToUpdate);
   }
 
   /**
-   * Delete an announcement document in the 'announcements' collection in firestore
+   * Delete an announcement document in the 'announcements' collection in firestore by calling the parent service
    *
    * @param {Announcement} announcement Announcement
    */
   deleteAnnouncment(announcement: Announcement) {
-    console.log(`ID TO DELETE: ${announcement.id}`);
-    this.announcementDoc = this.afs.doc(`${CollectionName.announcements}/${announcement.id}`);
-    this.announcementDoc.delete()
-      .then(function () {
-        console.log("Document succesfully deleted!")
-      }).catch(function (error) {
-      console.error("Error removing document: " + error);
-    });
+    super.deleteDocument(CollectionName.announcements, announcement.id);
   }
 }

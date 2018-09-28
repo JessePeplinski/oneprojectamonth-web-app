@@ -10,11 +10,11 @@ export class CrudService<T> {
 
   resource: AngularFirestoreDocument<T>;
 
-  constructor(private afs: AngularFirestore) {
-  }
+  constructor(protected afs: AngularFirestore) { }
 
-  create<T>(collectionName: CollectionName, data: any) {
-    let id = this.afs.createId();     // Generate a random id from angular firestore
+  createDocument<T>(collectionName: CollectionName, id: string, data: any) {
+    // TODO: Where does the ID belong? Probably makes more sense here.
+    // let id = this.afs.createId();     // Generate a random id from angular firestore
 
     this.afs.collection(collectionName).doc(id).set(data)
       .then(function () {
@@ -25,11 +25,11 @@ export class CrudService<T> {
 
   }
 
-  read<T>(collectionName: CollectionName, id: string | number): Observable<T> {
+  readDocument<T>(collectionName: CollectionName, id: string | number): Observable<T> {
     return this.afs.doc<T>(`${collectionName}/${id}`).valueChanges();
   }
 
-  update(collectionName: CollectionName, id: string | number, data: any) {
+  updateDocument(collectionName: CollectionName, id: string | number, data: any) {
     this.resource = this.afs.doc(`${collectionName}/${id}`);
     this.resource.update(data)
       .then(function () {
@@ -39,7 +39,7 @@ export class CrudService<T> {
     });
   }
 
-  delete(collectionName: CollectionName, id: string | number) {
+  deleteDocument(collectionName: CollectionName, id: string | number) {
     console.log(`ID TO DELETE: ${id}`);
     this.resource = this.afs.doc(`${collectionName}/${id}`);
     this.resource.delete()

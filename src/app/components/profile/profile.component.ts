@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { SelectItem } from 'primeng/api';
+import { AuthService } from '../../core/auth.service';
 
 interface Skill {
   name: string;
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit {
 
   selectedSkill1: Skill;
   selectedSkill2: Skill;
-  constructor() {
+  constructor(public authService: AuthService) {
     // SelectItem API with label-value pairs
     this.skills1 = [
       { label: 'Angular', value: { id: 1, name: 'Angular' } },

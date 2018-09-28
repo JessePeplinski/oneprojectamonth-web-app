@@ -1,110 +1,119 @@
-<h1>Hello, Jeremy!</h1>
-<section class="page-container">
-  <div class="wave">
-    <svg viewBox="0 0 1440 120" aria-hidden="true">
-      <path d="M1440,21.2101911 L1440,120 L0,120 L0,21.2101911 C120,35.0700637 240,42 360,42 C480,42 600,35.0700637 720,21.2101911 C808.32779,12.416393 874.573633,6.87702029 918.737528,4.59207306 C972.491685,1.8109458 1026.24584,0.420382166 1080,0.420382166 C1200,0.420382166 1320,7.35031847 1440,21.2101911 Z"></path>
-    </svg>
-    <div class="user-profile-picture-large">
-      <img src="/assets/img/profile-pic.jpeg" />
-    </div>
-  </div>
-  <div class="user-info-container">
-    <h2 class="user-fullname">Jeremy Conn</h2>
-    <h3 class="user-email">Jconn27@gmail.com</h3>
-    <div class="social-links"><i class="fab fa-twitter"></i><i class="fab fa-slack"></i><i class="fab fa-github"></i></div>
-  </div>
-  <button class="edit-button">Edit <i class="material-icons">edit</i></button>
+<div *ngIf="authService.user | async; then authenticated else guest">
+  <!-- template will replace this div -->
+</div>
 
-  <section class="social-section profile-section">
-    <h2 class="section-description">Social</h2>
-    <div class="twitter-profile-container social-profile-container">
-      <i class="fab fa-twitter"></i><label>Twitter</label>
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">https://twitter.com/</span>
-        <input type="text" pInputText placeholder="Username">
-      </div>
-    </div>
-    <div class="slack-profile-container social-profile-container">
-      <i class="fab fa-slack"></i><label>Slack</label>
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">https://slack.com/</span>
-        <input type="text" pInputText placeholder="Username">
-      </div>
-    </div>
-    <div class="github-profile-container social-profile-container">
-      <i class="fab fa-github"></i><label>Github</label>
-      <div class="ui-inputgroup">
-        <span class="ui-inputgroup-addon">https://github.com/</span>
-        <input type="text" pInputText placeholder="Username">
-      </div>
-    </div>
-  </section>
+<ng-template #guest>
+  <h1>you aren't logged in.. why are you even seeing me???? you should reroute me to the sign up page</h1>
+</ng-template>
 
-  <section class="skills-section profile-section">
-    <h2 class="section-description">Skills</h2>
-    <p-multiSelect class="skill-selection-dropdown" [options]="skills2" [(ngModel)]="selectedSkill2" optionLabel="name" defaultLabel="Choose Skills" [showHeader]="false"></p-multiSelect>
-    <div class="skill-tags-container">
-      <div class="skill-tag">
-        <i class="material-icons clear">clear</i>
-        <label class="skill-label">CSS</label>
-      </div>
-      <div class="skill-tag">
-        <i class="material-icons clear">clear</i>
-        <label class="skill-label">HTML 5</label>
-      </div>
-      <div class="skill-tag">
-        <i class="material-icons clear">clear</i>
-        <label class="skill-label">JavaScript</label>
-      </div>
-      <div class="skill-tag">
-        <i class="material-icons clear">clear</i>
-        <label class="skill-label">Firebase</label>
-      </div>
-      <div class="skill-tag">
-        <i class="material-icons clear">clear</i>
-        <label class="skill-label">Angular 4+</label>
+<ng-template #authenticated>
+  <h1>Hello, {{ user.displayName }}!</h1>
+  <section class="page-container">
+    <div class="wave">
+      <svg viewBox="0 0 1440 120" aria-hidden="true">
+        <path d="M1440,21.2101911 L1440,120 L0,120 L0,21.2101911 C120,35.0700637 240,42 360,42 C480,42 600,35.0700637 720,21.2101911 C808.32779,12.416393 874.573633,6.87702029 918.737528,4.59207306 C972.491685,1.8109458 1026.24584,0.420382166 1080,0.420382166 C1200,0.420382166 1320,7.35031847 1440,21.2101911 Z"></path>
+      </svg>
+      <div class="user-profile-picture-large">
+        <img [src]="user.photoURL">
       </div>
     </div>
-    <section class="skills-description-container">
-      <label>Enter a brief description of your current skillset: </label>
-      <textarea class="skills-description" pInputTextarea maxlength="140"></textarea>
+    <div class="user-info-container">
+      <h2 class="user-fullname">{{ user.displayName }}</h2>
+      <h3 class="user-email">{{ user.email }}</h3>
+      <div class="social-links"><i class="fab fa-twitter"></i><i class="fab fa-slack"></i><i class="fab fa-github"></i></div>
+    </div>
+    <button class="edit-button">Edit <i class="material-icons">edit</i></button>
+
+    <section class="social-section profile-section">
+      <h2 class="section-description">Social</h2>
+      <div class="twitter-profile-container social-profile-container">
+        <i class="fab fa-twitter"></i><label>Twitter</label>
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon">https://twitter.com/</span>
+          <input type="text" pInputText placeholder="Username">
+        </div>
+      </div>
+      <div class="slack-profile-container social-profile-container">
+        <i class="fab fa-slack"></i><label>Slack</label>
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon">https://slack.com/</span>
+          <input type="text" pInputText placeholder="Username">
+        </div>
+      </div>
+      <div class="github-profile-container social-profile-container">
+        <i class="fab fa-github"></i><label>Github</label>
+        <div class="ui-inputgroup">
+          <span class="ui-inputgroup-addon">https://github.com/</span>
+          <input type="text" pInputText placeholder="Username">
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section profile-section">
+      <h2 class="section-description">Skills</h2>
+      <p-multiSelect class="skill-selection-dropdown" [options]="skills2" [(ngModel)]="selectedSkill2" optionLabel="name" defaultLabel="Choose Skills" [showHeader]="false"></p-multiSelect>
+      <div class="skill-tags-container">
+        <div class="skill-tag">
+          <i class="material-icons clear">clear</i>
+          <label class="skill-label">CSS</label>
+        </div>
+        <div class="skill-tag">
+          <i class="material-icons clear">clear</i>
+          <label class="skill-label">HTML 5</label>
+        </div>
+        <div class="skill-tag">
+          <i class="material-icons clear">clear</i>
+          <label class="skill-label">JavaScript</label>
+        </div>
+        <div class="skill-tag">
+          <i class="material-icons clear">clear</i>
+          <label class="skill-label">Firebase</label>
+        </div>
+        <div class="skill-tag">
+          <i class="material-icons clear">clear</i>
+          <label class="skill-label">Angular 4+</label>
+        </div>
+      </div>
+      <section class="skills-description-container">
+        <label>Enter a brief description of your current skillset: </label>
+        <textarea class="skills-description" pInputTextarea maxlength="140"></textarea>
+      </section>
+    </section>
+
+    <section class="projects-section profile-section">
+      <h2 class="section-description">Past Projects</h2>
+      <div class="past-projects-container">
+        <div class="past-project-container">
+          <a class="past-project-overlay">
+            <i class="material-icons"> open_in_new </i>
+            <span>View Project</span>
+          </a>
+          <div class="past-project-thumbnail">
+            <img src="/assets/img/sample-project-thumbnail.JPG" />
+          </div>
+          <label class="project-title">Sample Project Title</label>
+        </div>
+        <div class="past-project-container">
+          <a class="past-project-overlay">
+            <i class="material-icons"> open_in_new </i>
+            <span>View Project</span>
+          </a>
+          <div class="past-project-thumbnail">
+            <img src="/assets/img/sample-project-thumbnail.JPG" />
+          </div>
+          <label class="project-title">Sample Project Title</label>
+        </div>
+        <div class="past-project-container">
+          <a class="past-project-overlay">
+            <i class="material-icons"> open_in_new </i>
+            <span>View Project</span>
+          </a>
+          <div class="past-project-thumbnail">
+            <img src="/assets/img/sample-project-thumbnail.JPG" />
+          </div>
+          <label class="project-title">Sample Project Title</label>
+        </div>
+      </div>
     </section>
   </section>
-
-  <section class="projects-section profile-section">
-    <h2 class="section-description">Past Projects</h2>
-    <div class="past-projects-container">
-      <div class="past-project-container">
-        <a class="past-project-overlay">
-          <i class="material-icons"> open_in_new </i>
-          <span>View Project</span>
-        </a>
-        <div class="past-project-thumbnail">
-          <img src="/assets/img/sample-project-thumbnail.JPG" />
-        </div>
-        <label class="project-title">Sample Project Title</label>
-      </div>
-      <div class="past-project-container">
-        <a class="past-project-overlay">
-          <i class="material-icons"> open_in_new </i>
-          <span>View Project</span>
-        </a>
-        <div class="past-project-thumbnail">
-          <img src="/assets/img/sample-project-thumbnail.JPG" />
-        </div>
-        <label class="project-title">Sample Project Title</label>
-      </div>
-      <div class="past-project-container">
-        <a class="past-project-overlay">
-          <i class="material-icons"> open_in_new </i>
-          <span>View Project</span>
-        </a>
-        <div class="past-project-thumbnail">
-          <img src="/assets/img/sample-project-thumbnail.JPG" />
-        </div>
-        <label class="project-title">Sample Project Title</label>
-      </div>
-    </div>
-  </section>
-
-</section>
+</ng-template>

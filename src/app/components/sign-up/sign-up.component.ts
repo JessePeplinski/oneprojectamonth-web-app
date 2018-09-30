@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
+import { Router } from '@angular/router';
 
 import { FormControl, FormGroup } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
@@ -25,6 +26,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class SignUpComponent implements OnInit {
 
   updateEmail: boolean;
+  sign_up: boolean;
 
   loginForm: any = new FormGroup({
     email: new FormControl(),
@@ -40,7 +42,7 @@ export class SignUpComponent implements OnInit {
     newEmail: new FormControl(),
   });
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() { }
 
@@ -56,4 +58,9 @@ export class SignUpComponent implements OnInit {
   loginWithEmail(value) {
     this.authService.signInWithEmailAndPassword(value);
   }
+  goToProfile() {
+    console.log('here');
+    this.router.navigate(['/profile']);
+  }
+
 }

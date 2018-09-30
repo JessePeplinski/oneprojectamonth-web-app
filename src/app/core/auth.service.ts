@@ -6,37 +6,30 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { errorObject } from 'rxjs/internal-compatibility';
+import { switchMap} from 'rxjs/operators';
+import {errorObject} from 'rxjs/internal-compatibility';
+import {User} from './user';
 
-
-interface Roles {
-  subscriber?: boolean; // read
-  editor?: boolean; // read + write
-  admin?: boolean; 
-}
-
-interface User {
-  uid: string;
-  email: string;
-  photoURL?: string;
-  displayName?: string;
-  favoriteColor?: string;
-  roles: Roles;
-}
+// interface User {
+//   uid: string;
+//   email: string;
+//   photoURL?: string;
+//   displayName?: string;
+//   favoriteColor?: string;
+// }
 
 
 @Injectable()
 export class AuthService {
 
-  user: Observable<User>;
+  user$: Observable<User>;
   isEmailVerified: boolean;
   errorLoggingIn: boolean;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
     //// Get auth data, then get firestore user document || null
-
-    this.user = this.afAuth.authState.pipe(
+    // this.user$ = afAuth.authState;
+    this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -45,6 +38,16 @@ export class AuthService {
         }
       })
     );
+
+    // this.user.pipe(
+    //   switchMap(user => {
+    //     if (user) {
+    //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+    //     } else {
+    //       return of(null);
+    //     }
+    //   })
+    // );
   }
 
   signUpWithEmailAndPassword(value) {
@@ -59,7 +62,6 @@ export class AuthService {
         }, err => reject(err));
     });
   }
-
   signInWithEmailAndPassword(value) {
     // this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password).catch(function(error) {
     //   // Handle Errors here.
@@ -68,13 +70,11 @@ export class AuthService {
     // });
     return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password);
   }
-  
   sendVerificationEmail() {
-    this.afAuth.auth.onAuthStateChanged(function (user) {
+    this.afAuth.auth.onAuthStateChanged(function(user) {
       user.sendEmailVerification();
     });
   }
-
   checkEmailVerification() {
     if (this.afAuth.auth.currentUser != null) {
       console.log('checking verification');
@@ -83,12 +83,11 @@ export class AuthService {
       return this.isEmailVerified;
     }
   }
-
   updateEmail(value) {
-    this.afAuth.auth.currentUser.updateEmail(value.newEmail).then(function () {
+    this.afAuth.auth.currentUser.updateEmail(value.newEmail).then(function() {
       // Update successful.
       console.log('email updated');
-    }).catch(function (error) {
+    }).catch(function(error) {
       // An error happened.
       console.log(error);
     });
@@ -100,21 +99,21 @@ export class AuthService {
     return this.oAuthLogin(provider);
   }
 
+  private oAuthLogin(provider) {
+    return this.afAuth.auth.signInWithPopup(provider)
+      .then((credential) => {
+        this.updateUserData(credential.user);
+      });
+  }
+
   gitHubLogin() {
     const provider = new auth.GithubAuthProvider();
     return this.oAuthLogin(provider);
   }
 
-  private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-      .then((credential) => {
-        this.updateUserData(credential.user)
-      });
-  }
 
   private updateUserData(user) {
     // Sets user data to firestore on login
-
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
     const data: User = {
@@ -122,61 +121,27 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      roles: {
-        subscriber: true
-      }
+      roles: {participant: true}
     }
 
-    // create or update the document in a non destructive way
     return userRef.set(data, { merge: true });
 
   }
-
   signOut() {
     this.afAuth.auth.signOut().then(() => {
       this.router.navigate(['/']);
     });
   }
-
-
-
-
-  // abilities and roles auth
-
-  canRead(user: User): boolean {
-    const allowed = ['admin', 'editor', 'subscriber'];
-    return this.checkAuthorization(user, allowed);
-  }
-
-  canEdit(user: User): boolean {
-    const allowed = ['admin', 'editor'];
-    return this.checkAuthorization(user, allowed);
-  }
-
-  canDelete(user: User): boolean {
-    const allowed = ['admin'];
-    return this.checkAuthorization(user, allowed);
-  }
-
-
-
-  // determines if user has matching role
-  private checkAuthorization(user: User, allowedRoles: string[]): boolean {
-    
-    // if user is not defined
+// determines if user has matching role
+  public checkAuthorization(user: User, allowedRoles: string[]): boolean {
     if (!user) {
       return false;
     }
-
-    // determine if user has the role
     for (const role of allowedRoles) {
-      if (user.roles[role]) {
+      if ( user.roles[role] ) {
         return true;
       }
     }
     return false;
   }
-
-
-
 }

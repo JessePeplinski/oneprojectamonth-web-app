@@ -6,6 +6,7 @@ import { AnnouncementsComponent } from '../announcements.component';
 import { ConfirmationService } from 'primeng/api';
 import { ParamDateService } from '../../../services/param-date.service';
 import { ToastService } from '../../../services/toast.service';
+import {AuthService} from '../../../core/auth.service';
 
 @Component({
   selector: 'app-single-announcement',
@@ -15,8 +16,8 @@ import { ToastService } from '../../../services/toast.service';
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;
 
-  constructor(route: ActivatedRoute, paramDateService: ParamDateService, announcementsService: AnnouncementsService, router: Router, confirmationService: ConfirmationService, toastService: ToastService) {
-    super(route, paramDateService, announcementsService, router, confirmationService, toastService);
+  constructor(route: ActivatedRoute, paramDateService: ParamDateService, announcementsService: AnnouncementsService, router: Router, confirmationService: ConfirmationService, toastService: ToastService, authService: AuthService) {
+    super(route, paramDateService, announcementsService, router, confirmationService, toastService, authService);
   }
 
   ngOnInit() {

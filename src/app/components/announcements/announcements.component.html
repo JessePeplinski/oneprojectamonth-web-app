@@ -45,17 +45,19 @@
         <p>announcement month: {{announcementDate.month}}</p>
         <p>announcement year: {{announcementDate.year}}</p> -->
 
-
-        <a [routerLink]="['/hackathons', paramDateService.month, paramDateService.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
-        <h2>{{announcement.content}}</h2>
-        <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
-        <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
-
-        <button (click)="editAnnouncement($event, announcement)">EDIT ANNOUNCEMENT</button>
+        <div *ngIf="authService.user$ | async as user">
+        <div *ngIf="canRead(user)">
+          <a [routerLink]="['/hackathons', paramDateService.month, paramDateService.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
+          <h2>{{announcement.content}}</h2>
+          <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
+          <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
+          <button (click)="editAnnouncement($event, announcement)" *ngIf="canEdit(user)">EDIT ANNOUNCEMENT</button>
+        </div>
         <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>
 
         <div *ngIf="editState && announcementToEdit.id == announcement.id">
           <!-- UPDATE -->
+
           <form (ngSubmit)="updateAnnouncement(announcement)">
             <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
             <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="content">
@@ -85,5 +87,5 @@
     <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="title">
     <button type="submit" value="Add Announcement">Add Announcement</button>
   </form>
-
+  </div> <!-- END OF AUTH CHECK-->
 </section>

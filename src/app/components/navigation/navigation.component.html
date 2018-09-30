@@ -80,7 +80,7 @@
           </ul>
         </p-panel>
       </li>
-      <div *ngIf="authService.user | async; then authenticated else guest">
+      <div *ngIf="authService.user$ | async; then authenticated else guest">
         <!-- template will replace this div -->
       </div>
       
@@ -91,7 +91,7 @@
     </ul>
   </nav>
   <ng-template #authenticated>
-      <ng-container *ngIf="authService.user | async as user">
+      <ng-container *ngIf="authService.user$ | async as user">
         <a routerLink="/profile" routerLinkActive="active-link" class="user-account-container">
           <div class="user-profile-picture">
               <img [src]="user.photoURL">

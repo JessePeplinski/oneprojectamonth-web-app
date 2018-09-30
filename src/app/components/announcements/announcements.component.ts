@@ -6,6 +6,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ConfirmationService } from 'primeng/api';
 import { ParamDateService } from '../../services/param-date.service';
 import { ToastService } from '../../services/toast.service';
+import {User} from '../../core/user';
+import {AuthService} from '../../core/auth.service';
 
 @Component({
   selector: 'app-announcements',
@@ -38,7 +40,7 @@ export class AnnouncementsComponent implements OnInit {
               protected announcementsService: AnnouncementsService,
               protected router: Router,
               protected confirmationService: ConfirmationService,
-              protected toastService: ToastService) {
+              protected toastService: ToastService, public authService: AuthService) {
     this.announcement = new Announcement();
   }
 
@@ -121,4 +123,23 @@ export class AnnouncementsComponent implements OnInit {
       }
     });
   }
+
+  canCreate(user: User): boolean {
+    const allowed = ['admin'];
+    return this.authService.checkAuthorization(user, allowed);
+  }
+  canRead(user: User): boolean {
+    const allowed = ['admin', 'participant', 'sponsor', 'judge'];
+    return this.authService.checkAuthorization(user, allowed);
+  }
+  canEdit(user: User): boolean {
+    const allowed = ['admin', 'participant'];
+    return this.authService.checkAuthorization(user, allowed);
+  }
+  canDelete(user: User): boolean {
+    const allowed = ['admin'];
+    return this.authService.checkAuthorization(user, allowed);
+  }
+
 }
+

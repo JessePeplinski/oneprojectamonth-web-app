@@ -5,52 +5,50 @@
       <path d="M1440,21.2101911 L1440,120 L0,120 L0,21.2101911 C120,35.0700637 240,42 360,42 C480,42 600,35.0700637 720,21.2101911 C808.32779,12.416393 874.573633,6.87702029 918.737528,4.59207306 C972.491685,1.8109458 1026.24584,0.420382166 1080,0.420382166 C1200,0.420382166 1320,7.35031847 1440,21.2101911 Z"></path>
     </svg>
   </div>
-
-  ------------------LOGIN---------------------
-  <section class="login-container">
-    <div *ngIf="false">
-      <p>TODO: Implement this. User name or password is incorrect. please check and try again</p>
-    </div>
-    <form [formGroup]="loginForm">
-      <div class="form-group">
-        <label for="email"><b>Email: </b></label>
-        <input type="text" placeholder="Enter Email" formControlName="email" required>
-      </div>
-      <br>
-      <div class="form-group">
-        <label for="password"><b>Password: </b></label>
-        <input type="password" placeholder="Enter Password" formControlName="password" required>
-      </div>
-    </form>
-    <button (click)="loginWithEmail(loginForm.value)" type="submit">Login</button>
-    <br><br>
-    <h3>OR</h3>
-    <br>
-    <button (click)="authService.googleLogin()">
-      login With Google
-    </button>
-    <br>
-    <button (click)="authService.gitHubLogin()">
-      login With GitHub
-    </button>
-
-    <p>Don't have an account?</p>
-
-    <button ng-click="">Click here to sign up</button>
-
-  </section>
-
-  <div *ngIf="authService.user | async; then authenticated else guest">
+  <div *ngIf="authService.user$ | async; then authenticated else guest">
     <!-- template will replace this div -->
   </div>
 
 
   <!-- User NOT logged in -->
   <ng-template #guest>
-    ------------------SIGN UP---------------------
     <h3>Howdy, GUEST</h3>
-    <p>Login to get started...</p>
+
+    <div *ngIf="!sign_up">
+      <p>Login to get started...</p>
+      <br><br />
+      ------------------LOGIN---------------------
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label for="email"><b>Email: </b></label>
+          <input type="text" placeholder="Enter Email" formControlName="email" required>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="password"><b>Password: </b></label>
+          <input type="password" placeholder="Enter Password" formControlName="password" required>
+        </div>
+      </form>
+      <button (click)="loginWithEmail(loginForm.value)" type="submit">Login</button>
+      <br><br>
+      <h3>OR</h3>
+      <br>
+      <button (click)="authService.googleLogin()">
+        login With Google
+      </button>
+      <br>
+      <button (click)="authService.gitHubLogin()">
+        login With GitHub
+      </button>
+      <br>
+      <br>
+      <p>Don't have an account?</p>
+      <button (click)='sign_up = !sign_up'>Click here to sign up</button>
+    </div>
+  <div *ngIf="sign_up">
+    <p>sign up to get started...</p>
     <br><br />
+    ------------------SIGN UP---------------------
     <h3>SIGN UP WITH EMAIL AND PASSWORD</h3>
     <br>
 
@@ -69,7 +67,6 @@
       <br>
       <button (click)="signUpWithEmail(signUpForm.value)" type="submit">Sign Up</button>
     </form>
-
     <br><br>
     <h3>OR</h3>
     <br>
@@ -80,20 +77,20 @@
     <button (click)="authService.gitHubLogin()">
       SignUp With GitHub
     </button>
+    <br>
+    <br>
+    <p>Already have an account?</p>
+    <button (click)='sign_up = !sign_up'>Click here to login</button>
+  </div>
   </ng-template>
 
 
   <ng-template #authenticated>
-    ------------------SIGN UP---------------------
-    <div *ngIf="authService.user | async as user">
+    <div *ngIf="authService.user$ | async as user">
       <div *ngIf="authService.checkEmailVerification(); then emailVerified else notVerified"></div>
+
       <ng-template #emailVerified>
-        <h3>Howdy, {{ user.displayName }}</h3>
-        <p>UID: {{ user.email }}</p>
-        <img [src]="user.photoURL">
-        <p>UID: {{ user.uid }}</p>
-        <p>Favorite Color: {{ user?.favoriteColor }} </p>
-        <button (click)="authService.signOut()">Logout</button>
+        {{goToProfile()}}
       </ng-template>
       <ng-template #notVerified>
         <h3>We have sent an email with a verification link to {{ user.email }}! <br>

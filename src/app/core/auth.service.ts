@@ -77,8 +77,8 @@ export class AuthService {
   }
   checkEmailVerification() {
     if (this.afAuth.auth.currentUser != null) {
-      console.log('checking verification');
-      console.log(this.afAuth.auth.currentUser.emailVerified);
+      // console.log('checking verification');
+      // console.log(this.afAuth.auth.currentUser.emailVerified);
       this.isEmailVerified = this.afAuth.auth.currentUser.emailVerified;
       return this.isEmailVerified;
     }

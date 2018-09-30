@@ -59,7 +59,6 @@ export class SignUpComponent implements OnInit {
     this.authService.signInWithEmailAndPassword(value);
   }
   goToProfile() {
-    console.log('here');
     this.router.navigate(['/profile']);
   }
 

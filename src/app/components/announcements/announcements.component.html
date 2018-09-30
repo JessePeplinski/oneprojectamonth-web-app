@@ -7,6 +7,7 @@
     </svg>
   </div>
 
+  <div *ngIf="authService.user$ | async as user">
   <div class="test-read-write">
 
     <!-- READ -->
@@ -45,7 +46,6 @@
         <p>announcement month: {{announcementDate.month}}</p>
         <p>announcement year: {{announcementDate.year}}</p> -->
 
-        <div *ngIf="authService.user$ | async as user">
         <div *ngIf="canRead(user)">
           <a [routerLink]="['/hackathons', paramDateService.month, paramDateService.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
           <h2>{{announcement.content}}</h2>
@@ -82,7 +82,7 @@
   </div>
 
   <!-- CREATE -->
-  <form (ngSubmit)="createAnnouncementInCollection()">
+  <form (ngSubmit)="createAnnouncementInCollection()" *ngIf="canCreate(user)">
     <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
     <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="title">
     <button type="submit" value="Add Announcement">Add Announcement</button>

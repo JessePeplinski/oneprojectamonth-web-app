@@ -11,8 +11,14 @@
         <div class="my-projects-container">
           <ng-container *ngFor="let project of projects | async">
             <div class="single-project-container">
-              <h2 class="project-title">{{project.name}}</h2>
-              <p class="project-description">{{project.description}}</p>
+              <div class="project-thumbnail">
+                <img src="/assets/img/sample-thumbnail2.jpg" />
+              </div>
+              <div class="project-info-container">
+                <h2 class="project-title">{{project.name}}</h2>
+                <h3 class="project-team-members">Team: Jeremy Conn, Jesse Peplinski, Paul Kwoyelo, Wesam Shanaa</h3>
+                <p class="project-description">{{project.description}}</p>
+              </div>
             </div>
           </ng-container>
         </div>

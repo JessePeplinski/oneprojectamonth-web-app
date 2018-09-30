@@ -1,26 +1,26 @@
 [
-    {
-        "name": "Jeremy",
-        "project": "Cool Project 1",
-        "lookingFor": "CSS, HTML",
-        "availableSpots": 2
-    },
-    {
-        "name": "Jeremy",
-        "project": "Cool Project 1",
-        "lookingFor": "CSS, HTML",
-        "availableSpots": 2
-    },
-    {
-        "name": "Jeremy",
-        "project": "Cool Project 1",
-        "lookingFor": "CSS, HTML",
-        "availableSpots": 2
-    },
-    {
-        "name": "Jeremy",
-        "project": "Cool Project 1",
-        "lookingFor": "CSS, HTML",
-        "availableSpots": 2
-    }
+  {
+    "name": "Jeremy",
+    "project": "Cool Project 1",
+    "lookingFor": "CSS, HTML",
+    "availableSpots": 3
+  },
+  {
+    "name": "Paul",
+    "project": "Meh Project 3",
+    "lookingFor": "Angular",
+    "availableSpots": 2
+  },
+  {
+    "name": "Jesse",
+    "project": "AMAZING PROJECT 0",
+    "lookingFor": "CSS, HTML",
+    "availableSpots": 12
+  },
+  {
+    "name": "Wesam",
+    "project": "eviL",
+    "lookingFor": "DOCKER.NET",
+    "availableSpots": 0
+  }
 ]

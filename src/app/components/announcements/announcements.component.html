@@ -58,7 +58,7 @@
         <div *ngIf="editState && announcementToEdit.id == announcement.id">
           <!-- UPDATE -->
 
-          <form (ngSubmit)="updateAnnouncement(announcement)">
+          <form (ngSubmit)="updateAnnouncement(announcement)" *ngIf="canEdit(user)">
             <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
             <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="content">
             <button type="submit" value="Update Announcement">Update Announcement</button>
@@ -69,7 +69,7 @@
           <p-confirmDialog></p-confirmDialog>
 
           <!-- ADd pButton icon="pi pi-times" back to this class-->
-          <button type="button" (click)="deleteAnnouncement($event, announcement);" value="Delete Announcement">Delete
+          <button type="button" (click)="deleteAnnouncement($event, announcement);" value="Delete Announcement" *ngIf="canDelete(user)">Delete
             Announcement</button>
 
         </div>

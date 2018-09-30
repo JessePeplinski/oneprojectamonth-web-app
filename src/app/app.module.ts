@@ -6,7 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
-
+import { Injectable } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 // required firebase module
 import { AngularFireModule } from 'angularfire2';
 
@@ -42,16 +43,17 @@ import { AccordionModule } from 'primeng/accordion';
 import { TabViewModule } from 'primeng/tabview';
 import { PanelModule } from 'primeng/panel';
 import { FaqComponent } from './components/faq/faq.component';
-import {MessageService} from 'primeng/api';
-import {ToastModule} from 'primeng/toast';
-import {InputTextareaModule} from 'primeng/inputtextarea';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
+import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { ParticipantService } from './components/participants/participant.service';
 import { ParamDateService } from './services/param-date.service';
 import { ToastService } from './services/toast.service';
 
@@ -73,9 +75,11 @@ import { ToastService } from './services/toast.service';
     PanelModule,
     ToastModule,
     ConfirmDialogModule,
+    TableModule,
     InputTextareaModule,
     DropdownModule,
-    MultiSelectModule
+    MultiSelectModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -98,7 +102,7 @@ import { ToastService } from './services/toast.service';
     HackathonsComponent,
     ProfileComponent
    ],
-  providers: [ AnnouncementsService, MessageService, ConfirmationService, ParamDateService, ToastService],
+  providers: [ AnnouncementsService, MessageService, ConfirmationService, ParamDateService, ToastService, ParticipantService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

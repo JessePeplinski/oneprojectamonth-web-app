@@ -33,6 +33,31 @@
             </div>
           </ng-container>
         </div>
+        <button class="create-new-project"><i class="material-icons"> add_circle_outline </i> New Project</button>
+        <form class="new-project-form">
+          <h2>New Project</h2>
+
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Project Title</label>
+          </span>
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Project Team Members</label>
+          </span>
+          <div class="input-container">
+            <label>Project Description:</label>
+            <textarea pInputTextarea></textarea>
+          </div>
+          <div class="input-container">
+            <label>Skills Needed:</label>
+            <p-multiSelect class="skill-selection-dropdown" [options]="skills2" [(ngModel)]="selectedSkill2" optionLabel="name"
+              defaultLabel="Choose Needed Skills" [showHeader]="false"></p-multiSelect>
+          </div>
+          <div class="input-container">
+            <p-checkbox name="groupname" value="val1" label="Select this checkbox if you'd like to add team members to your project."></p-checkbox>
+          </div>
+        </form>
       </p-tabPanel>
       <p-tabPanel header="Other Projects">
         <div class="other-projects-container">

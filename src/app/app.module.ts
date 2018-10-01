@@ -46,8 +46,10 @@ import { FaqComponent } from './components/faq/faq.component';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
@@ -79,7 +81,9 @@ import { ToastService } from './services/toast.service';
     ConfirmDialogModule,
     TableModule,
     InputTextareaModule,
+    InputTextModule,
     InputSwitchModule,
+    CheckboxModule,
     DropdownModule,
     MultiSelectModule,
     HttpClientModule

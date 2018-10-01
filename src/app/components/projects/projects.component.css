@@ -18,6 +18,26 @@ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, F
 .projects-container /deep/ p-tabview .ui-tabview{padding: 0;}
 .projects-container /deep/ p-tabview{width: 100%;}
 .projects-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; height: auto; padding: 20px 0;}
+.projects-container button.create-new-project{display: flex; justify-content: center; align-items: center; width: 165px; height: 40px; margin: 20px auto; outline: none; border: none; font-size: 16px; font-family: 'pier_sansregular'; letter-spacing: .25px; background: #59538D; color: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); border-radius: 3px; transition: .25s ease-in-out;}
+.projects-container button.create-new-project:hover{cursor: pointer; background: #3e3961;}
+.projects-container button.create-new-project i{font-size: 17px; margin: 0; padding: 0 8px 0 0; margin-top: 2px;}
+form.new-project-form{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; padding: 20px;}
+form.new-project-form h2{font-size: 24px; font-family: 'pier_sansbold'; color: #000; margin-bottom: 20px;}
+form.new-project-form .ui-float-label{margin: 20px 0; color: #000;}
+form.new-project-form .ui-float-label label{color: #333; font-family: 'pier_sansregular';}
+form.new-project-form .ui-float-label input:focus{outline-color: #59538D; border-color: #59538D;}
+form.new-project-form .input-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; margin: 20px 0;}
+form.new-project-form .input-container label{color: #000; font-size: 14px; font-family: 'pier_sansbold'; margin-bottom: 10px;}
+form.new-project-form .input-container /deep/ p-checkbox label{color: #000; font-size: 14px; font-family: 'pier_sansbold'; margin-bottom: 10px;}
+form.new-project-form .input-container textarea{width: 250px; height: 100px;}
+form.new-project-form .input-container textarea:focus{outline-color: #59538D; border-color: #59538D;}
+form.new-project-form /deep/ .skill-selection-dropdown .ui-multiselect{border: none; border-radius: 3px; font-family: 'pier_sansregular';}
+form.new-project-form /deep/ .skill-selection-dropdown .ui-multiselect .ui-multiselect-label-container{width: 195px; font-family: 'pier_sansregular'; border: none; padding: 0 5px;}
+form.new-project-form /deep/ .ui-multiselect-panel .ui-multiselect-list{font-family: 'pier_sansregular';}
+form.new-project-form /deep/ .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item.ui-state-highlight{background: #59538D;}
+form.new-project-form /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active{background: #3E3961; border: #3E3961;}
+form.new-project-form /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active:not(.ui-state-disabled):hover{background: #3E3961; border: #3E3961;}
+form.new-project-form /deep/ .skill-selection-dropdown  .ui-multiselect-panel .ui-multiselect-items-wrapper{width: 195px; max-height: 180px;}
 .my-projects-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; padding: 20px;}
 .single-project-container{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; width: 65%; height: auto; padding: 0 20px 0px 0; margin: 15px 0; border-radius: 5px; background: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2);}
 .single-project-container .project-thumbnail{display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 125px; height: 125px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; background: #614385;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ overflow: hidden;}
@@ -41,20 +61,12 @@ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, F
 .projects-action-bar /deep/ p-inputSwitch .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider{background: #59538D;}
 .projects-action-bar /deep/ p-inputSwitch .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider:before{background: #fff;}
 .other-projects-container .projects-action-bar /deep/ .skill-selection-dropdown .ui-multiselect{border: none; border-radius: 3px; font-family: 'pier_sansmedium'; font-size: 12px;}
-.other-projects-container .projects-action-bar /deep/ .skill-selection-dropdown .ui-multiselect .ui-multiselect-label-container{width: 175px; font-family: 'pier_sansmedium'; border: none; padding: 0 5px;}
+.other-projects-container .projects-action-bar /deep/ .skill-selection-dropdown .ui-multiselect .ui-multiselect-label-container{display: flex; flex-direction: row; align-items: center; width: 175px; height:30px; font-family: 'pier_sansmedium'; border: none; padding: 0 5px;}
 .other-projects-container .projects-action-bar /deep/ .ui-multiselect-panel .ui-multiselect-list{font-family: 'pier_sansregular';}
 .other-projects-container .projects-action-bar /deep/ .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item.ui-state-highlight{background: #59538D;}
 .other-projects-container .projects-action-bar /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active{background: #3E3961; border: #3E3961;}
 .other-projects-container .projects-action-bar /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active:not(.ui-state-disabled):hover{background: #3E3961; border: #3E3961;}
 .other-projects-container .projects-action-bar /deep/ .skill-selection-dropdown  .ui-multiselect-panel .ui-multiselect-items-wrapper{width: 175px; max-height: 180px;}
-
-
-
-
-
-
-
-
 
 
 

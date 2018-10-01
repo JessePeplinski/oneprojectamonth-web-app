@@ -51,6 +51,8 @@ import { ConfirmationService } from 'primeng/api';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { InputSwitchModule } from 'primeng/inputswitch';
+
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ParticipantService } from './components/participants/participant.service';
@@ -77,6 +79,7 @@ import { ToastService } from './services/toast.service';
     ConfirmDialogModule,
     TableModule,
     InputTextareaModule,
+    InputSwitchModule,
     DropdownModule,
     MultiSelectModule,
     HttpClientModule

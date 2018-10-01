@@ -7,7 +7,7 @@
   </div>
 
   <!--A search bar that needs to be styled-->
-  <input type="text" pInputText size="30" placeholder="Search" (input)="participantsTable.filterGlobal($event.target.value, 'contains')">
+  <input class="table-search" type="text" pInputText size="30" placeholder="Search" (input)="participantsTable.filterGlobal($event.target.value, 'contains')">
 
 
   <div class="participants-table">

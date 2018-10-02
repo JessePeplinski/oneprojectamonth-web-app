@@ -1,4 +1,4 @@
-<h1>Login or Sign Up</h1>
+<h1>Login/Sign Up</h1>
 <section class="page-container">
   <div class="wave">
     <svg viewBox="0 0 1440 120" aria-hidden="true">
@@ -10,78 +10,68 @@
     <!-- template will replace this div -->
   </div>
 
-
   <!-- User NOT logged in -->
   <ng-template #guest>
-    <h3>Howdy, GUEST</h3>
-
-    <div *ngIf="!sign_up">
-      <p>Login to get started...</p>
-      <br><br />
-      ------------------LOGIN---------------------
+    <div class="login-form-container" *ngIf="!sign_up">
+      <h1>Welcome</h1>
+      <h2>Here's where you login</h2>
       <form [formGroup]="loginForm">
         <div class="form-group">
-          <label for="email"><b>Email: </b></label>
-          <input type="text" placeholder="Enter Email" formControlName="email" required>
+          <label for="email">Email</label>
+          <input type="text" placeholder="" formControlName="email" required>
         </div>
-        <br>
         <div class="form-group">
-          <label for="password"><b>Password: </b></label>
-          <input type="password" placeholder="Enter Password" formControlName="password" required>
+          <label for="password">Password</label>
+          <input type="password" placeholder="" formControlName="password" required>
         </div>
       </form>
-      <button (click)="loginWithEmail(loginForm.value)" type="submit">Login</button>
-      <br><br>
-      <h3>OR</h3>
-      <br>
-      <button (click)="authService.googleLogin()">
-        login With Google
-      </button>
-      <br>
-      <button (click)="authService.gitHubLogin()">
-        login With GitHub
-      </button>
-      <br>
-      <br>
-      <p>Don't have an account?</p>
-      <button (click)='sign_up = !sign_up'>Click here to sign up</button>
+      <button class="login-button" (click)="loginWithEmail(loginForm.value)" type="submit">Login</button>
+      <div class="other-login-container">
+        <span>Login with Google/Git</span>
+        <div class="button-container">
+          <button class="other-login" (click)="authService.googleLogin()">
+            <i class="fab fa-google"></i>
+          </button>
+          <button class="other-login" (click)="authService.gitHubLogin()">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </div>
+      <div class="login-signup-switch-container">
+        <span>Don't have an account?</span>
+        <button (click)='sign_up = !sign_up'>Click here to sign up</button>
+      </div>
     </div>
-  <div *ngIf="sign_up">
-    <p>sign up to get started...</p>
-    <br><br />
-    ------------------SIGN UP---------------------
-    <h3>SIGN UP WITH EMAIL AND PASSWORD</h3>
-    <br>
-
+  <div class="signup-form-container" *ngIf="sign_up">
+    <h1>Welcome</h1>
+    <h2>Here's where you sign up</h2>
     <form [formGroup]="signUpForm">
       <div class="form-group">
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" formControlName="email" required>
+        <label for="email">Email</label>
+        <input type="text" placeholder="" formControlName="email" required>
       </div>
-      <br>
       <div class="form-group">
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Must be 6 characters or greater" formControlName="password" required>
+        <label for="password">Password</label>
+        <input type="password" placeholder="" formControlName="password" required>
       </div>
-      <br>
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-      <br>
-      <button (click)="signUpWithEmail(signUpForm.value)" type="submit">Sign Up</button>
+      <span class="terms">By creating an account you agree to our <a href="#" style="color: #59538D">Terms & Privacy</a>.</span>
+      <button class="signup-button" (click)="signUpWithEmail(signUpForm.value)" type="submit">Sign Up</button>
     </form>
-    <br><br>
-    <h3>OR</h3>
-    <br>
-    <button (click)="authService.googleLogin()">
-      SignUp With Google
-    </button>
-    <br>
-    <button (click)="authService.gitHubLogin()">
-      SignUp With GitHub
-    </button>
-    <br>
-    <br>
-    <p>Already have an account?</p>
-    <button (click)='sign_up = !sign_up'>Click here to login</button>
+    <div class="other-login-container">
+      <span>Sign up with Google/Git</span>
+      <div class="button-container">
+        <button class="other-login" (click)="authService.googleLogin()">
+          <i class="fab fa-google"></i>
+        </button>
+        <button class="other-login" (click)="authService.gitHubLogin()">
+          <i class="fab fa-github"></i>
+        </button>
+      </div>
+    </div>
+    <div class="login-signup-switch-container">
+      <span>Already have an account?</span>
+      <button (click)='sign_up = !sign_up'>Click here to login</button>
+    </div>
   </div>
   </ng-template>
 

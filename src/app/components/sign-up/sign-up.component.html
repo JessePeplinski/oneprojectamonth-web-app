@@ -11,22 +11,22 @@
 
   <!-- User NOT logged in -->
   <ng-template #guest>
-    <div class="login-form-container" *ngIf="!sign_up">
-      <h1>Welcome</h1>
-      <h2>Here's where you login</h2>
-      <form [formGroup]="loginForm">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" placeholder="" formControlName="email" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" placeholder="" formControlName="password" required>
-        </div>
-      </form>
-      <button class="login-button" (click)="loginWithEmail(loginForm.value)" type="submit">Login</button>
-      <div class="other-login-container">
-        <span>Login with Google/Git</span>
+        <div class="login-form-container" *ngIf="!sign_up">
+          <h1>Welcome</h1>
+          <h2>Here's where you login</h2>
+          <form [formGroup]="loginForm">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" type="text" placeholder="" formControlName="email" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input id="password" type="password" placeholder="" formControlName="password" required>
+            </div>
+          </form>
+          <button class="login-button" (click)="loginWithEmail(loginForm.value)" type="submit">Login</button>
+          <div class="other-login-container">
+            <span>Login with Google/Git</span>
         <div class="button-container">
           <button class="other-login" (click)="authService.googleLogin()">
             <i class="fab fa-google"></i>
@@ -95,7 +95,7 @@
           <form [formGroup]="changeEmailForm">
             <div class="form-group">
               <label for="newEmail"><b>New Email: </b></label>
-              <input type="text" placeholder="Enter new Email" formControlName="newEmail" required>
+              <input id="newEmail" type="text" placeholder="Enter new Email" formControlName="newEmail" required>
             </div>
             <button (click)="changeEmail(changeEmailForm.value); updateEmail = false" type="submit">Update Email</button>
           </form>

@@ -94,6 +94,7 @@ export class AnnouncementsService extends CrudService<Announcement> {
     }
     
     super.updateDocument(CollectionName.announcements, announcement.id, fieldsToUpdate);
+    super.updateDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.userInfo.uid, announcement.id, fieldsToUpdate);
   }
 
   /**
@@ -103,5 +104,6 @@ export class AnnouncementsService extends CrudService<Announcement> {
    */
   deleteAnnouncment(announcement: Announcement) {
     super.deleteDocument(CollectionName.announcements, announcement.id);
+    super.deleteDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.userInfo.uid, announcement.id);
   }
 }

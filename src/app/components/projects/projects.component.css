@@ -39,7 +39,7 @@ form.new-project-form /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active{backgroun
 form.new-project-form /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active:not(.ui-state-disabled):hover{background: #3E3961; border: #3E3961;}
 form.new-project-form /deep/ .skill-selection-dropdown  .ui-multiselect-panel .ui-multiselect-items-wrapper{width: 195px; max-height: 180px;}
 .my-projects-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; padding: 20px;}
-.single-project-container{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; width: 65%; height: auto; padding: 0 20px 0px 0; margin: 15px 0; border-radius: 5px; background: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2);}
+.single-project-container{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; width: 75%; height: auto; padding: 0 20px 0px 0; margin: 15px 0; border-radius: 5px; background: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2);}
 .single-project-container .project-thumbnail{display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 125px; height: 125px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; background: #614385;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ overflow: hidden;}
 .single-project-container .project-thumbnail img{width: 100%; height: 100%; border-top-left-radius: 5px; border-bottom-left-radius: 5px; display: none;}
 .single-project-container .project-thumbnail span{width: 75px; height: 75px; border-radius: 100%;}
@@ -71,21 +71,28 @@ form.new-project-form /deep/ .skill-selection-dropdown  .ui-multiselect-panel .u
 
 
 
-
 @media screen and (max-width: 945px) {
   section.page-container{padding: 40px 20px;}
+  .single-project-container{width: 100%;}
 }
 
 @media screen and (max-width: 800px) {
   .wave{transform: translateY(-125%);}
+   .other-projects-container .projects-action-bar{min-height: 40px; height: auto; align-items: flex-start;}
+  .other-projects-container .projects-action-bar .project-filter-search{flex-direction: column-reverse; justify-content: flex-start; align-items: flex-start;}
+  .other-projects-container .projects-action-bar .project-filter-search .project-search{margin-bottom: 20px; margin-left: 0;}
 }
 
 @media screen and (max-width: 650px) {
   .wave{transform: translateY(-150%);}
+  .single-project-container{flex-direction: column; padding-right: 0;}
+  .single-project-container .project-thumbnail{width: 100%; border-top-right-radius: 5px; border-bottom-left-radius: 0px;}
 }
 
 @media screen and (max-width: 550px) {
   .wave{transform: translateY(-175%);}
+  .other-projects-container .projects-action-bar{flex-direction: column-reverse;}
+  .projects-action-bar .fill-teams-toggle-container{margin-bottom: 20px;}
 }
 @media screen and (max-width: 450px) {
   .wave{transform: translateY(-190%);}

@@ -3,14 +3,27 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 import { Announcement } from '../models/announcement';
 import { CollectionName } from '../constants/collection-name';
 import { CrudService } from '../services/crud.service';
+import { AuthService } from '../core/auth.service';
 
 @Injectable()
 export class AnnouncementsService extends CrudService<Announcement> {
 
   // announcementDoc: AngularFirestoreDocument<Announcement>; // single document to delete or update
 
-  constructor(afs: AngularFirestore) {
+  public userInfo;
+
+  constructor(afs: AngularFirestore, authService: AuthService) {
     super(afs);
+
+    // TODO: instead of subscribing each time, can we just create a user object and get at those fields with this.authSerice.user.field?
+    // This is an expensive operation to have to call the auth service each time the page is loaded. 
+    this.userInfo = authService.user$.subscribe(user => {
+        this.userInfo.uid = user.uid,
+        this.userInfo.email = user.email,
+        this.userInfo.displayName = user.displayName,
+        this.userInfo.photoURL = user.photoURL,
+        this.userInfo.roles = user.roles
+    });
   }
 
   /**
@@ -59,10 +72,49 @@ export class AnnouncementsService extends CrudService<Announcement> {
       dateCreated: newDate,
       monthCreated: month,
       yearCreated: year,
+      createdBy: this.userInfo.displayName,
       isVisible: true
     };
 
     super.createDocument(CollectionName.announcements, id, fieldsToCreate);
+
+    // let userAnnouncement = {
+    //   id: id,
+    //   title: announcement.title,
+    //   content: announcement.content
+    // }
+
+    let userFieldsToUpdate = {
+      announcementsCreated: {
+        id: {
+          id: id,
+          title: announcement.title,
+          content: announcement.content
+        }
+      }
+    }
+
+    // object within array
+    // let userFieldsToUpdate = {
+    //   announcementsCreated: [{
+    //     announcement: {
+    //       id: id,
+    //       title: announcement.title,
+    //       content: announcement.content
+    //     }
+    //   }]
+    // }
+
+    // arary
+    // let userFieldsToUpdate = {
+    //   announcementsCreated: [
+    //       id,
+    //       announcement.title,
+    //       announcement.content
+    //   ]
+    // }
+
+    super.updateDocument(CollectionName.users, this.userInfo.uid, userFieldsToUpdate);
   }
 
   /**

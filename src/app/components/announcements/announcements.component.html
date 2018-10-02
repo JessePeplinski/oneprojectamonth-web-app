@@ -50,6 +50,7 @@
           <a [routerLink]="['/hackathons', paramDateService.month, paramDateService.year, 'announcements', announcement.id, announcement.title]"><h2>{{announcement.title}}</h2></a>
           <h2>{{announcement.content}}</h2>
           <h2>Created On: {{announcement.dateCreated.toDate() | date: 'medium'}}</h2>
+          <h2>Created By: {{announcement.createdBy}}</h2>
           <h2 *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
           <button (click)="editAnnouncement($event, announcement)" *ngIf="canEdit(user)">EDIT ANNOUNCEMENT</button>
         </div>

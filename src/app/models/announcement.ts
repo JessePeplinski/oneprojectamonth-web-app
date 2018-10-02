@@ -4,5 +4,6 @@ export class Announcement {
   content: string;
   dateCreated: Date;
   isVisible: boolean;
+  createdBy: string;
   updatedOn?: Date;
 }

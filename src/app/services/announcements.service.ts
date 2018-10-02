@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Announcement } from '../models/announcement';
 import { CollectionName } from '../constants/collection-name';
+import { SubCollectionName } from '../constants/collection-name';
 import { CrudService } from '../services/crud.service';
 import { AuthService } from '../core/auth.service';
 
@@ -60,13 +61,13 @@ export class AnnouncementsService extends CrudService<Announcement> {
    * @param {Announcement} announcement Announcement
    */
   createAnnouncement(announcement: Announcement) {
-    let id = this.afs.createId();     // Generate a random id from angular firestore // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
+    let randomlyGeneratedId = this.afs.createId();     // Generate a random id from angular firestore // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
     let newDate = new Date();
     let month = newDate.toLocaleString('en-us', {month: "long"}); // get month as a string, ie January
     let year = newDate.getFullYear().toString(); // get month as a 4 digit year, ie YYYY // FIXME: don't actually make this a string
 
     let fieldsToCreate = {
-      id: id,
+      id: randomlyGeneratedId,
       title: announcement.title,
       content: announcement.content,
       dateCreated: newDate,
@@ -76,45 +77,8 @@ export class AnnouncementsService extends CrudService<Announcement> {
       isVisible: true
     };
 
-    super.createDocument(CollectionName.announcements, id, fieldsToCreate);
-
-    // let userAnnouncement = {
-    //   id: id,
-    //   title: announcement.title,
-    //   content: announcement.content
-    // }
-
-    let userFieldsToUpdate = {
-      announcementsCreated: {
-        id: {
-          id: id,
-          title: announcement.title,
-          content: announcement.content
-        }
-      }
-    }
-
-    // object within array
-    // let userFieldsToUpdate = {
-    //   announcementsCreated: [{
-    //     announcement: {
-    //       id: id,
-    //       title: announcement.title,
-    //       content: announcement.content
-    //     }
-    //   }]
-    // }
-
-    // arary
-    // let userFieldsToUpdate = {
-    //   announcementsCreated: [
-    //       id,
-    //       announcement.title,
-    //       announcement.content
-    //   ]
-    // }
-
-    super.updateDocument(CollectionName.users, this.userInfo.uid, userFieldsToUpdate);
+    super.createDocument(CollectionName.announcements, randomlyGeneratedId, fieldsToCreate);
+    super.createDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.userInfo.uid, randomlyGeneratedId, fieldsToCreate);
   }
 
   /**

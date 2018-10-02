@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/internal/Observable';
 import { CollectionName } from '../constants/collection-name';
+import { SubCollectionName } from '../constants/collection-name';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,16 @@ export class CrudService<T> {
     this.resource.update(data)
       .then(function () {
         console.log("Document succesfully updated with id: " + id);
+      }).catch(function (error) {
+      console.error("Error updating document: " + error);
+    });
+  }
+
+  createDocumentInSubCollection(primaryCollection: CollectionName, nestedCollection: SubCollectionName, userID: string, randomlyGeneratedID: string, data: any) {
+    this.resource = this.afs.doc(`${primaryCollection}/${userID}`).collection(nestedCollection).doc(randomlyGeneratedID);
+    this.resource.set(data)
+      .then(function () {
+        console.log("Document succesfully updated with USER id: " + userID);
       }).catch(function (error) {
       console.error("Error updating document: " + error);
     });

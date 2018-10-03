@@ -8,6 +8,7 @@
   <section class="projects-container">
     <p-tabView>
       <p-tabPanel header="My Projects">
+        <ng-template pTemplate="content">
         <div class="my-projects-container">
           <ng-container *ngFor="let project of projects | async">
             <div class="single-project-container">
@@ -58,8 +59,10 @@
             <p-checkbox name="groupname" value="val1" label="Select this checkbox if you'd like to add team members to your project."></p-checkbox>
           </div>
         </form>
+        </ng-template>
       </p-tabPanel>
       <p-tabPanel header="Other Projects">
+        <ng-template pTemplate="content">
         <div class="other-projects-container">
           <div class="projects-action-bar">
             <div class="project-filter-search">
@@ -141,6 +144,7 @@
             </div>
           </ng-container>
         </div>
+        </ng-template>
       </p-tabPanel>
     </p-tabView>
   </section>

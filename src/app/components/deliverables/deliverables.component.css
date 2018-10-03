@@ -2,9 +2,34 @@
 /deep/ app-deliverables h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
 .wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
 .wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px 80px; background: #fff; color: #000; position: relative;}
+section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-family: 'pier_sansregular'; font-size: 18px; line-height: 1.4; padding: 40px 0 80px 0;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li{ background: #fff; color: #000; border: none; border-radius: 3px; padding: 0; margin: 0px;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li i{font-size: 14px; padding-left: 8px; }
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li i.completed{color: #34A835;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li i.error{color: #C21120;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li a{display: flex; flex-direction: row; justify-content: center; align-items: center; padding: 10px 15px;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li:hover{background: #ccc; border: none !important; border-radius: 3px; padding: 0;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li:after{content: ''; display: block; opacity: 0; width: 0%; height: 2px; background: #614385;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; position: absolute; bottom: 2px; left: 50%; transform: translate(-50%, 0px); -webkit-transform: translate(-50%, 0px); transition: .25s ease-in-out;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li.ui-state-active:after{width: 80%; opacity: 1;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li.ui-state-active:hover{background: #fff; border: none; border-radius: 3px; padding: 0;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li.ui-state-active a{color: #000; font-weight: 700; padding: 10px 15px;}
+.deliverables-container /deep/ p-tabview .ui-tabview .ui-tabview-panels{margin-top: 20px; border: 1px solid #e6e6e6; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); border-radius: 3px; background: #FAFAFA; padding: 0;}
+.deliverables-container /deep/ p-tabview .ui-tabview{padding: 0;}
+.deliverables-container /deep/ p-tabview{width: 100%;}
+.deliverables-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; height: auto; padding: 20px 0;}
+
+.weekly-deliverable-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; padding: 20px;}
+.weekly-deliverable-container > h2{font-size: 28px; font-family: 'pier_sansbold'; color: #000;}
+
+
+
+
+
+
 
 @media screen and (max-width: 945px) {
   section.page-container{padding: 40px 20px;}

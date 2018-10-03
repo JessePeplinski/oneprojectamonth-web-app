@@ -106,4 +106,33 @@ export class AnnouncementsService extends CrudService<Announcement> {
     super.deleteDocument(CollectionName.announcements, announcement.id);
     super.deleteDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.userInfo.uid, announcement.id);
   }
+
+  /**
+   * Check if the announcementsCreated subcollection exists within the user ID.
+   * If it does, then the user should not be able to create anymore announcements.
+   * Then add it to the announcments component create function to check before displaying the form field.
+   */
+  public checkIfSubCollectionExists() {
+  
+    console.log(`User collection name: ${CollectionName.users} // User ID: ${this.userInfo.uid} // Subcollection name: ${SubCollectionName.announcementsCreated}`);
+
+    // https://stackoverflow.com/questions/47997748/is-possible-to-check-if-a-collection-or-sub-collection-exists
+    // https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot
+
+    // This works
+    let promise = this.afs.collection(CollectionName.users).doc(this.userInfo.uid).collection(SubCollectionName.announcementsCreated).ref.get().then(query => {
+      if(query.empty) {
+        console.log("NO COLLECTIONS");
+        return false;
+      }
+      else {
+        console.log("FOUND COLLECTIONS");
+        return true;
+      }
+    }).catch(function (error) {
+      console.log("Error getting collection:", error);
+    });
+
+    return promise;
+  }
 }

@@ -9,5 +9,7 @@ export interface User {
   email: string;
   photoURL?: string;
   displayName?: string;
+  firstName?: string;
+  lastName?: string;
   roles: Roles;
 }

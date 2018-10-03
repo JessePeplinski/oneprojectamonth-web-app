@@ -8,7 +8,7 @@
 
 <ng-template #authenticated>
   <ng-container *ngIf="authService.user$ | async as user">
-    <h1>Hello, {{ user.displayName }}!</h1>
+    <h1>Hello, {{ user.firstName }}!</h1>
     <section class="page-container">
       <div class="wave">
         <svg viewBox="0 0 1440 120" aria-hidden="true">

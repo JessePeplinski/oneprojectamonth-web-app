@@ -50,18 +50,31 @@ export class AnnouncementsComponent implements OnInit {
 
     // Call the announcements service
     this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDateService);
+
+    // this.announcementsService.checkIfSubCollectionExists(); // TODO: i want to just return a boolean here but i cant because i can't read the user ID. it returns as undefined
   }
 
   /**
    * Check if title and announcement has content, Call the announcementsService to create an announcement, and clear the form fields after creating an announcement.
    */
   createAnnouncementInCollection() {
-    // Basic validation. Make sure we have a title and content filled in
     if (this.announcement.title != '' && this.announcement.content != '') {
       this.announcementsService.createAnnouncement(this.announcement);
       this.toastService.createToastAlert('createAnnouncementToastAlert', 'Announcement', this.announcement.title);
       this.clearForms();
     }
+  }
+
+  // TODO: This doesn't actually do anything. We need to check it within ngOnInit. 
+  testFlagSettingWithPromise() {
+    this.announcementsService.checkIfSubCollectionExists().then(hasCreatedCollection => {
+      if(hasCreatedCollection == true) {
+        // set some flag to false
+      }
+      else if(hasCreatedCollection == false) {
+        // set some flag to true
+      }
+    })
   }
 
   /**

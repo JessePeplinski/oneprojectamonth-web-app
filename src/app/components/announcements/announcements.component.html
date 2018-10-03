@@ -12,9 +12,6 @@
 
     <!-- READ -->
 
-    <p>You should display my user account level here! If I'm an ADMIN, i should be able to create, update, and delete.</p>
-    <p>If I'm a USER, I should be able to READ.</p>
-
     <p-toast position="top-center" key="createAnnouncementToastAlert"></p-toast>
     <p-toast position="top-center" key="updateAnnouncementToastAlert"></p-toast>
     <p-toast position="top-center" key="deleteAnnouncementToastAlert"></p-toast>
@@ -83,10 +80,13 @@
   </div>
 
   <!-- CREATE -->
-  <form (ngSubmit)="createAnnouncementInCollection()" *ngIf="canCreate(user)">
-    <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
-    <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="title">
-    <button type="submit" value="Add Announcement">Add Announcement</button>
-  </form>
+  <!-- TODO: Update these flags -->
+  <!-- <ng-container *ngIf="isAnnouncementVisible"> -->
+    <form (ngSubmit)="createAnnouncementInCollection()" *ngIf="canCreate(user)">
+      <input type="text" placeholder="Add title" [(ngModel)]="announcement.title" name="title">
+      <input type="text" placeholder="Add content" [(ngModel)]="announcement.content" name="title">
+      <button type="submit" value="Add Announcement">Add Announcement</button>
+    </form>
+  <!-- </ng-container> -->
   </div> <!-- END OF AUTH CHECK-->
 </section>

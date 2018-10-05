@@ -1,23 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-
 import { Observable, of } from 'rxjs';
-import { switchMap} from 'rxjs/operators';
-import {errorObject} from 'rxjs/internal-compatibility';
-import {User} from './user';
-
-// interface User {
-//   uid: string;
-//   email: string;
-//   photoURL?: string;
-//   displayName?: string;
-//   favoriteColor?: string;
-// }
-
+import { switchMap } from 'rxjs/operators';
+import { User } from './user';
 
 @Injectable()
 export class AuthService {
@@ -38,16 +26,10 @@ export class AuthService {
         }
       })
     );
+  }
 
-    // this.user.pipe(
-    //   switchMap(user => {
-    //     if (user) {
-    //       return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
-    //     } else {
-    //       return of(null);
-    //     }
-    //   })
-    // );
+  getUser(): Observable<User> {
+    return this.user$;
   }
 
   signUpWithEmailAndPassword(value) {
@@ -62,6 +44,7 @@ export class AuthService {
         }, err => reject(err));
     });
   }
+
   signInWithEmailAndPassword(value) {
     console.log('here');
     // this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password).catch(function(error) {
@@ -72,7 +55,7 @@ export class AuthService {
     // return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password);
     // return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password);
     this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
-      .catch(function(error) {
+      .catch(function (error) {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -84,11 +67,13 @@ export class AuthService {
         console.log(error);
       });
   }
+
   sendVerificationEmail() {
-    this.afAuth.auth.onAuthStateChanged(function(user) {
+    this.afAuth.auth.onAuthStateChanged(function (user) {
       user.sendEmailVerification();
     });
   }
+
   checkEmailVerification() {
     if (this.afAuth.auth.currentUser != null) {
       // console.log('checking verification');
@@ -97,11 +82,12 @@ export class AuthService {
       return this.isEmailVerified;
     }
   }
+
   updateEmail(value) {
-    this.afAuth.auth.currentUser.updateEmail(value.newEmail).then(function() {
+    this.afAuth.auth.currentUser.updateEmail(value.newEmail).then(function () {
       // Update successful.
       console.log('email updated');
-    }).catch(function(error) {
+    }).catch(function (error) {
       // An error happened.
       console.log(error);
     });
@@ -146,21 +132,23 @@ export class AuthService {
       roles: {participant: true}
     };
 
-    return userRef.set(data, { merge: true });
+    return userRef.set(data, {merge: true});
 
   }
+
   signOut() {
     this.afAuth.auth.signOut().then(() => {
       this.router.navigate(['/']);
     });
   }
+
 // determines if user has matching role
   public checkAuthorization(user: User, allowedRoles: string[]): boolean {
     if (!user) {
       return false;
     }
     for (const role of allowedRoles) {
-      if ( user.roles[role] ) {
+      if (user.roles[role]) {
         return true;
       }
     }

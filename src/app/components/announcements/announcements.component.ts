@@ -6,8 +6,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ConfirmationService } from 'primeng/api';
 import { ParamDateService } from '../../services/param-date.service';
 import { ToastService } from '../../services/toast.service';
-import {User} from '../../core/user';
-import {AuthService} from '../../core/auth.service';
+import { User } from '../../core/user';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-announcements',
@@ -65,13 +65,13 @@ export class AnnouncementsComponent implements OnInit {
     }
   }
 
-  // TODO: This doesn't actually do anything. We need to check it within ngOnInit. 
+  // TODO: This doesn't actually do anything. We need to check it within ngOnInit.
   testFlagSettingWithPromise() {
     this.announcementsService.checkIfSubCollectionExists().then(hasCreatedCollection => {
-      if(hasCreatedCollection == true) {
+      if (hasCreatedCollection == true) {
         // set some flag to false
       }
-      else if(hasCreatedCollection == false) {
+      else if (hasCreatedCollection == false) {
         // set some flag to true
       }
     })
@@ -141,14 +141,17 @@ export class AnnouncementsComponent implements OnInit {
     const allowed = ['admin'];
     return this.authService.checkAuthorization(user, allowed);
   }
+
   canRead(user: User): boolean {
     const allowed = ['admin', 'participant', 'sponsor', 'judge'];
     return this.authService.checkAuthorization(user, allowed);
   }
+
   canEdit(user: User): boolean {
     const allowed = ['admin', 'participant'];
     return this.authService.checkAuthorization(user, allowed);
   }
+
   canDelete(user: User): boolean {
     const allowed = ['admin'];
     return this.authService.checkAuthorization(user, allowed);

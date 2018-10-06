@@ -1,0 +1,32 @@
+@import "../projects.component.css";
+
+button.create-new-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 165px;
+  height: 40px;
+  margin: 20px auto;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  font-family: 'pier_sansregular';
+  letter-spacing: .25px;
+  background: #59538D;
+  color: #fff;
+  box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  transition: .25s ease-in-out;
+}
+
+button.create-new-project:hover {
+  cursor: pointer;
+  background: #3e3961;
+}
+
+button.create-new-project i {
+  font-size: 17px;
+  margin: 0;
+  padding: 0 8px 0 0;
+  margin-top: 2px;
+}

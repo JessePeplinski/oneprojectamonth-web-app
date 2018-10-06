@@ -107,7 +107,9 @@ export class AnnouncementsService extends CrudService<Announcement> {
    * If it does, then the user should not be able to create anymore announcements.
    * Then add it to the announcments component create function to check before displaying the form field.
    */
-  public checkIfSubCollectionExists() {
+  public checkIfSubCollectionExists(): boolean {
+
+    let subCollectionExists: boolean;
 
     console.log(`User collection name: ${CollectionName.users} // User ID: ${this.user.uid} // Subcollection name: ${SubCollectionName.announcementsCreated}`);
 
@@ -126,8 +128,11 @@ export class AnnouncementsService extends CrudService<Announcement> {
       }
     }).catch(function (error) {
       console.log("Error getting collection:", error);
+      return false;
     });
 
-    return promise;
+    promise.then(exists => subCollectionExists = exists);
+
+    return subCollectionExists;
   }
 }

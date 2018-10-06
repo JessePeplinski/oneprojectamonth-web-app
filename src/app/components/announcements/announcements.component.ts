@@ -67,14 +67,7 @@ export class AnnouncementsComponent implements OnInit {
 
   // TODO: This doesn't actually do anything. We need to check it within ngOnInit.
   testFlagSettingWithPromise() {
-    this.announcementsService.checkIfSubCollectionExists().then(hasCreatedCollection => {
-      if (hasCreatedCollection == true) {
-        // set some flag to false
-      }
-      else if (hasCreatedCollection == false) {
-        // set some flag to true
-      }
-    })
+    this.announcementsService.checkIfSubCollectionExists();
   }
 
   /**

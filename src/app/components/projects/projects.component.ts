@@ -69,7 +69,7 @@ export class ProjectsComponent implements OnInit {
       return ref;
     });
     this.projects = this.projectsCollection.valueChanges();
-    this.auth.user.subscribe(res => console.log(res));
+    // this.auth.user.subscribe(res => console.log(res));
   }
 
 }

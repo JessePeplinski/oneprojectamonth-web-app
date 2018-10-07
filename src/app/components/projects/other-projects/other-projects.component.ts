@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Project } from '../project';
 import { SelectItem } from 'primeng/api';
 import { Skills } from '../../../constants/skills.constant';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-other-projects',
@@ -11,16 +12,17 @@ import { Skills } from '../../../constants/skills.constant';
 })
 export class OtherProjectsComponent implements OnInit {
 
-  @Input() projects: Observable<Project[]>;
   checked: boolean;
   skills: SelectItem[] = Skills;
   selectedSkills: SelectItem[] = [];
+  projects: Observable<Project[]>;
 
 
-  constructor() {
+  constructor(private afs: AngularFirestore) {
   }
 
   ngOnInit() {
+    this.projects = this.afs.collection<Project>('projects').valueChanges();
   }
 
 }

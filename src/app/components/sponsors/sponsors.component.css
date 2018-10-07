@@ -6,7 +6,7 @@ a.sponsors-cta:hover{box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(
 a.sponsors-cta span{color: #40296E;}
 .wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
 .wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
+section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 150px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-size: 16px; line-height: 1.2;}
 h2.section-header{font-family: 'pier_sansbold'; font-size: 36px; padding: 40px 0 40px 0; text-align: center;}

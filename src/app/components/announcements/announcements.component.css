@@ -5,7 +5,7 @@ section.countdown-section time{font-family: 'pier_sansbold'; font-size: 92px; co
 section.countdown-section time span{font-family: 'pier_sansmedium'; font-size: 36px; color: #fff;}
 .wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
 .wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
+section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 150px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px; position: relative;}
 section.page-container > h1:after{content: ''; display: block; opacity: 1; width: 80%; height: 2px; background: #614385;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; position: absolute; bottom: -7px; left: 50%; transform: translate(-50%, 0px); -webkit-transform: translate(-50%, 0px); transition: .25s ease-in-out;}
 .test-read-write{margin: 40px 0; display: flex; flex-direction: column;}
@@ -20,14 +20,16 @@ button i{margin-left: 10px; font-size: 18px;}
 
 
  .announcements-container{display: flex; flex-direction: column; justify-content: flex-start; align-content: flex-start; width: 100%; height: auto; margin-top: 40px;}
- .single-announcement{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; min-height: 80px; padding: 20px; margin: 15px 0; border-radius: 5px; border: 1px solid #eeeeee; background: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); position: relative;}
+ .single-announcement{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; min-height: 80px; padding: 24px 20px 20px 20px; margin: 15px 0; border-radius: 5px; border: 1px solid #eeeeee; background: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); position: relative;}
  .single-announcement .announcement-title{color: #000; font-family: 'pier_sansbold'; font-size: 21px; text-decoration: none;}
  .single-announcement .announcement-title::first-letter{text-transform: uppercase;}
  .single-announcement .announcement-created-by{font-size: 12px; color: #000; font-style: italic; font-family: 'pier_sansregular'; padding: 8px 0 20px 0;}
- .single-announcement .annoucement-last-updated{position: absolute; top: 10px; right: 20px; font-family: 'pier_sansbold'; font-size: 12px; font-style: italic; color: #666;}
+ .single-announcement .annoucement-last-updated{position: absolute; top: 14px; right: 20px; font-family: 'pier_sansbold'; font-size: 12px; font-style: italic; color: #666;}
  .single-announcement p.announcement-content{font-size: 16px; color: #000; font-family: 'pier_sansregular'; line-height: 1.2;}
  .single-announcement p.announcement-content::first-letter{text-transform: uppercase;}
-
+ .single-announcement:after{content: ''; width: 100%; height: 4px; background: #614385;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ position: absolute; top: 0; left: 0; border-radius: 5px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;}
  @media screen and (max-width: 945px) {
   section.page-container{padding: 40px 20px;}
 }

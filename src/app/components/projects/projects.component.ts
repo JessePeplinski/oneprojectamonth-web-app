@@ -5,6 +5,7 @@ import { Project } from './project';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { SelectItem } from 'primeng/api';
 import { Skills } from '../../constants/skills.constant';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 interface Skill {
   name: string;
@@ -38,7 +39,8 @@ export class ProjectsComponent implements OnInit {
   projectsCollection: AngularFirestoreCollection<Project>;
   projects: Observable<Project[]>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,
+              private auth: AngularFireAuth) {
     this.skills1 = Skills;
 
     // An array of cities
@@ -67,6 +69,7 @@ export class ProjectsComponent implements OnInit {
       return ref;
     });
     this.projects = this.projectsCollection.valueChanges();
+    this.auth.user.subscribe(res => console.log(res));
   }
 
 }

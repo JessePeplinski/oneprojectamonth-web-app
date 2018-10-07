@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Announcement } from '../models/announcement';
 import { CollectionName, SubCollectionName } from '../constants/collection-name';
-import { CrudService } from '../services/crud.service';
+import { CrudService } from './crud.service';
 import { AuthService } from '../core/auth.service';
 import { User } from '../core/user';
 
@@ -107,17 +107,14 @@ export class AnnouncementsService extends CrudService<Announcement> {
    * If it does, then the user should not be able to create anymore announcements.
    * Then add it to the announcments component create function to check before displaying the form field.
    */
-  public checkIfSubCollectionExists(): boolean {
-
-    let subCollectionExists: boolean;
-
+  public checkIfSubCollectionExists(): Promise<boolean> {
     console.log(`User collection name: ${CollectionName.users} // User ID: ${this.user.uid} // Subcollection name: ${SubCollectionName.announcementsCreated}`);
 
     // https://stackoverflow.com/questions/47997748/is-possible-to-check-if-a-collection-or-sub-collection-exists
     // https://firebase.google.com/docs/reference/js/firebase.firestore.QuerySnapshot
 
     // This works
-    let promise = this.afs.collection(CollectionName.users).doc(this.user.uid).collection(SubCollectionName.announcementsCreated).ref.get().then(query => {
+    return this.afs.collection(CollectionName.users).doc(this.user.uid).collection(SubCollectionName.announcementsCreated).ref.get().then(query => {
       if (query.empty) {
         console.log("NO COLLECTIONS");
         return false;
@@ -130,9 +127,5 @@ export class AnnouncementsService extends CrudService<Announcement> {
       console.log("Error getting collection:", error);
       return false;
     });
-
-    promise.then(exists => subCollectionExists = exists);
-
-    return subCollectionExists;
   }
 }

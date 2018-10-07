@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Project } from './project';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { SelectItem } from 'primeng/api';
+import { Skills } from '../../constants/skills.constant';
 
 interface Skill {
   name: string;
@@ -38,44 +39,26 @@ export class ProjectsComponent implements OnInit {
   projects: Observable<Project[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.skills1 = [
-      { label: 'Angular', value: { id: 1, name: 'Angular' } },
-      { label: 'CSS', value: { id: 2, name: 'CSS' } },
-      { label: 'HTML', value: { id: 3, name: 'HTML' } },
-      { label: 'JS', value: { id: 4, name: 'JS' } },
-      { label: 'React', value: { id: 5, name: 'React' } },
-      { label: 'Design', value: { id: 5, name: 'Design' } },
-      { label: 'Project Mgmt', value: { id: 5, name: 'Project Mgmt' } },
-      { label: 'Full Stack', value: { id: 5, name: 'Full Stack' } },
-      { label: 'SQL', value: { id: 5, name: 'SQL' } },
-      { label: 'Android', value: { id: 5, name: 'Android' } },
-      { label: 'iOS', value: { id: 5, name: 'iOS' } },
-      { label: 'NodeJS', value: { id: 5, name: 'NodeJS' } },
-      { label: 'MongoDB', value: { id: 5, name: 'MongoDB' } },
-      { label: 'Blockchain', value: { id: 5, name: 'Blockchain' } },
-      { label: 'Bot Development', value: { id: 5, name: 'Bot Development' } },
-      { label: 'Marketing', value: { id: 5, name: 'Marketing' } }
-
-    ];
+    this.skills1 = Skills;
 
     // An array of cities
     this.skills2 = [
-      { name: 'Angular' },
-      { name: 'CSS' },
-      { name: 'HTML' },
-      { name: 'JS' },
-      { name: 'React' },
-      { name: 'Design' },
-      { name: 'Project Mgmt' },
-      { name: 'Full Stack' },
-      { name: 'SQL' },
-      { name: 'Android' },
-      { name: 'iOS' },
-      { name: 'NodeJS' },
-      { name: 'MongoDB' },
-      { name: 'Blockchain' },
-      { name: 'Bot Development' },
-      { name: 'Marketing' },
+      {name: 'Angular'},
+      {name: 'CSS'},
+      {name: 'HTML'},
+      {name: 'JS'},
+      {name: 'React'},
+      {name: 'Design'},
+      {name: 'Project Mgmt'},
+      {name: 'Full Stack'},
+      {name: 'SQL'},
+      {name: 'Android'},
+      {name: 'iOS'},
+      {name: 'NodeJS'},
+      {name: 'MongoDB'},
+      {name: 'Blockchain'},
+      {name: 'Bot Development'},
+      {name: 'Marketing'},
     ];
   }
 

@@ -4,7 +4,7 @@ import { Announcement } from '../models/announcement';
 import { CollectionName, SubCollectionName } from '../constants/collection-name';
 import { CrudService } from './crud.service';
 import { AuthService } from '../core/auth.service';
-import { User } from '../core/user';
+import { User } from '../models/user';
 
 @Injectable()
 export class AnnouncementsService extends CrudService<Announcement> {
@@ -86,7 +86,7 @@ export class AnnouncementsService extends CrudService<Announcement> {
       title: announcement.title,
       updatedOn: new Date(),
       content: announcement.content
-    }
+    };
 
     super.updateDocument(CollectionName.announcements, announcement.id, fieldsToUpdate);
     super.updateDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.user.uid, announcement.id, fieldsToUpdate);

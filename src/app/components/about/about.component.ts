@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { AnnouncementsService } from '../../services/announcements.service';
 
 @Component({
   selector: 'app-about',
@@ -21,13 +20,10 @@ import { AnnouncementsService } from '../../services/announcements.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private announcement: AnnouncementsService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.announcement.checkIfSubCollectionExists()
-      .then(exists => console.log(exists))
-      .catch(doesnt => console.log(doesnt));
   }
 
 }

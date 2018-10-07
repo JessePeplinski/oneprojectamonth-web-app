@@ -5,7 +5,8 @@ export enum CollectionName {
   judges = 'judges',
   projects = 'projects',
   sponsors = 'sponsors',
-  users = 'users'
+  users = 'users',
+  skills = 'skills'
 }
 
 // these are subcollections within the /users collection. ie /users/doc-id/sub-collection/doc-id

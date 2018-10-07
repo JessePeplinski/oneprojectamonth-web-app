@@ -1,5 +1,6 @@
 <!--<ng-template pTemplate="content">-->
 <div class="other-projects-container">
+
   <div class="projects-action-bar">
     <div class="project-filter-search">
       <p-multiSelect class="skill-selection-dropdown" [options]="skills" [(ngModel)]="selectedSkills" optionLabel="name"
@@ -9,12 +10,15 @@
         <input class="table-search" type="text" pInputText size="30" placeholder="Search by Project Title or Person">
       </div>
     </div>
+
     <div class="fill-teams-toggle-container">
       <label>Show Available Teams</label>
       <p-inputSwitch [(ngModel)]="checked"></p-inputSwitch>
     </div>
   </div>
+
   <ng-container *ngFor="let project of projects | async">
+    <!--Project-->
     <div class="single-project-container">
       <div class="project-thumbnail">
         <img/>
@@ -36,6 +40,8 @@
         <p class="project-description">{{project.description}}</p>
       </div>
     </div>
+
+    <!--project 2-->
     <div class="single-project-container">
       <div class="project-thumbnail">
         <img/>
@@ -57,10 +63,12 @@
         <p class="project-description">{{project.description}}</p>
       </div>
     </div>
+
+    <!--project 3-->
     <div class="single-project-container">
       <div class="project-thumbnail">
         <img/>
-        <span><svg  xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
+        <span><svg xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/"
                     xmlns="http://www.w3.org/2000/svg"
                     version="1.1" x="0px" y="0px" viewBox="-255 347 100 125" style="enable-background:new -255 347 100 100;"
                     xml:space="preserve" alt="Startup by Gregor Cresnar from the Noun Project">
@@ -78,6 +86,7 @@
         <p class="project-description">{{project.description}}</p>
       </div>
     </div>
+
   </ng-container>
 </div>
 <!--</ng-template>-->

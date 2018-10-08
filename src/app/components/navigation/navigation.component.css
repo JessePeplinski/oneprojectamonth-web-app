@@ -2,6 +2,7 @@ header{display: flex; flex-direction: row; justify-content: flex-end; align-item
   border-bottom-right-radius: 50% 20%;}
 header i.menu{display: none; justify-content: flex-end; align-items: center; width: 100%; height: 45px; padding: 0 20px; border-top-left-radius: 20px; border-top-right-radius: 20px; background: #fff; color: #35274a; box-shadow: 0 0 7px 2px rgba(0,0,0,0.2); font-size: 32px; position: absolute; top: -53px; right: 0px; transition: .25s ease-in-out;}
 header h1{color: #fff; font-family: 'pier_sansmedium'; font-size: 32px; position: relative;}
+header > a{margin-right: auto;}
 header .main-logo{display: flex; justify-content: center; align-items: center; width: 75px; height: 75px; margin-right: auto; background: #fff; border-radius: 100%; border: 2px solid #fff; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); margin-top: 20px; position: relative;}
 header .main-logo span{width: 60px; height: 60px; border-radius: 100%;}
 header .main-logo span svg{fill: #58538D; transform: translateY(-4px); }

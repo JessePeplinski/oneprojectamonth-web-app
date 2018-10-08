@@ -91,8 +91,9 @@ form.new-project-form /deep/ .skill-selection-dropdown  .ui-multiselect-panel .u
 
 @media screen and (max-width: 550px) {
   .wave{transform: translateY(-175%);}
-  .other-projects-container .projects-action-bar{flex-direction: column-reverse;}
+  .other-projects-container .projects-action-bar{flex-direction: column-reverse; align-items: flex-end;}
   .projects-action-bar .fill-teams-toggle-container{margin-bottom: 20px;}
+  .other-projects-container .projects-action-bar .project-filter-search{align-items: flex-end;}
 }
 @media screen and (max-width: 450px) {
   .wave{transform: translateY(-190%);}

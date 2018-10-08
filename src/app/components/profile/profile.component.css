@@ -2,7 +2,7 @@
 /deep/ app-profile h1{color: rgba(255, 255, 255, .7); font-size: 48px; text-align: center; font-family: 'pier_sansbold';}
 .wave{transform: translateY(-100%); position: absolute; width: 100%;}
 .wave svg{fill: #fff; width: 100%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 200px auto 0 auto; padding: 40px 80px; background: #fff; color: #000; position: relative;}
+section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 175px auto 0 auto; padding: 40px 80px; background: #fff; color: #000; position: relative;}
 section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-family: 'pier_sansregular'; font-size: 18px; line-height: 1.4; padding: 40px 0 80px 0;}
 .user-profile-picture-large{display: flex; justify-content: center; align-items: center; width: 125px; height: 125px; border-radius: 100%; border: 4px solid #fff; overflow: hidden; position: absolute; top: -45px; left: 50%; transform: translateX(-50%);}
@@ -24,7 +24,7 @@ button.edit-button i{margin-left: 10px; font-size: 18px;}
 .social-profile-container i{margin-right: 5px; color: #8f8f8f;}
 .social-profile-container label{font-family: 'pier_sansblack'; color: #333; font-size: 14px;} 
 .social-profile-container .ui-inputgroup{margin-top: 12px;}
-.social-profile-container .ui-inputgroup .ui-inputgroup-addon{display: flex; justify-content: center; align-items: center; border: none; padding: 0 10px; font-family: 'pier_sanslight'; }
+.social-profile-container .ui-inputgroup .ui-inputgroup-addon{display: flex; justify-content: center; align-items: center; flex-shrink: 0; border: none; padding: 0 10px; font-family: 'pier_sanslight'; }
 .social-profile-container .ui-inputgroup input{display: flex; justify-content: flex-start; align-items: center; min-width: 300px; padding: 8px; border: none; border-radius: 3px; font-family: 'pier_sansmedium'; color: #000; }
 
 .skills-section{position: relative;}
@@ -37,7 +37,7 @@ button.edit-button i{margin-left: 10px; font-size: 18px;}
 .skills-section /deep/ .ui-chkbox .ui-chkbox-box.ui-state-active:not(.ui-state-disabled):hover{background: #3E3961; border: #3E3961;}
 .skills-section /deep/ .skill-selection-dropdown  .ui-multiselect-panel .ui-multiselect-items-wrapper{width: 175px; max-height: 180px;}
 .skills-section .skill-tags-container{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap;}
-.skills-section .skill-tags-container .skill-tag{display: flex; justify-content: center; align-items: center; background: #EAEAEA; color: #333; border-radius: 3px; font-size: 12px; font-family: 'pier_sansregular'; min-width: 65px; height: 25px; padding: 8px 10px; margin: 10px 12px; position: relative;}
+.skills-section .skill-tags-container .skill-tag{display: flex; justify-content: center; align-items: center; background: #EAEAEA; color: #333; border-radius: 3px; font-size: 12px; font-family: 'pier_sansregular'; min-width: 65px; height: 25px; padding: 8px 10px; margin: 10px 24px 10px 0; position: relative;}
 .skills-section .skill-tags-container .skill-tag i{font-size: 12px; font-weight: 700; margin-right: 5px; transition: .25s ease-in-out;}
 .skills-section .skill-tags-container .skill-tag i:hover{cursor: pointer; color: #000;}
 .skills-section .skill-tags-container .skill-tag:first-of-type{margin-left: 0;}
@@ -78,6 +78,8 @@ button.edit-button i{margin-left: 10px; font-size: 18px;}
 
 @media screen and (max-width: 650px) {
   .wave{transform: translateY(-150%);}
+  /deep/ app-profile h1{font-size: 40px;}
+  section.page-container{margin: 125px auto 0 auto;}
 }
 
 @media screen and (max-width: 550px) {
@@ -85,7 +87,9 @@ button.edit-button i{margin-left: 10px; font-size: 18px;}
   .social-profile-container .ui-inputgroup input{width: 100%; max-width: 100%; min-width: auto;}
   .skills-section .skills-description{width: 100%; max-width: 100%;}
   .projects-section .past-projects-container{flex-direction: column; justify-content: flex-start; align-items: center; width: 100%;}
+  .projects-section .past-projects-container .past-project-container{width: 100%;}
 }
+
 @media screen and (max-width: 450px) {
   .wave{transform: translateY(-190%);}
   .user-info-container{margin-top: 25px;}

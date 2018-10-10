@@ -46,8 +46,8 @@ form.new-project-form /deep/ .skill-selection-dropdown  .ui-multiselect-panel .u
 .single-project-container .project-thumbnail span svg{fill: #fff; transform: translateY(-4px); }
 .single-project-container .project-info-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; flex: 1; padding: 0 0 20px 0;}
 .single-project-container h2.project-title{font-family: 'pier_sansbold'; font-size: 21px; color: #000; padding: 20px 20px 10px 20px;}
-.single-project-container h3.project-team-members{font-family: 'pier_sansmedium'; font-size: 12px; color: #000; padding: 0 20px 20px 20px;}
-.single-project-container p.project-description{font-family: 'pier_sanslight'; font-size: 14px; color: #000; padding: 0 20px;}
+.single-project-container h3.project-team-members{font-family: 'pier_sansmedium'; font-size: 12px; color: #000; padding: 0 20px 20px 20px; line-height: 1.2;}
+.single-project-container p.project-description{font-family: 'pier_sanslight'; font-size: 14px; color: #000; padding: 0 20px; line-height: 1.2;}
 .other-projects-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; padding: 20px;}
 .other-projects-container .projects-action-bar{display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; height: 40px; margin-bottom: 20px;}
 .other-projects-container .projects-action-bar .project-filter-search{display: flex; flex-direction: row; justify-content: flex-start; align-items: center; height: 100%;}

@@ -53,7 +53,7 @@ header .user-account-container .user-profile-picture img{width: auto; height: 10
   nav ul{display: flex; flex-direction: column; justify-content: space-around; align-items: center; width: 100%; min-height: 95%; padding: 20px;}
   nav ul li{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; min-height: 44px; height: auto;}
   nav ul li a{color: #000; padding: 0; border-radius: 0px; font-size: 24px;}
-  nav ul li a.active-link:after{transform: translate(-50%, 5px); background: #C33764;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */}
+  nav ul li a.active-link:after{transform: translate(-50%, 5px); background: #614385;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
   nav ul li:hover ul.dropdown-menu{display: none !important;}
   nav ul li /deep/ p-panel{display: flex;}
   nav ul li p-panel ul{padding: 0;}

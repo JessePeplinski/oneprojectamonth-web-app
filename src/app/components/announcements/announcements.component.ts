@@ -6,8 +6,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ConfirmationService } from 'primeng/api';
 import { ParamDateService } from '../../services/param-date.service';
 import { ToastService } from '../../services/toast.service';
-import { User } from '../../models/user';
 import { AuthService } from '../../core/auth.service';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-announcements',

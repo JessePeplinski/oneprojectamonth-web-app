@@ -11,7 +11,7 @@ import {AuthService} from '../../../core/auth.service';
 @Component({
   selector: 'app-single-announcement',
   templateUrl: './single-announcement.component.html',
-  styleUrls: ['./single-announcement.component.css']
+  styleUrls: ['./single-announcement.component.less']
 })
 export class SingleAnnouncementComponent extends AnnouncementsComponent implements OnInit {
   announcement$;

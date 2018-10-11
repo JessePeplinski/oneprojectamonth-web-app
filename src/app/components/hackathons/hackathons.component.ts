@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 @Component({
   selector: 'app-hackathons',
   templateUrl: './hackathons.component.html',
-  styleUrls: ['./hackathons.component.css']
+  styleUrls: ['./hackathons.component.less']
 })
 export class HackathonsComponent implements OnInit {
 

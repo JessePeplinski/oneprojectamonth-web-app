@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 @Component({
   selector: 'app-past-event',
   templateUrl: './past-event.component.html',
-  styleUrls: ['./past-event.component.css'],
+  styleUrls: ['./past-event.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

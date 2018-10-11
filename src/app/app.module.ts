@@ -53,6 +53,7 @@ import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProjectsModule } from './components/projects/projects.module';
+import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 
 @NgModule({
   imports: [
@@ -101,6 +102,7 @@ import { ProjectsModule } from './components/projects/projects.module';
     FaqComponent,
     HackathonsComponent,
     ProfileComponent,
+    LeaderboardComponent,
   ],
   providers: [
     AnnouncementsService,

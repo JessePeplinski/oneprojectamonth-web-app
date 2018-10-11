@@ -7,7 +7,7 @@ import { Project } from '../project';
 @Component({
   selector: 'app-my-projects',
   templateUrl: './my-project.component.html',
-  styleUrls: ['./my-project.component.css']
+  styleUrls: ['./my-project.component.less']
 })
 export class MyProjectComponent implements OnInit {
 

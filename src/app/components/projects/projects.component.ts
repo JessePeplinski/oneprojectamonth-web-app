@@ -14,7 +14,7 @@ interface Skill {
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css'],
+  styleUrls: ['./projects.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

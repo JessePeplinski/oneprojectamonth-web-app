@@ -8,7 +8,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 @Component({
   selector: 'app-other-projects',
   templateUrl: './other-projects.component.html',
-  styleUrls: ['./other-projects.component.css']
+  styleUrls: ['./other-projects.component.less']
 })
 export class OtherProjectsComponent implements OnInit {
 

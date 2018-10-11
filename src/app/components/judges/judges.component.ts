@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 @Component({
   selector: 'app-judges',
   templateUrl: './judges.component.html',
-  styleUrls: ['./judges.component.css'],
+  styleUrls: ['./judges.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

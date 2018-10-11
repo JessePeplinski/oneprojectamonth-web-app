@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 @Component({
   selector: 'app-prizes',
   templateUrl: './prizes.component.html',
-  styleUrls: ['./prizes.component.css'],
+  styleUrls: ['./prizes.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

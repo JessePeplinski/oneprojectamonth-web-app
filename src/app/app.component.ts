@@ -4,7 +4,7 @@ import { trigger, animate, style, group, animateChild, query, stagger, transitio
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
+  styleUrls: ['app.component.less'],
   animations: [
     trigger('routerTransition', [
       transition('* <=> *', [

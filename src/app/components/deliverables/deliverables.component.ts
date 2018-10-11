@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 @Component({
   selector: 'app-deliverables',
   templateUrl: './deliverables.component.html',
-  styleUrls: ['./deliverables.component.css'],
+  styleUrls: ['./deliverables.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

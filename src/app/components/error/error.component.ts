@@ -3,7 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
-  styleUrls: ['./error.component.css'],
+  styleUrls: ['./error.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

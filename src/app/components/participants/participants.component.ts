@@ -6,7 +6,7 @@ import { Participant } from './participant';
 @Component({
   selector: 'app-participants',
   templateUrl: './participants.component.html',
-  styleUrls: ['./participants.component.css'],
+  styleUrls: ['./participants.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

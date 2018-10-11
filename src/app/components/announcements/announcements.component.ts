@@ -12,7 +12,7 @@ import { User } from 'firebase';
 @Component({
   selector: 'app-announcements',
   templateUrl: './announcements.component.html',
-  styleUrls: ['./announcements.component.css'],
+  styleUrls: ['./announcements.component.less'],
   animations: [
     trigger('show', [
       transition(':enter', [

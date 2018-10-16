@@ -16,6 +16,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
     {
@@ -122,6 +123,13 @@ const routes: Routes = [
         component: FaqComponent,
         data: {
             state: 'faq'
+        }
+    },
+    {
+        path: 'settings',
+        component: SettingsComponent,
+        data: {
+            state: 'settings'
         }
     },
     {

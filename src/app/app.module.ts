@@ -48,12 +48,14 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CheckboxModule } from 'primeng/checkbox';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProjectsModule } from './components/projects/projects.module';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   imports: [
@@ -78,6 +80,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
     InputTextModule,
     InputSwitchModule,
     CheckboxModule,
+    RadioButtonModule,
     DropdownModule,
     MultiSelectModule,
     HttpClientModule,
@@ -103,6 +106,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
     HackathonsComponent,
     ProfileComponent,
     LeaderboardComponent,
+    SettingsComponent,
   ],
   providers: [
     AnnouncementsService,

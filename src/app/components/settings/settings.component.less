@@ -1,0 +1,31 @@
+@import "../../app.component.less";
+
+/deep/ app-settings{margin-top: 40px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; 
+    h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
+    section.page-container{
+        > h2{color: #000; font-family: 'pier_sansbold'; font-size: 26px; text-align: left; margin-bottom: 40px;}
+        p{font-family: 'pier_sansregular'; font-size: 18px; line-height: 1.4; padding: 40px 0 80px 0;}
+    } 
+}
+
+
+.settings-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%;
+    h2{color: #000; font-family: 'pier_sansbold'; font-size: 26px; text-align: left; margin-bottom: 20px;}
+    .settings-panel{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%; height: auto; padding: 20px; background: @white; border-radius: 5px;
+        .theme-chooser-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+            /deep/ p-radiobutton{display: flex; flex-direction: row; justify-content: flex-start; margin-bottom: 15px;
+                .ui-radiobutton{
+                    .ui-radiobutton-box{width: 18px; height: 18px; border: 2px solid #333; transition: .25s ease-in-out;
+                        &.ui-state-active{background: #59538D; color: #59538D; border-color: #3E3961;
+                            .ui-radiobutton-icon{background-color: #59538D;}
+                        }
+                        .ui-radiobutton-icon{transition: .25s ease-in-out;}
+                    }
+                }
+                label{font-family: 'pier_sansregular'; font-size: 16px; padding-left: 5px; transition: .25s ease-in-out;
+                    &.ui-label-active{font-family: 'pier_sansbold'; transform: scale(1.05);}
+                }
+            }
+        }
+    } 
+}

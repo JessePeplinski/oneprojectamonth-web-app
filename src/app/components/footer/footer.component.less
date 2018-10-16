@@ -1,4 +1,6 @@
-footer{display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; width: 100%; min-height: 300px; height: auto; padding: 40px 80px; color: #000; background: #FAFAFA; position: relative;}
+@import "../../app.component.less";
+
+footer{display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; width: 100%; min-height: 300px; height: auto; padding: 40px 80px; color: #000; background: @footer-bg; position: relative;}
 footer .scroll-to-top{display: flex; justify-content: center; align-items: center; width: 56px; height: 56px; border-radius: 100%; background: #fff; color: #878A8C; box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); position: absolute; top: -25px; right: 80px; transition: .25s ease-in-out;}
 footer .scroll-to-top i{font-size: 26px; font-weight: thin;}
 footer .scroll-to-top:hover{box-shadow: 0 10px 10px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); cursor: pointer;}

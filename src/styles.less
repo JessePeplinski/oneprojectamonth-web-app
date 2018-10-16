@@ -138,9 +138,68 @@ table {
 
 }
 
+/* Theme Color Variables */
+@white: #fff;
+@black: #000;
+
+/* Section and Wave BG */
+@light-bg: #faf8ff;
+@dark-bg: #202124;
+@twitch-bg: #201C2B;
+@syntax-bg: #edd49f;
+@monochrome-bg: #f3f3f3;
+@neon-bg: #151515;
+@hu-bg: #002333;
+
+/* Footer BG */
+@light-footer-bg: #f2eff9;
+@dark-footer-bg: #1a1b1f;
+@twitch-footer-bg: #17141F;
+/* Card/Panel BG */
+@light-card-bg: #fff;
+@dark-card-bg: #cce;
+
+/* CTA BG */
+@cta-purple: #59538D;
+
+
+
 *{box-sizing: border-box;}
 a{text-decoration: none;}
 body{background: #614385;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
  font-family: 'pier_sansregular'; color: #fff;}
+body{
+  &.light-theme{
+    section.page-container{background: @light-bg;}
+    .wave svg{fill: @light-bg;}
+    footer{background: @light-footer-bg;}
+  }
+  &.dark-theme{
+    section.page-container{background: @dark-bg;}
+    .wave svg{fill: @dark-bg;}
+    footer{background: @dark-footer-bg;}
+  }
+  &.hack-upstate-theme{
+    section.page-container{background: @hu-bg;}
+    .wave svg{fill: @hu-bg;}
+  }
+  &.definitely-not-twitch-theme{
+    section.page-container{background: @twitch-bg;}
+    .wave svg{fill: @twitch-bg;}
+    footer{background: @twitch-footer-bg;}
+  }
+  &.syntax-pod-theme{
+    section.page-container{background: @syntax-bg;}
+    .wave svg{fill: @syntax-bg;}
+  }
+  &.monochrome-theme{
+    section.page-container{background: @monochrome-bg;}
+    .wave svg{fill: @monochrome-bg;}
+  }
+  &.dark-neon-theme{
+    section.page-container{background: @neon-bg;}
+    .wave svg{fill: @neon-bg;}
+  }
+}

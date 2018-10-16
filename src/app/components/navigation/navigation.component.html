@@ -93,12 +93,19 @@
   </nav>
   <ng-template #authenticated>
       <ng-container *ngIf="authService.user$ | async as user">
-        <a routerLink="/profile" routerLinkActive="active-link" class="user-account-container">
-          <div class="user-profile-picture">
+        <div class="user-account-container">
+          <a routerLink="/profile" routerLinkActive="active-link" class="user-profile-picture">
               <img [src]="user.photoURL">
+          </a>
+        
+          <div class="profile-dropdown">
+            <div class="dropdown-actions-container">
+              <a (click)="authService.signOut()">Logout</a>
+              <a routerLink="/settings">Settings</a>
+            </div>
           </div>
-        </a>
-      </ng-container>
+        </div>
+      </ng-container> 
     </ng-template>
 </header>
 

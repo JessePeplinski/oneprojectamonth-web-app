@@ -5,8 +5,8 @@
 @light-purple: #cce;
 @cta-purple: #59538D;
 @dark-bg: #202124;
-@footer-bg: #1a1b1f;
-
+@footer-bg-dark: #1a1b1f;
+@footer-bg: #f2eff9;
 /* Font Mixins */
 
 
@@ -18,4 +18,37 @@
     background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+/* Theme Definitions */
+body{
+  &.dark-theme{background: @dark-bg;}
+}
+  
 
+/* Common Styling */
+.wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
+.wave svg{width: 102%; height: auto;}
+section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 150px auto 0 auto; padding: 40px; background: @opam-white; color: #000; position: relative;}
+section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px; position: relative;}
+input{height: 30px; padding: 15px 10px; display: block; border: 1px solid #e6e6e6; border-radius: 3px; margin: 20px 0;}
+button{display: flex; justify-content: center; align-items: center; width: 95px; height: 40px; outline: none; border: none; font-size: 16px; font-family: 'pier_sansregular'; letter-spacing: .25px; background: #59538D; color: #fff; box-shadow: 0 5px 6px -3px rgba(0,0,0,0.2); border-radius: 3px; margin-left: auto; transition: .25s ease-in-out;}
+button:hover{background: #3e3961; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1);  cursor: pointer;}
+button i{margin-left: 10px; font-size: 18px;}
+
+@media screen and (max-width: 945px) {
+  section.page-container{padding: 40px 20px;}
+}
+
+@media screen and (max-width: 800px) {
+  .wave{transform: translateY(-125%);}
+}
+
+@media screen and (max-width: 650px) {
+  .wave{transform: translateY(-150%);}
+}
+
+@media screen and (max-width: 550px) {
+  .wave{transform: translateY(-175%);}
+}
+@media screen and (max-width: 450px) {
+  .wave{transform: translateY(-190%);}
+}

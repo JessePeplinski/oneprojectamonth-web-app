@@ -1,44 +1,8 @@
+@import "../../app.component.less";
+
 /deep/ app-hackathons {margin-top: 40px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
 /deep/ app-hackathons h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
 section.countdown-section{width: 100%; height: auto; padding: 40px; min-height: 300px; display: flex; justify-content: center; align-items: center; }
 section.countdown-section time{font-family: 'pier_sansbold'; font-size: 92px; color: rgba(255, 255, 255, .7);}
 section.countdown-section time span{font-family: 'pier_sansmedium'; font-size: 36px; color: #fff;}
-.wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
-.wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 150px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
-section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-size: 16px; line-height: 1.2;}
-.test-read-write{margin: 40px 0;}
-.test-read-write .update-content{width: 100%; display: flex; flex-direction: column; justify-content: space-around; align-items: center;}
-.test-read-write p{font-family: 'pier_sansmedium'; font-size: 36px; margin: 20px 0;}
-.test-read-write input{height: 30px; padding: 15px 10px; display: block; border: 1px solid #e6e6e6; border-radius: 3px; margin: 20px 0;}
-.test-read-write button{background: #614385;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ color: #fff; outline: none; border: none; border-radius: 3px; box-shadow: 0 2px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); margin: 20px auto; padding: 8px 15px; display: flex; justify-content: center; align-items: center; transition: .25s ease-in-out;}
-.test-read-write button:hover{box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1);  cursor: pointer;}
-
-input{height: 30px; padding: 15px 10px; display: block; border: 1px solid #e6e6e6; border-radius: 3px; margin: 20px 0;}
-button{background: #614385;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #516395, #614385);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #516395, #614385); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ color: #fff; outline: none; border: none; border-radius: 3px; box-shadow: 0 2px 6px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1); margin: 20px auto; padding: 8px 15px; display: flex; justify-content: center; align-items: center; transition: .25s ease-in-out;}
- button:hover{box-shadow: 0 4px 8px 0 rgba(0,0,0,0.24), 0 0 6px 0 rgba(0,0,0,0.1);  cursor: pointer;}
-
-
- @media screen and (max-width: 945px) {
-  section.page-container{padding: 40px 20px;}
-}
-
-@media screen and (max-width: 800px) {
-  .wave{transform: translateY(-125%);}
-}
-
-@media screen and (max-width: 650px) {
-  .wave{transform: translateY(-150%);}
-}
-
-@media screen and (max-width: 550px) {
-  .wave{transform: translateY(-175%);}
-}
-@media screen and (max-width: 450px) {
-  .wave{transform: translateY(-190%);}
-}

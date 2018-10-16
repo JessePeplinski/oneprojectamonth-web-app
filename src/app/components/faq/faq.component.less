@@ -1,9 +1,7 @@
+@import "../../app.component.less";
+
 /deep/ app-faq{margin-top: 40px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
 /deep/ app-faq h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
-.wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
-.wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 150px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
-section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-size: 16px; line-height: 1.2;}
 
 /deep/ p-accordion{width: 100%; margin-top: 40px;}
@@ -11,25 +9,3 @@ section.page-container p{font-size: 16px; line-height: 1.2;}
 /deep/ p-accordion .ui-accordion-header a{background-color: #fff; border: none !important; border-radius: 3px; font-family: 'pier_sansbold'; font-size: 18px;}
 /deep/ p-accordion p-accordiontab .ui-accordion-header.ui-state-active a{background-color: #59538D !important; color: #fff !important;}
 /deep/ p-accordion p-accordiontab .ui-accordion-content-wrapper .ui-accordion-content{background-color: #edeffd; border: none !important; font-family: 'pier_sansregular'; font-size: 16px; line-height: 1.2; padding: 20px; margin-bottom: 10px;}
-
-@media screen and (max-width: 945px) {
-  section.page-container{padding: 40px 20px;}
-}
-@media screen and (max-width: 945px) {
-  section.page-container{padding: 40px 20px;}
-}
-
-@media screen and (max-width: 800px) {
-  .wave{transform: translateY(-125%);}
-}
-
-@media screen and (max-width: 650px) {
-  .wave{transform: translateY(-150%);}
-}
-
-@media screen and (max-width: 550px) {
-  .wave{transform: translateY(-175%);}
-}
-@media screen and (max-width: 450px) {
-  .wave{transform: translateY(-190%);}
-}

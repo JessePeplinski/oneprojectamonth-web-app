@@ -1,9 +1,8 @@
+@import "../../app.component.less";
+
 /deep/ app-projects{margin-top: 40px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
 /deep/ app-projects h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
-.wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
-.wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 150px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
-section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
+
 section.page-container p{font-size: 16px; line-height: 1.2;}
 .projects-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li{background: #fff; color: #000; border: none; border-radius: 3px; padding: 0; margin: 0px;}
 .projects-container /deep/ p-tabview .ui-tabview .ui-tabview-nav li a{padding: 10px 15px;}
@@ -72,29 +71,22 @@ form.new-project-form /deep/ .skill-selection-dropdown  .ui-multiselect-panel .u
 
 
 @media screen and (max-width: 945px) {
-  section.page-container{padding: 40px 20px;}
   .single-project-container{width: 100%;}
 }
 
 @media screen and (max-width: 800px) {
-  .wave{transform: translateY(-125%);}
-   .other-projects-container .projects-action-bar{min-height: 40px; height: auto; align-items: flex-start;}
+  .other-projects-container .projects-action-bar{min-height: 40px; height: auto; align-items: flex-start;}
   .other-projects-container .projects-action-bar .project-filter-search{flex-direction: column-reverse; justify-content: flex-start; align-items: flex-start;}
   .other-projects-container .projects-action-bar .project-filter-search .project-search{margin-bottom: 20px; margin-left: 0;}
 }
 
 @media screen and (max-width: 650px) {
-  .wave{transform: translateY(-150%);}
   .single-project-container{flex-direction: column; padding-right: 0;}
   .single-project-container .project-thumbnail{width: 100%; border-top-right-radius: 5px; border-bottom-left-radius: 0px;}
 }
 
 @media screen and (max-width: 550px) {
-  .wave{transform: translateY(-175%);}
   .other-projects-container .projects-action-bar{flex-direction: column-reverse; align-items: flex-end;}
   .projects-action-bar .fill-teams-toggle-container{margin-bottom: 20px;}
   .other-projects-container .projects-action-bar .project-filter-search{align-items: flex-end;}
-}
-@media screen and (max-width: 450px) {
-  .wave{transform: translateY(-190%);}
 }

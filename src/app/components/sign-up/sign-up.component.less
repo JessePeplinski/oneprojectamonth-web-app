@@ -1,9 +1,8 @@
+@import "../../app.component.less";
+
+
 /deep/ app-sign-up{margin-top: 40px; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
 /deep/ app-sign-up h1{color: rgba(255, 255, 255, .7); font-size: 48px; font-family: 'pier_sansbold';}
-.wave{overflow: hidden; transform: translateY(-100%); position: absolute; width: 100%;}
-.wave svg{fill: #fff; width: 102%; height: auto;}
-section.page-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 100%; min-height: 100vh; margin: 80px auto 0 auto; padding: 40px; background: #fff; color: #000; position: relative;}
-section.page-container > h1{color: #000; font-family: 'pier_sansbold'; font-size: 26px;} 
 section.page-container p{font-size: 16px; line-height: 1.2;}
 
 .login-form-container, .signup-form-container{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 80%; margin: 0 auto; color: #000; font-family: 'pier_sansbold';}
@@ -27,23 +26,8 @@ section.page-container p{font-size: 16px; line-height: 1.2;}
 .login-signup-switch-container button{margin-left: 3px; outline: none; border: none; font-family: 'pier_sansbold'; color: #59538D; background: transparent; font-size: 16px;}
 .login-signup-switch-container button:hover{cursor: pointer;}
 
-@media screen and (max-width: 945px) {
-  section.page-container{padding: 40px 20px;}
-}
-
-@media screen and (max-width: 800px) {
-  .wave{transform: translateY(-125%);}
-}
-
-@media screen and (max-width: 650px) {
-  .wave{transform: translateY(-150%);}
-}
 
 @media screen and (max-width: 550px) {
-  .wave{transform: translateY(-175%);}
   .login-signup-switch-container{font-size: 14px; white-space: nowrap;}
   .login-signup-switch-container button{font-size: 14px;}
-}
-@media screen and (max-width: 450px) {
-  .wave{transform: translateY(-190%);}
 }

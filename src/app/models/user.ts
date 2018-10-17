@@ -2,12 +2,11 @@ export interface User {
   firstName?: string;
   lastName?: string;
   displayName?: string;
-  email?: string;
-  skills?: string[];
+  email: string;
   suffix?: string;
-  roles?: Roles
-  photoURL: string;
-  uid?: string;
+  roles?: Roles;
+  photoURL?: string;
+  uid: string;
 }
 
 export interface Roles {

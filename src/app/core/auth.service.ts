@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { auth, User } from 'firebase/app';
+import { auth } from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable, of } from 'rxjs';
-import { switchMap, shareReplay } from 'rxjs/operators';
+
+import { switchMap } from 'rxjs/operators';
+import { User } from '../models/user';
 
 
 @Injectable()
@@ -13,14 +15,16 @@ export class AuthService {
   isEmailVerified: boolean;
   errorLoggingIn: boolean;
 
-  user$: Observable<User>
+  user$: Observable<User>;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
-    this.user$ = afAuth.authState;
-  }
-
-  getUser(): Observable<User> {
-    return this.user$;
+    this.user$ = this.afAuth.authState.pipe(switchMap(user => {
+      if (user) {
+        return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+      } else {
+        return of(null);
+      }
+    }));
   }
 
   signUpWithEmailAndPassword(value) {
@@ -31,9 +35,9 @@ export class AuthService {
         this.sendVerificationEmail();
         this.signInWithEmailAndPassword(value);
       }, errRes => {
-        var errorCode = errRes.code;
-        var errorMessage = errRes.message;
-        if (errorCode == 'auth/weak-password') {
+        const errorCode = errRes.code;
+        const errorMessage = errRes.message;
+        if (errorCode === 'auth/weak-password') {
           alert('The password is too weak.');
         } else {
           alert(errorMessage);
@@ -90,12 +94,36 @@ export class AuthService {
   }
 
   private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider);
+    return this.afAuth.auth.signInWithPopup(provider)
+      .then((credential) => {
+        this.updateUserData(credential.user);
+      });
   }
 
   gitHubLogin() {
     const provider = new auth.GithubAuthProvider();
     return this.oAuthLogin(provider);
+  }
+
+  private updateUserData(user) {
+    // Sets user data to firestore on login
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    const username = user.displayName.split(' ');
+    const firstname = username[0];
+    const lastname = username[1];
+    console.log(username);
+    console.log(firstname);
+    console.log(lastname);
+    const data: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      firstName: firstname,
+      lastName: lastname,
+      roles: { participant: true }
+    };
+    return userRef.set(data, { merge: true });
   }
 
   signOut() {
@@ -110,9 +138,9 @@ export class AuthService {
       return false;
     }
     for (const role of allowedRoles) {
-      // if (user. roles[role]) {
-      return true;
-      // }
+      if (user.roles[role]) {
+        return true;
+      }
     }
     return false;
   }

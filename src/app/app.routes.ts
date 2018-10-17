@@ -17,6 +17,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { HackathonsComponent } from './components/hackathons/hackathons.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
     {
@@ -86,6 +87,7 @@ const routes: Routes = [
     {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [AuthGuard],
         data: {
             state: 'profile'
         }

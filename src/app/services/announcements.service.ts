@@ -15,10 +15,9 @@ export class AnnouncementsService extends CrudService<Announcement> {
 
   constructor(afs: AngularFirestore, authService: AuthService) {
     super(afs);
-
-    // TODO: instead of subscribing each time, can we just create a user object and get at those fields with this.authSerice.user.field?
-    // This is an expensive operation to have to call the auth service each time the page is loaded.
-    authService.getUser().subscribe(res => this.user = res);
+    authService.user$.subscribe(user => {
+      this.user = user;
+    });
   }
 
   /**
@@ -58,7 +57,7 @@ export class AnnouncementsService extends CrudService<Announcement> {
     console.log(this.user);
     let randomlyGeneratedId = this.afs.createId();     // Generate a random id from angular firestore // Consideration: Replaced set with add and randomly generated an ID. Not sure if this is the best way but resolved the firebase document not receiving an ID.
     let newDate = new Date();
-    let month = newDate.toLocaleString('en-us', {month: "long"}); // get month as a string, ie January
+    let month = newDate.toLocaleString('en-us', { month: "long" }); // get month as a string, ie January
     let year = newDate.getFullYear().toString(); // get month as a 4 digit year, ie YYYY // FIXME: don't actually make this a string
 
     let fieldsToCreate = {

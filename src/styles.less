@@ -297,6 +297,9 @@ body{
     }
   }
   &.syntax-pod-theme{.syntax-bg-gradient();
+    .main-logo{background: @syntax-bg !important; border-color: @syntax-bg !important;
+        svg{fill: @syntax-footer-bg !important;}
+    }
     h1.page-header{color: @syntax-page-header; opacity: .75;}
     section.page-container{background: @syntax-bg;
         .card{background: @syntax-card-bg !important; }
@@ -327,6 +330,9 @@ body{
   }
 
   &.dark-neon-theme{.neon-bg-gradient();
+    .main-logo{background: @neon-bg !important; border-color: @neon-bg !important;
+        svg{fill: @neon-card-bg !important;}
+    }
     section.page-container{background: @neon-bg;
         h2.section-header{color: @neon-section-header;}
         .card{background: @neon-card-bg !important;}

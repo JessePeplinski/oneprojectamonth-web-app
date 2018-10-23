@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, animate, style, group, animateChild, query, stagger, transition, state } from '@angular/animations';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -24,9 +25,7 @@ import { trigger, animate, style, group, animateChild, query, stagger, transitio
 })
 
 export class AppComponent implements OnInit {
-
-  constructor(private router: Router) { }
-
+  constructor(private router: Router) {}
   ngOnInit() {
   }
 }

@@ -7,6 +7,7 @@ export interface User {
   roles?: Roles;
   photoURL?: string;
   uid: string;
+  preferredTheme?: string;
 }
 
 export interface Roles {

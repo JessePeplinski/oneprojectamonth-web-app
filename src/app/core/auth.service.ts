@@ -26,7 +26,6 @@ export class AuthService {
       }
     }));
   }
-
   signUpWithEmailAndPassword(value) {
     console.log('initiating sigup with email and pass');
 
@@ -121,7 +120,8 @@ export class AuthService {
       photoURL: user.photoURL,
       firstName: firstname,
       lastName: lastname,
-      roles: { participant: true }
+      roles: { participant: true },
+      preferredTheme: 'Light Theme'
     };
     return userRef.set(data, { merge: true });
   }

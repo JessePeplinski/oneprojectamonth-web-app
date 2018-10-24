@@ -10,7 +10,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
   styleUrls: ['./settings.component.less']
 })
 export class SettingsComponent implements OnInit {
-  themeValue = 'Light Theme';
+  themeValue;
 
   constructor(private afs: AngularFirestore, private auth: AngularFireAuth) {}
 

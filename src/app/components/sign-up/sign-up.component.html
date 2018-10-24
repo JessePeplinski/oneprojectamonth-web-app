@@ -30,7 +30,7 @@
               <button class="login-button" (click)="loginWithEmail(loginForm.value)" type="submit">Login</button>
             </div>
             <div class="other-login-container">
-              <span>Login with Google/Git</span>
+              <span class="login-header">Login with Google/Git</span>
                 <div class="button-container">
                   <button class="other-login" (click)="authService.googleLogin()">
                     <i class="fab fa-google"></i>
@@ -42,7 +42,7 @@
           
               <div class="login-signup-switch-container">
                 <span>Don't have an account?</span>
-                <button (click)='sign_up = !sign_up'>Click here to sign up</button>
+                <a (click)='sign_up = !sign_up'>Click here to sign up</a>
               </div>
             </div>
           </div>

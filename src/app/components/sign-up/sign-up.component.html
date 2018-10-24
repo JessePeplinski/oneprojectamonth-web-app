@@ -81,7 +81,7 @@
       <div *ngIf="authService.checkEmailVerification(); then emailVerified else notVerified"></div>
 
       <ng-template #emailVerified>
-        {{goToProfile()}}
+        Email already verified
       </ng-template>
       <ng-template #notVerified>
         <h3>We have sent an email with a verification link to {{ user.email }}! <br>

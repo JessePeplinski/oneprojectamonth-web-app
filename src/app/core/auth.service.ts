@@ -47,7 +47,11 @@ export class AuthService {
 
   signInWithEmailAndPassword(value) {
     console.log('here');
-    return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
+    return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password).then(credential => {
+      if (this.checkEmailVerification()) {
+        this.router.navigate(['/profile']);
+      }
+    })
       .catch(function (error) {
         // Handle Errors here.
         const errorCode = error.code;

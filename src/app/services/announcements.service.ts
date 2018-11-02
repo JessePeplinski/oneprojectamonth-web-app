@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Announcement } from '../models/announcement';
 import { CollectionName, SubCollectionName } from '../constants/collection-name';
 import { CrudService } from './crud.service';

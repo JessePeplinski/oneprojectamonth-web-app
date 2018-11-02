@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Project } from './project';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { SelectItem } from 'primeng/api';
 import { Skills } from '../../constants/skills.constant';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 interface Skill {
   name: string;

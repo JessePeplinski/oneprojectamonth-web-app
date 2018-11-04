@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { User } from '../../models/user';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -6,11 +10,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.less']
 })
 export class SettingsComponent implements OnInit {
-  themeValue = 'Light Theme';
-  constructor() { }
+  themeValue;
+
+  constructor(private afs: AngularFirestore,
+              private auth: AngularFireAuth,
+              private authService: AuthService) {
+    authService.user$.subscribe(user => console.log(user));
+  }
 
   ngOnInit() {
-    this.setAppTheme();
+    this.authService.user$.subscribe(user => {
+      if (user.preferredTheme) {
+        this.themeValue = user.preferredTheme;
+      } else {
+        this.themeValue = 'Light Theme';
+      }
+    });
   }
 
   setAppTheme() {
@@ -36,6 +51,14 @@ export class SettingsComponent implements OnInit {
       const el = document.getElementById('body');
       el.className = 'dark-neon-theme';
     }
+    if (this.auth.auth.currentUser) {
+      this.updateTheme(this.themeValue, this.auth.auth.currentUser);
+    }
     console.log(this.themeValue);
+  }
+
+  private updateTheme(preferred_theme, user) {
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
+    return userRef.update({preferredTheme: preferred_theme});
   }
 }

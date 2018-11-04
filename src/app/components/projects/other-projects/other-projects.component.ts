@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Project } from '../project';
 import { SelectItem } from 'primeng/api';
 import { Skills } from '../../../constants/skills.constant';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-other-projects',

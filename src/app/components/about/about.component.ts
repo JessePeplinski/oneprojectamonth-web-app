@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-about',
@@ -20,7 +21,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() {
+  constructor(private afs: AngularFirestore) {
   }
 
   ngOnInit() {

@@ -25,7 +25,7 @@
       </div>
       <button class="edit-button">Edit <i class="material-icons">edit</i></button>
 
-      <section class="social-section profile-section">
+      <section class="social-section profile-section card">
         <h2 class="section-description">Social</h2>
         <div class="twitter-profile-container social-profile-container">
           <i class="fab fa-twitter"></i><label>Twitter</label>
@@ -52,7 +52,7 @@
 
       <button (click)="authService.signOut()">TEMP LOGOUT BUTTON REMOVE MEEEE</button>
 
-      <section class="skills-section profile-section">
+      <section class="skills-section profile-section card">
         <h2 class="section-description">Skills</h2>
         <p-multiSelect class="skill-selection-dropdown" [options]="skills2" [(ngModel)]="selectedSkill2" optionLabel="name" defaultLabel="Choose Skills" [showHeader]="false"></p-multiSelect>
         <div class="skill-tags-container">
@@ -83,7 +83,7 @@
         </section>
       </section>
 
-      <section class="projects-section profile-section">
+      <section class="projects-section profile-section card">
         <h2 class="section-description">Past Projects</h2>
         <div class="past-projects-container">
           <div class="past-project-container">

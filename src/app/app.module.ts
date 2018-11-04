@@ -7,14 +7,14 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 // required firebase module
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule } from '@angular/fire';
 
 import { CoreModule } from './core/core.module';
 // optional firebase modules
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireFunctionsModule } from 'angularfire2/functions';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 // custom components
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { HomeComponent } from './components/home/home.component';

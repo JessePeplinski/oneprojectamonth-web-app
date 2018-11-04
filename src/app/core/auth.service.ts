@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { auth } from 'firebase/app';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 
 import { switchMap } from 'rxjs/operators';
@@ -31,6 +31,7 @@ export class AuthService {
     return this.afAuth.auth.currentUser.uid;
   }
 
+
   signUpWithEmailAndPassword(value) {
     console.log('initiating sigup with email and pass');
 
@@ -52,7 +53,11 @@ export class AuthService {
 
   signInWithEmailAndPassword(value) {
     console.log('here');
-    return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
+    return this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password).then(credential => {
+      if (this.checkEmailVerification()) {
+        this.router.navigate(['/profile']);
+      }
+    })
       .catch(function (error) {
         // Handle Errors here.
         const errorCode = error.code;
@@ -101,6 +106,9 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
+        if (this.checkEmailVerification()) {
+          this.router.navigate(['/profile']);
+        }
       });
   }
 
@@ -125,7 +133,8 @@ export class AuthService {
       photoURL: user.photoURL,
       firstName: firstname,
       lastName: lastname,
-      roles: { participant: true }
+      roles: { participant: true },
+      preferredTheme: 'Light Theme'
     };
     return userRef.set(data, { merge: true });
   }

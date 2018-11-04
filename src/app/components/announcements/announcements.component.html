@@ -47,7 +47,7 @@
             <span class="announcement-created-by">Created By: {{announcement.createdBy}}, on {{announcement.dateCreated.toDate() | date: 'medium'}}</span>
             <h2 class="annoucement-last-updated" *ngIf="announcement.updatedOn">Last Updated: {{announcement.updatedOn?.toDate() | date: 'medium'}}</h2>
             <p class="announcement-content">{{announcement.content}}</p>
-            <button class="announcement-edit-button" (click)="editAnnouncement($event, announcement)" *ngIf="canEdit(user)">Edit <i class="material-icons">edit</i></button>
+            <button class="announcement-edit-button" (click)="editAnnouncement($event, announcement)" *ngIf="canEdit(user, announcement)">Edit <i class="material-icons">edit</i></button>
           </div>
         </ng-container>
         <button *ngIf="editState && announcementToEdit.id == announcement.id" (click)="clearState()">CLOSE ANNOUNCEMENT</button>

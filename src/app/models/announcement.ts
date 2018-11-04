@@ -6,4 +6,5 @@ export class Announcement {
   isVisible: boolean;
   createdBy: string;
   updatedOn?: Date;
+  ownerRef: string;
 }

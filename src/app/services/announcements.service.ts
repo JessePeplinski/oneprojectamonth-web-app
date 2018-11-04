@@ -13,7 +13,7 @@ export class AnnouncementsService extends CrudService<Announcement> {
 
   user: User;
 
-  constructor(afs: AngularFirestore, authService: AuthService) {
+  constructor(afs: AngularFirestore, public authService: AuthService) {
     super(afs);
     authService.user$.subscribe(user => {
       this.user = user;
@@ -60,6 +60,12 @@ export class AnnouncementsService extends CrudService<Announcement> {
     let month = newDate.toLocaleString('en-us', { month: "long" }); // get month as a string, ie January
     let year = newDate.getFullYear().toString(); // get month as a 4 digit year, ie YYYY // FIXME: don't actually make this a string
 
+    // get the currently logged in user from firestore
+    var ownerRef = this.authService.getUserId();
+    announcement.ownerRef = ownerRef;
+
+    // console.log(ownerRef);
+
     let fieldsToCreate = {
       id: randomlyGeneratedId,
       title: announcement.title,
@@ -68,11 +74,11 @@ export class AnnouncementsService extends CrudService<Announcement> {
       monthCreated: month,
       yearCreated: year,
       createdBy: this.user.displayName,
-      isVisible: true
+      isVisible: true,
+      ownerRef: announcement.ownerRef
     };
 
     super.createDocument(CollectionName.announcements, randomlyGeneratedId, fieldsToCreate);
-    super.createDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.user.uid, randomlyGeneratedId, fieldsToCreate);
   }
 
   /**
@@ -88,7 +94,6 @@ export class AnnouncementsService extends CrudService<Announcement> {
     };
 
     super.updateDocument(CollectionName.announcements, announcement.id, fieldsToUpdate);
-    super.updateDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.user.uid, announcement.id, fieldsToUpdate);
   }
 
   /**
@@ -98,7 +103,6 @@ export class AnnouncementsService extends CrudService<Announcement> {
    */
   deleteAnnouncment(announcement: Announcement) {
     super.deleteDocument(CollectionName.announcements, announcement.id);
-    super.deleteDocumentInSubCollection(CollectionName.users, SubCollectionName.announcementsCreated, this.user.uid, announcement.id);
   }
 
   /**

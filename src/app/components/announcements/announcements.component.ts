@@ -7,7 +7,7 @@ import { ConfirmationService } from 'primeng/api';
 import { ParamDateService } from '../../services/param-date.service';
 import { ToastService } from '../../services/toast.service';
 import { AuthService } from '../../core/auth.service';
-import { User } from 'firebase';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-announcements',
@@ -33,6 +33,8 @@ export class AnnouncementsComponent implements OnInit {
   announcementToEdit: Announcement; // Current announcement that is being modified.
   announcements$; // Observable of all announcements
 
+  user: User;
+
   public announcement: Announcement; // Object to hold fields on the announcement
 
   constructor(protected route: ActivatedRoute,
@@ -41,17 +43,24 @@ export class AnnouncementsComponent implements OnInit {
               protected router: Router,
               protected confirmationService: ConfirmationService,
               protected toastService: ToastService, public authService: AuthService) {
+                
     this.announcement = new Announcement();
   }
 
   ngOnInit() {
-    // Get the params from the URL
-    this.paramDateService.getMonthAndYearParamsFromURL(this.route);
+    this.authService.user$.subscribe(user => {
+      // Firestore user object
+      this.user = user;
+      console.log(this.user.uid);
 
-    // Call the announcements service
-    this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDateService);
+      // Get the params from the URL
+      this.paramDateService.getMonthAndYearParamsFromURL(this.route);
 
-    // this.announcementsService.checkIfSubCollectionExists(); // TODO: i want to just return a boolean here but i cant because i can't read the user ID. it returns as undefined
+      // Call the announcements service
+      this.announcements$ = this.announcementsService.readAllAnnouncements(this.paramDateService);
+
+      // this.announcementsService.checkIfSubCollectionExists(); // TODO: i want to just return a boolean here but i cant because i can't read the user ID. it returns as undefined
+    });
   }
 
   /**
@@ -140,8 +149,12 @@ export class AnnouncementsComponent implements OnInit {
     return this.authService.checkAuthorization(user, allowed);
   }
 
-  canEdit(user: User): boolean {
+  canEdit(user: User, announcement?: Announcement): boolean {
     const allowed = ['admin', 'participant'];
+
+    if(announcement) {
+      return this.authService.checkAuthorization(user, allowed) && user.uid == announcement.ownerRef;
+    }
     return this.authService.checkAuthorization(user, allowed);
   }
 

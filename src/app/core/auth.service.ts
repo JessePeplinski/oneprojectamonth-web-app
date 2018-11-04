@@ -27,6 +27,10 @@ export class AuthService {
     }));
   }
 
+  getUserId() {
+    return this.afAuth.auth.currentUser.uid;
+  }
+
   signUpWithEmailAndPassword(value) {
     console.log('initiating sigup with email and pass');
 
